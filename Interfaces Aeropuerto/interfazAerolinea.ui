@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>492</width>
+    <height>226</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AeroCamp</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(232, 228, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="bt_programarVuelo">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Programar Vuelo</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_solicitarAgendamiento">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Solicitar Agendamiento</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_visualizarDatos">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>50</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Visualizar Datos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_cerrarSesion">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>140</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(232, 228, 255);</string>
+    </property>
+    <property name="text">
+     <string>Cerrar Sesion</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

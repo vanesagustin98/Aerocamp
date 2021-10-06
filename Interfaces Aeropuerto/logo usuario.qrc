@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="cct">
+    <file>transparente.png</file>
+    <file>iconopiloto - copia.jpg</file>
+    <file>fondo 2.jpg</file>
+    <file>fondo.jpg</file>
+    <file>iconoaerolinea.jpg</file>
+    <file>iconoagenda.jpg</file>
+    <file>iconoavion.jpg</file>
+    <file>iconoformulario.jpg</file>
+    <file>iconoiniciosesion.jpg</file>
+    <file>iconopiloto.jpg</file>
+    <file>iconoprogramarvuelo.jpg</file>
+    <file>iconoregistroavion.jpg</file>
+    <file>iconosalir.png</file>
+  </qresource>
+</RCC>

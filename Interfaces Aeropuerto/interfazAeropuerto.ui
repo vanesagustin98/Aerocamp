@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>411</width>
+    <height>269</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AeroCamp</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(232, 228, 255);</string>
+  </property>
+  <widget class="QPushButton" name="bt_revisarSoliRegistros">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Revisar Solicitudes de Registro</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_solicitudesVuelos">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>30</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Revisar Solicitudes de Vuelos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_agendaVuelosAeropuerto">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Consultar Agenda de Vuelos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_visualizarAerolineas">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>120</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string>Visualizar Aerolineas</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_cerrarSesion">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>200</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(85, 0, 127);</string>
+   </property>
+   <property name="text">
+    <string>Cerrar Sesion</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
