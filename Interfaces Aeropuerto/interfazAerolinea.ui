@@ -83,17 +83,11 @@
    <widget class="QPushButton" name="bt_cerrarSesion">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>220</x>
       <y>280</y>
-      <width>101</width>
+      <width>81</width>
       <height>31</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(232, 228, 255);
