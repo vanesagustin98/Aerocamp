@@ -6,1279 +6,327 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>502</width>
-    <height>465</height>
+    <width>574</width>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Programar Vuelo</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(232, 228, 255);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QRadioButton" name="radioButton_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>501</width>
-      <height>461</height>
+      <x>490</x>
+      <y>80</y>
+      <width>53</width>
+      <height>19</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>100</width>
-      <height>0</height>
-     </size>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(232, 228, 255);</string>
     </property>
-    <property name="maximumSize">
-     <size>
-      <width>10000000</width>
-      <height>10000000</height>
-     </size>
+    <property name="text">
+     <string>Carga</string>
     </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>40</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
     </property>
-    <property name="baseSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(232, 228, 255);</string>
     </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>212</red>
-          <green>212</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Light">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Midlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Dark">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>85</red>
-          <green>85</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Mid">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>113</red>
-          <green>113</green>
-          <blue>170</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="BrightText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>52</red>
-          <green>0</green>
-          <blue>79</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>232</red>
-          <green>228</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Shadow">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="AlternateBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipBase">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>255</green>
-          <blue>220</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ToolTipText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
+    <property name="text">
+     <string>Pasajeros</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>30</y>
+      <width>131</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/cct/iconoavion.jpg);</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="crearVuelo">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>420</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
     </property>
     <property name="font">
      <font>
-      <family>Book Antiqua</family>
-      <weight>50</weight>
-      <bold>false</bold>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
     </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
+    <property name="text">
+     <string>Programar Vuelo</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>150</y>
+      <width>191</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QComboBox" name="comboBox_3">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Piloto</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_5">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Selecconar Copiloto</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_6">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Avion</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_4">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Vuelo</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>170</y>
+      <width>221</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_6">
+     <property name="verticalSpacing">
+      <number>20</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
+       </property>
+       <property name="text">
+        <string>Fecha Salida</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QDateEdit" name="dateEdit_3">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
+       </property>
+       <property name="text">
+        <string>Fecha llegada</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDateEdit" name="dateEdit_4">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
+       </property>
+       <property name="text">
+        <string>Cod. Vuelo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_13">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
+       </property>
+       <property name="text">
+        <string>Destino</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBox">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Lugar</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>360</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(232, 228, 255);
-border-image: url(:/cct/transparente.png);
-color: rgb(52, 0, 79);</string>
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
     </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::North</enum>
+    <property name="text">
+     <string>Crear Vuelo</string>
     </property>
-    <property name="tabShape">
-     <enum>QTabWidget::Triangular</enum>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_7">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>221</width>
+      <height>71</height>
+     </rect>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>80</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="elideMode">
-     <enum>Qt::ElideNone</enum>
-    </property>
-    <property name="documentMode">
-     <bool>true</bool>
-    </property>
-    <property name="tabsClosable">
-     <bool>false</bool>
-    </property>
-    <property name="movable">
-     <bool>false</bool>
-    </property>
-    <property name="tabBarAutoHide">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="Piloto">
-     <attribute name="title">
-      <string>           Piloto           </string>
-     </attribute>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>20</y>
-        <width>131</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="logo usuario.qrc">:/cct/iconopiloto.jpg</pixmap>
-      </property>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_11">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>180</y>
-        <width>291</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_12">
-       <property name="labelAlignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    <layout class="QFormLayout" name="formLayout_7">
+     <property name="verticalSpacing">
+      <number>20</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_20">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
        </property>
-       <property name="verticalSpacing">
-        <number>20</number>
+       <property name="text">
+        <string>Hora Salida</string>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_43">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(150, 139, 172);</string>
-         </property>
-         <property name="text">
-          <string>Nombre</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_24">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_44">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(144, 133, 169);</string>
-         </property>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_25">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_45">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(138, 125, 166);</string>
-         </property>
-         <property name="text">
-          <string>N° de licencia</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_26">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_9">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>300</y>
-        <width>291</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_13">
-       <property name="labelAlignment">
-        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QTimeEdit" name="timeEdit">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
-       <property name="verticalSpacing">
-        <number>20</number>
+       <property name="maximumTime">
+        <time>
+         <hour>23</hour>
+         <minute>59</minute>
+         <second>59</second>
+        </time>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_46">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(127, 115, 156);</string>
-         </property>
-         <property name="text">
-          <string>Horas de Experiencia</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_47">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(123, 115, 149);</string>
-         </property>
-         <property name="text">
-          <string>Ultima Revision Medica</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="spinBox_10">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateEdit" name="dateEdit_9">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="bt_registrar_piloto_7">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>390</y>
-        <width>101</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Registrar</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="Copiloto">
-     <attribute name="title">
-      <string>           Copiloto            </string>
-     </attribute>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>20</y>
-        <width>131</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="logo usuario.qrc">:/cct/iconopiloto.jpg</pixmap>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="bt_registrar_piloto_6">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>390</y>
-        <width>101</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Registrar</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_10">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>180</y>
-        <width>291</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_10">
-       <property name="labelAlignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::HourSection</enum>
        </property>
-       <property name="verticalSpacing">
-        <number>20</number>
+       <property name="displayFormat">
+        <string>h:mm</string>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_35">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(150, 139, 172);</string>
-         </property>
-         <property name="text">
-          <string>Nombre</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_21">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_36">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(144, 133, 169);</string>
-         </property>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_22">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_39">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(138, 125, 166);</string>
-         </property>
-         <property name="text">
-          <string>N° de licencia</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_23">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_4">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>300</y>
-        <width>291</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_9">
-       <property name="labelAlignment">
-        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+       <property name="time">
+        <time>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+        </time>
        </property>
-       <property name="verticalSpacing">
-        <number>20</number>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_22">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 228, 255);</string>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_34">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(127, 115, 156);</string>
-         </property>
-         <property name="text">
-          <string>Horas de Experiencia</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_40">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(123, 115, 149);</string>
-         </property>
-         <property name="text">
-          <string>Ultima Revision Medica</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="spinBox_9">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateEdit" name="dateEdit_8">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="Avion">
-     <attribute name="title">
-      <string>           Avion           </string>
-     </attribute>
-     <widget class="QWidget" name="formLayoutWidget_5">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>150</y>
-        <width>471</width>
-        <height>253</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_5">
-       <property name="labelAlignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <property name="text">
+        <string>Hora llegada</string>
        </property>
-       <property name="verticalSpacing">
-        <number>20</number>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QTimeEdit" name="timeEdit_2">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_13">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(155, 145, 177);</string>
-         </property>
-         <property name="text">
-          <string>ID. Avion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_14">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(143, 133, 169);</string>
-         </property>
-         <property name="text">
-          <string>Modelo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_10">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_17">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(124, 115, 152);</string>
-         </property>
-         <property name="text">
-          <string>Peso Nominal</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_11">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_18">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(120, 114, 147);</string>
-         </property>
-         <property name="text">
-          <string>Capacidad</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_12">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_15">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(139, 128, 168);</string>
-         </property>
-         <property name="text">
-          <string>Tipo propulsion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_16">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(131, 119, 161);</string>
-         </property>
-         <property name="text">
-          <string>N° Motor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="comboBox_2">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <item>
-          <property name="text">
-           <string>Reacción</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Turbo Hélice</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hélice</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="bt_registrar_piloto_3">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>400</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Registrar</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>10</y>
-        <width>131</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="logo usuario.qrc">:/cct/iconoregistroavion.jpg</pixmap>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="radioButton">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>40</y>
-        <width>53</width>
-        <height>19</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(224, 184, 210);</string>
-      </property>
-      <property name="text">
-       <string>Carga</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="radioButton_2">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>70</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(238, 190, 212);</string>
-      </property>
-      <property name="text">
-       <string>Pasajeros</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="Vuelo">
-     <attribute name="title">
-      <string>           Vuelo           </string>
-     </attribute>
-     <widget class="QPushButton" name="crearVuelo">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>340</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Programar Vuelo</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_6">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>170</y>
-        <width>221</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_6">
-       <property name="verticalSpacing">
-        <number>20</number>
+       <property name="displayFormat">
+        <string>h:mm</string>
        </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_19">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(150, 139, 175);</string>
-         </property>
-         <property name="text">
-          <string>Fecha Salida</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QDateEdit" name="dateEdit_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_21">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(144, 134, 170);</string>
-         </property>
-         <property name="text">
-          <string>Fecha llegada</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateEdit" name="dateEdit_4">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_23">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(136, 125, 165);</string>
-         </property>
-         <property name="text">
-          <string>Cod. Vuelo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_13">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_24">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(127, 115, 157);</string>
-         </property>
-         <property name="text">
-          <string>Destino</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <item>
-          <property name="text">
-           <string>Bogotá</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Medellín</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="formLayoutWidget_7">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>40</y>
-        <width>181</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_7">
-       <property name="verticalSpacing">
-        <number>20</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_20">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(229, 182, 207);</string>
-         </property>
-         <property name="text">
-          <string>Hora Salida</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QTimeEdit" name="timeEdit">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="maximumTime">
-          <time>
-           <hour>23</hour>
-           <minute>59</minute>
-           <second>59</second>
-          </time>
-         </property>
-         <property name="currentSection">
-          <enum>QDateTimeEdit::HourSection</enum>
-         </property>
-         <property name="displayFormat">
-          <string>h:mm</string>
-         </property>
-         <property name="time">
-          <time>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-          </time>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_22">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(213, 174, 197);</string>
-         </property>
-         <property name="text">
-          <string>Hora llegada</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QTimeEdit" name="timeEdit_2">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="displayFormat">
-          <string>h:mm</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>20</y>
-        <width>131</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="logo usuario.qrc">:/cct/iconoprogramarvuelo.jpg</pixmap>
-      </property>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>150</y>
-        <width>191</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QComboBox" name="comboBox_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_5">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_6">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_4">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
  <resources>
+  <include location="logo usuario.qrc"/>
   <include location="logo usuario.qrc"/>
  </resources>
  <connections/>

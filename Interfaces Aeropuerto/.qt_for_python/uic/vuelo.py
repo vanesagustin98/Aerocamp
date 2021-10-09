@@ -13,6 +13,7 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 import logo usuario_rc
+import logo usuario_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -102,8 +103,8 @@ class Ui_MainWindow(object):
         self.tabWidget.setCursor(QCursor(Qt.ArrowCursor))
         self.tabWidget.setAcceptDrops(False)
         self.tabWidget.setStyleSheet(u"background-color: rgb(232, 228, 255);\n"
-"border-image: url(:/cct/transparente.png);\n"
-"color: rgb(52, 0, 79);")
+"\n"
+"")
         self.tabWidget.setTabPosition(QTabWidget.North)
         self.tabWidget.setTabShape(QTabWidget.Triangular)
         self.tabWidget.setIconSize(QSize(80, 16))
@@ -128,7 +129,7 @@ class Ui_MainWindow(object):
         self.formLayout_12.setContentsMargins(0, 0, 0, 0)
         self.label_43 = QLabel(self.formLayoutWidget_11)
         self.label_43.setObjectName(u"label_43")
-        self.label_43.setStyleSheet(u"background-color: rgb(150, 139, 172);")
+        self.label_43.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_12.setWidget(0, QFormLayout.LabelRole, self.label_43)
 
@@ -140,7 +141,7 @@ class Ui_MainWindow(object):
 
         self.label_44 = QLabel(self.formLayoutWidget_11)
         self.label_44.setObjectName(u"label_44")
-        self.label_44.setStyleSheet(u"background-color: rgb(144, 133, 169);")
+        self.label_44.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_12.setWidget(1, QFormLayout.LabelRole, self.label_44)
 
@@ -152,7 +153,7 @@ class Ui_MainWindow(object):
 
         self.label_45 = QLabel(self.formLayoutWidget_11)
         self.label_45.setObjectName(u"label_45")
-        self.label_45.setStyleSheet(u"background-color: rgb(138, 125, 166);")
+        self.label_45.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_12.setWidget(2, QFormLayout.LabelRole, self.label_45)
 
@@ -172,13 +173,13 @@ class Ui_MainWindow(object):
         self.formLayout_13.setContentsMargins(0, 0, 0, 0)
         self.label_46 = QLabel(self.formLayoutWidget_9)
         self.label_46.setObjectName(u"label_46")
-        self.label_46.setStyleSheet(u"background-color: rgb(127, 115, 156);")
+        self.label_46.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_13.setWidget(0, QFormLayout.LabelRole, self.label_46)
 
         self.label_47 = QLabel(self.formLayoutWidget_9)
         self.label_47.setObjectName(u"label_47")
-        self.label_47.setStyleSheet(u"background-color: rgb(123, 115, 149);")
+        self.label_47.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_13.setWidget(1, QFormLayout.LabelRole, self.label_47)
 
@@ -209,81 +210,81 @@ class Ui_MainWindow(object):
         self.bt_registrar_piloto_6.setObjectName(u"bt_registrar_piloto_6")
         self.bt_registrar_piloto_6.setGeometry(QRect(180, 390, 101, 41))
         self.bt_registrar_piloto_6.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.formLayoutWidget_10 = QWidget(self.Copiloto)
-        self.formLayoutWidget_10.setObjectName(u"formLayoutWidget_10")
-        self.formLayoutWidget_10.setGeometry(QRect(90, 180, 291, 121))
-        self.formLayout_10 = QFormLayout(self.formLayoutWidget_10)
-        self.formLayout_10.setObjectName(u"formLayout_10")
-        self.formLayout_10.setLabelAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-        self.formLayout_10.setVerticalSpacing(20)
-        self.formLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.label_35 = QLabel(self.formLayoutWidget_10)
-        self.label_35.setObjectName(u"label_35")
-        self.label_35.setStyleSheet(u"background-color: rgb(150, 139, 172);")
+        self.formLayoutWidget_12 = QWidget(self.Copiloto)
+        self.formLayoutWidget_12.setObjectName(u"formLayoutWidget_12")
+        self.formLayoutWidget_12.setGeometry(QRect(90, 180, 291, 121))
+        self.formLayout_14 = QFormLayout(self.formLayoutWidget_12)
+        self.formLayout_14.setObjectName(u"formLayout_14")
+        self.formLayout_14.setLabelAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.formLayout_14.setVerticalSpacing(20)
+        self.formLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.label_48 = QLabel(self.formLayoutWidget_12)
+        self.label_48.setObjectName(u"label_48")
+        self.label_48.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
-        self.formLayout_10.setWidget(0, QFormLayout.LabelRole, self.label_35)
+        self.formLayout_14.setWidget(0, QFormLayout.LabelRole, self.label_48)
 
-        self.lineEdit_21 = QLineEdit(self.formLayoutWidget_10)
-        self.lineEdit_21.setObjectName(u"lineEdit_21")
-        self.lineEdit_21.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lineEdit_27 = QLineEdit(self.formLayoutWidget_12)
+        self.lineEdit_27.setObjectName(u"lineEdit_27")
+        self.lineEdit_27.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.formLayout_10.setWidget(0, QFormLayout.FieldRole, self.lineEdit_21)
+        self.formLayout_14.setWidget(0, QFormLayout.FieldRole, self.lineEdit_27)
 
-        self.label_36 = QLabel(self.formLayoutWidget_10)
-        self.label_36.setObjectName(u"label_36")
-        self.label_36.setStyleSheet(u"background-color: rgb(144, 133, 169);")
+        self.label_49 = QLabel(self.formLayoutWidget_12)
+        self.label_49.setObjectName(u"label_49")
+        self.label_49.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
-        self.formLayout_10.setWidget(1, QFormLayout.LabelRole, self.label_36)
+        self.formLayout_14.setWidget(1, QFormLayout.LabelRole, self.label_49)
 
-        self.lineEdit_22 = QLineEdit(self.formLayoutWidget_10)
-        self.lineEdit_22.setObjectName(u"lineEdit_22")
-        self.lineEdit_22.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lineEdit_28 = QLineEdit(self.formLayoutWidget_12)
+        self.lineEdit_28.setObjectName(u"lineEdit_28")
+        self.lineEdit_28.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.formLayout_10.setWidget(1, QFormLayout.FieldRole, self.lineEdit_22)
+        self.formLayout_14.setWidget(1, QFormLayout.FieldRole, self.lineEdit_28)
 
-        self.label_39 = QLabel(self.formLayoutWidget_10)
-        self.label_39.setObjectName(u"label_39")
-        self.label_39.setStyleSheet(u"background-color: rgb(138, 125, 166);")
+        self.label_50 = QLabel(self.formLayoutWidget_12)
+        self.label_50.setObjectName(u"label_50")
+        self.label_50.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
-        self.formLayout_10.setWidget(2, QFormLayout.LabelRole, self.label_39)
+        self.formLayout_14.setWidget(2, QFormLayout.LabelRole, self.label_50)
 
-        self.lineEdit_23 = QLineEdit(self.formLayoutWidget_10)
-        self.lineEdit_23.setObjectName(u"lineEdit_23")
-        self.lineEdit_23.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.lineEdit_29 = QLineEdit(self.formLayoutWidget_12)
+        self.lineEdit_29.setObjectName(u"lineEdit_29")
+        self.lineEdit_29.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.formLayout_10.setWidget(2, QFormLayout.FieldRole, self.lineEdit_23)
+        self.formLayout_14.setWidget(2, QFormLayout.FieldRole, self.lineEdit_29)
 
-        self.formLayoutWidget_4 = QWidget(self.Copiloto)
-        self.formLayoutWidget_4.setObjectName(u"formLayoutWidget_4")
-        self.formLayoutWidget_4.setGeometry(QRect(90, 300, 291, 81))
-        self.formLayout_9 = QFormLayout(self.formLayoutWidget_4)
-        self.formLayout_9.setObjectName(u"formLayout_9")
-        self.formLayout_9.setLabelAlignment(Qt.AlignBottom|Qt.AlignRight|Qt.AlignTrailing)
-        self.formLayout_9.setVerticalSpacing(20)
-        self.formLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.label_34 = QLabel(self.formLayoutWidget_4)
-        self.label_34.setObjectName(u"label_34")
-        self.label_34.setStyleSheet(u"background-color: rgb(127, 115, 156);")
+        self.formLayoutWidget_13 = QWidget(self.Copiloto)
+        self.formLayoutWidget_13.setObjectName(u"formLayoutWidget_13")
+        self.formLayoutWidget_13.setGeometry(QRect(90, 300, 291, 81))
+        self.formLayout_17 = QFormLayout(self.formLayoutWidget_13)
+        self.formLayout_17.setObjectName(u"formLayout_17")
+        self.formLayout_17.setLabelAlignment(Qt.AlignBottom|Qt.AlignRight|Qt.AlignTrailing)
+        self.formLayout_17.setVerticalSpacing(20)
+        self.formLayout_17.setContentsMargins(0, 0, 0, 0)
+        self.spinBox_13 = QSpinBox(self.formLayoutWidget_13)
+        self.spinBox_13.setObjectName(u"spinBox_13")
+        self.spinBox_13.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.formLayout_9.setWidget(0, QFormLayout.LabelRole, self.label_34)
+        self.formLayout_17.setWidget(0, QFormLayout.FieldRole, self.spinBox_13)
 
-        self.label_40 = QLabel(self.formLayoutWidget_4)
-        self.label_40.setObjectName(u"label_40")
-        self.label_40.setStyleSheet(u"background-color: rgb(123, 115, 149);")
+        self.dateEdit_12 = QDateEdit(self.formLayoutWidget_13)
+        self.dateEdit_12.setObjectName(u"dateEdit_12")
+        self.dateEdit_12.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.formLayout_9.setWidget(1, QFormLayout.LabelRole, self.label_40)
+        self.formLayout_17.setWidget(1, QFormLayout.FieldRole, self.dateEdit_12)
 
-        self.spinBox_9 = QSpinBox(self.formLayoutWidget_4)
-        self.spinBox_9.setObjectName(u"spinBox_9")
-        self.spinBox_9.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.label_51 = QLabel(self.formLayoutWidget_13)
+        self.label_51.setObjectName(u"label_51")
+        self.label_51.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
-        self.formLayout_9.setWidget(0, QFormLayout.FieldRole, self.spinBox_9)
+        self.formLayout_17.setWidget(0, QFormLayout.LabelRole, self.label_51)
 
-        self.dateEdit_8 = QDateEdit(self.formLayoutWidget_4)
-        self.dateEdit_8.setObjectName(u"dateEdit_8")
-        self.dateEdit_8.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.label_52 = QLabel(self.formLayoutWidget_13)
+        self.label_52.setObjectName(u"label_52")
+        self.label_52.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
-        self.formLayout_9.setWidget(1, QFormLayout.FieldRole, self.dateEdit_8)
+        self.formLayout_17.setWidget(1, QFormLayout.LabelRole, self.label_52)
 
         self.tabWidget.addTab(self.Copiloto, "")
         self.Avion = QWidget()
@@ -298,7 +299,7 @@ class Ui_MainWindow(object):
         self.formLayout_5.setContentsMargins(0, 0, 0, 0)
         self.label_13 = QLabel(self.formLayoutWidget_5)
         self.label_13.setObjectName(u"label_13")
-        self.label_13.setStyleSheet(u"background-color: rgb(155, 145, 177);")
+        self.label_13.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(0, QFormLayout.LabelRole, self.label_13)
 
@@ -310,7 +311,7 @@ class Ui_MainWindow(object):
 
         self.label_14 = QLabel(self.formLayoutWidget_5)
         self.label_14.setObjectName(u"label_14")
-        self.label_14.setStyleSheet(u"background-color: rgb(143, 133, 169);")
+        self.label_14.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(1, QFormLayout.LabelRole, self.label_14)
 
@@ -328,7 +329,7 @@ class Ui_MainWindow(object):
 
         self.label_17 = QLabel(self.formLayoutWidget_5)
         self.label_17.setObjectName(u"label_17")
-        self.label_17.setStyleSheet(u"background-color: rgb(124, 115, 152);")
+        self.label_17.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(4, QFormLayout.LabelRole, self.label_17)
 
@@ -340,7 +341,7 @@ class Ui_MainWindow(object):
 
         self.label_18 = QLabel(self.formLayoutWidget_5)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setStyleSheet(u"background-color: rgb(120, 114, 147);")
+        self.label_18.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(5, QFormLayout.LabelRole, self.label_18)
 
@@ -352,13 +353,13 @@ class Ui_MainWindow(object):
 
         self.label_15 = QLabel(self.formLayoutWidget_5)
         self.label_15.setObjectName(u"label_15")
-        self.label_15.setStyleSheet(u"background-color: rgb(139, 128, 168);")
+        self.label_15.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(2, QFormLayout.LabelRole, self.label_15)
 
         self.label_16 = QLabel(self.formLayoutWidget_5)
         self.label_16.setObjectName(u"label_16")
-        self.label_16.setStyleSheet(u"background-color: rgb(131, 119, 161);")
+        self.label_16.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_5.setWidget(3, QFormLayout.LabelRole, self.label_16)
 
@@ -382,11 +383,11 @@ class Ui_MainWindow(object):
         self.radioButton = QRadioButton(self.Avion)
         self.radioButton.setObjectName(u"radioButton")
         self.radioButton.setGeometry(QRect(330, 40, 53, 19))
-        self.radioButton.setStyleSheet(u"background-color: rgb(224, 184, 210);")
+        self.radioButton.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.radioButton_2 = QRadioButton(self.Avion)
         self.radioButton_2.setObjectName(u"radioButton_2")
         self.radioButton_2.setGeometry(QRect(330, 70, 71, 20))
-        self.radioButton_2.setStyleSheet(u"background-color: rgb(238, 190, 212);")
+        self.radioButton_2.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.tabWidget.addTab(self.Avion, "")
         self.Vuelo = QWidget()
         self.Vuelo.setObjectName(u"Vuelo")
@@ -403,7 +404,7 @@ class Ui_MainWindow(object):
         self.formLayout_6.setContentsMargins(0, 0, 0, 0)
         self.label_19 = QLabel(self.formLayoutWidget_6)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setStyleSheet(u"background-color: rgb(150, 139, 175);")
+        self.label_19.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.label_19)
 
@@ -415,7 +416,7 @@ class Ui_MainWindow(object):
 
         self.label_21 = QLabel(self.formLayoutWidget_6)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setStyleSheet(u"background-color: rgb(144, 134, 170);")
+        self.label_21.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_6.setWidget(1, QFormLayout.LabelRole, self.label_21)
 
@@ -427,7 +428,7 @@ class Ui_MainWindow(object):
 
         self.label_23 = QLabel(self.formLayoutWidget_6)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setStyleSheet(u"background-color: rgb(136, 125, 165);")
+        self.label_23.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_6.setWidget(2, QFormLayout.LabelRole, self.label_23)
 
@@ -439,7 +440,7 @@ class Ui_MainWindow(object):
 
         self.label_24 = QLabel(self.formLayoutWidget_6)
         self.label_24.setObjectName(u"label_24")
-        self.label_24.setStyleSheet(u"background-color: rgb(127, 115, 157);")
+        self.label_24.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_6.setWidget(3, QFormLayout.LabelRole, self.label_24)
 
@@ -460,7 +461,7 @@ class Ui_MainWindow(object):
         self.formLayout_7.setContentsMargins(0, 0, 0, 0)
         self.label_20 = QLabel(self.formLayoutWidget_7)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setStyleSheet(u"background-color: rgb(229, 182, 207);")
+        self.label_20.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_7.setWidget(0, QFormLayout.LabelRole, self.label_20)
 
@@ -475,7 +476,7 @@ class Ui_MainWindow(object):
 
         self.label_22 = QLabel(self.formLayoutWidget_7)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setStyleSheet(u"background-color: rgb(213, 174, 197);")
+        self.label_22.setStyleSheet(u"background-color: rgb(232, 228, 255);")
 
         self.formLayout_7.setWidget(1, QFormLayout.LabelRole, self.label_22)
 
@@ -524,7 +525,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -540,13 +541,13 @@ class Ui_MainWindow(object):
         self.label_47.setText(QCoreApplication.translate("MainWindow", u"Ultima Revision Medica", None))
         self.bt_registrar_piloto_7.setText(QCoreApplication.translate("MainWindow", u"Registrar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Piloto), QCoreApplication.translate("MainWindow", u"           Piloto           ", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><img src=\":/cct/iconopiloto - copia.jpg\"/></p></body></html>", None))
+        self.label_2.setText("")
         self.bt_registrar_piloto_6.setText(QCoreApplication.translate("MainWindow", u"Registrar", None))
-        self.label_35.setText(QCoreApplication.translate("MainWindow", u"Nombre", None))
-        self.label_36.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_39.setText(QCoreApplication.translate("MainWindow", u"N\u00b0 de licencia", None))
-        self.label_34.setText(QCoreApplication.translate("MainWindow", u"Horas de Experiencia", None))
-        self.label_40.setText(QCoreApplication.translate("MainWindow", u"Ultima Revision Medica", None))
+        self.label_48.setText(QCoreApplication.translate("MainWindow", u"Nombre", None))
+        self.label_49.setText(QCoreApplication.translate("MainWindow", u"ID", None))
+        self.label_50.setText(QCoreApplication.translate("MainWindow", u"N\u00b0 de licencia", None))
+        self.label_51.setText(QCoreApplication.translate("MainWindow", u"Horas de Experiencia", None))
+        self.label_52.setText(QCoreApplication.translate("MainWindow", u"Ultima Revision Medica", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Copiloto), QCoreApplication.translate("MainWindow", u"           Copiloto            ", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"ID. Avion", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Modelo", None))

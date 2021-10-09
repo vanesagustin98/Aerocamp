@@ -1,34 +1,47 @@
 import sys
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtGui import QPixmap
+from PyQt5 import QtGui
+from PyQt5.QtGui import QPixmap, QStandardItemModel
 import psycopg2
 
 class iniciar:
     def __init__(self):
         app = QtWidgets.QApplication([])
+        self.agendamientoVuelos = uic.loadUi("agendamientoVuelos.ui")
+        self.autenticacion = uic.loadUi("autenticacion.ui")
+        self.consultarAgenda = uic.loadUi("consultarAgenda.ui")
+        self.formularioRegistro = uic.loadUi("formularioRegistro.ui")
         self.aerolinea = uic.loadUi("interfazAerolinea.ui")
         self.aeropuerto = uic.loadUi("interfazAeropuerto.ui")
-        self.vuelo = uic.loadUi("vuelo.ui")
+        self.listadoAerolineas = uic.loadUi("listadoAerolineas.ui")
+        self.modicarDatosAerolinea = uic.loadUi("modificarDatosAerolinea.ui")
+        self.modificarDatosAeropuerto = uic.loadUi("modificarDatosAeropuerto.ui")
+        self.registrarAvion = uic.loadUi("registrarAvion.ui")
+        self.registrarCopiloto = uic.loadUi("registrarCopiloto.ui")
+        self.registrarPiloto = uic.loadUi("registrarPiloto.ui")
         self.solicitudesPendientesVuelos = uic.loadUi("solicitudesPendientesVuelos.ui")
-        self.agendamientoVuelos = uic.loadUi("agendamientoVuelos.ui")
-        self.consultarAgenda = uic.loadUi("consultarAgenda.ui")
+        self.solicitudesRegistroAerolinea = uic.loadUi("solicitudesRegistroAerolinea.ui")
+        self.usuarioAerolinea = uic.loadUi("usuarioAerolinea.ui")
+        self.vuelo = uic.loadUi("vuelo.ui")
         self.dialogoVueloProgramado = uic.loadUi("dialogoVueloProgramado.ui")
         self.dialogoDisponibilidad = uic.loadUi("dialogoDisponibilidad.ui")
         self.dialogoAgendamiento = uic.loadUi("dialogoAgendamiento.ui")
         self.dialogoCampos = uic.loadUi("dialogoCampos.ui")
         self.dialogoCamposIncorrectos = uic.loadUi("dialogoCamposIncorrectos.ui")
         self.dialogoNoVuelosProgramados = uic.loadUi("dialogoNOvuelosprogramados.ui")
+        
+        self.aeropuerto.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoavion.jpg"))
+        self.agendamientoVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoagenda.jpg"))
+        self.autenticacion.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoiniciosesion.jpg"))
+        self.autenticacion.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoformulario.jpg"))
 
-        self.vuelo.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Interfaces Aeropuerto\iconopiloto.jpg"))
-        self.vuelo.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Interfaces Aeropuerto\iconopiloto - copia.jpg"))
-        self.vuelo.label_3.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Interfaces Aeropuerto\iconoregistroavion.jpg"))
-        self.vuelo.label_4.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Interfaces Aeropuerto\iconoprogramarvuelo.jpg"))
-        self.vuelo.tabWidget.setStyleSheet("QMainWindow{background-image: url(D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Interfaces Aeropuerto\transparente.png)}")
+        # self.vuelo.label_4.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoprogramarvuelo.jpg"))
+        # self.agendamientoVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoagenda.jpg"))
 
 
-
-        self.aerolinea.show()
+        # self.aerolinea.show()
         # self.aeropuerto.show()
+        self.autenticacion.show()
 
         self.aerolinea.bt_programarVuelo.clicked.connect(self.ProgramarVuelo)
         self.vuelo.crearVuelo.clicked.connect(self.CrearVuelo)
@@ -42,6 +55,8 @@ class iniciar:
         self.aeropuerto.bt_cerrarSesion.clicked.connect(self.Salir)
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
         app.exec()
+
+    
 
     def ProgramarVuelo(self):  
         self.vuelo.show()
@@ -274,8 +289,8 @@ class iniciar:
 
     def SolicitarAgendamiento(self):
         
-
-        self.agendamientoVuelos.ls_vuelos.clear()
+        self.model = QStandardItemModel(self.agendamientoVuelos.ls_vuelos)
+        self.model.clear()
         conexion = psycopg2.connect(
             host = "localhost" , 
             database = "aerocamp" ,
@@ -284,7 +299,7 @@ class iniciar:
             )
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        cdvuelos= "select codvuelo from vuelo;"
+        cdvuelos= "select codvuelo, destino, fechasalida, fechallegada from vuelo;"
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
         print(type(listcdvuelos))
@@ -292,7 +307,10 @@ class iniciar:
         print("Consulta hecha con éxito")
         for n in listcdvuelos:
             for k in n:
-                self.agendamientoVuelos.ls_vuelos.addItem(k)
+                
+                self.model.setHorizontalHeaderLabels(['Codigo','Destino','Fecha Salida','Fecha llegada'])
+                self.agendamientoVuelos.ls_vuelos.setModel(self.model)
+                # self.model.setItem(1, 1, k)
         print(type(listcdvuelos))
         conexion.close()
 

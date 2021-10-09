@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>354</width>
-    <height>447</height>
+    <width>453</width>
+    <height>331</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>180</y>
-      <width>191</width>
-      <height>41</height>
+      <x>260</x>
+      <y>40</y>
+      <width>151</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -33,10 +33,10 @@
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>250</y>
-      <width>191</width>
-      <height>41</height>
+      <x>260</x>
+      <y>80</y>
+      <width>151</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -46,10 +46,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>320</y>
-      <width>91</width>
-      <height>31</height>
+      <x>160</x>
+      <y>140</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -59,13 +59,55 @@
      <string>Iniciar Sesion</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>390</y>
-      <width>121</width>
+      <x>40</x>
+      <y>20</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/cct/iconoiniciosesion.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>51</width>
       <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Usuario</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>80</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Contraseña</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>260</y>
+      <width>191</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
@@ -77,20 +119,23 @@
      <string notr="true">color: rgb(85, 0, 127);</string>
     </property>
     <property name="text">
-     <string>Formulario De Registro</string>
+     <string>Formulario de Registro Aerolinea</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>30</y>
-      <width>131</width>
-      <height>121</height>
+      <x>30</x>
+      <y>210</y>
+      <width>111</width>
+      <height>101</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/cct/iconoformulario.jpg);</string>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/cct/iconoiniciosesion.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string/>
     </property>
    </widget>
   </widget>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>269</height>
+    <width>540</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,15 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>30</y>
-     <width>161</width>
+     <y>200</y>
+     <width>211</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 170, 255);</string>
@@ -35,11 +40,16 @@
   <widget class="QPushButton" name="bt_solicitudesVuelos">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>30</y>
-     <width>161</width>
+     <x>280</x>
+     <y>200</y>
+     <width>211</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 170, 255);</string>
@@ -52,10 +62,15 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>120</y>
-     <width>161</width>
+     <y>290</y>
+     <width>211</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 170, 255);</string>
@@ -67,11 +82,16 @@
   <widget class="QPushButton" name="bt_visualizarAerolineas">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>120</y>
-     <width>161</width>
+     <x>280</x>
+     <y>290</y>
+     <width>211</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(170, 170, 255);</string>
@@ -83,9 +103,31 @@
   <widget class="QPushButton" name="bt_cerrarSesion">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>200</y>
+     <x>400</x>
+     <y>400</y>
      <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(85, 0, 127);</string>
+   </property>
+   <property name="text">
+    <string>Cerrar Sesión</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>261</width>
      <height>41</height>
     </rect>
    </property>
@@ -93,10 +135,28 @@
     <string notr="true">color: rgb(85, 0, 127);</string>
    </property>
    <property name="text">
-    <string>Cerrar Sesion</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Aeropueto El Campanero&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>60</y>
+     <width>191</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/cct/iconoavion.jpg);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="logo usuario.qrc"/>
+ </resources>
  <connections/>
 </ui>

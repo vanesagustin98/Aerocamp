@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>856</width>
-    <height>459</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -488,19 +488,6 @@
     <string>Eliminar Vuelo</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>511</width>
-     <height>311</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -534,7 +521,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/cct/iconoagenda.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="logo usuario.qrc">:/cct/iconoagenda.jpg</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -548,6 +538,19 @@
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Recuerda que los vuelos ademas de ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;agendados, tambien pueden ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;modificados y eliminados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="ls_vuelos">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>501</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(254, 254, 254);</string>
    </property>
   </widget>
  </widget>

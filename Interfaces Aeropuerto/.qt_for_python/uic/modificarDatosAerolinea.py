@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'modificarDatos.ui'
+## Form generated from reading UI file 'modificarDatosAerolinea.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##

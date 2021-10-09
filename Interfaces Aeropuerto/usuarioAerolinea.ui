@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>341</height>
+    <width>409</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AeroCamp</string>
+   <string>Form</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>0</y>
      <width>421</width>
-     <height>341</height>
+     <height>331</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -206,6 +206,9 @@
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>180</x>
@@ -219,6 +222,9 @@
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_5">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>180</x>

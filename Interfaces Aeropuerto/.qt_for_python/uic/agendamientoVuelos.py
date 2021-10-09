@@ -18,7 +18,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(856, 459)
+        Form.resize(856, 470)
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.bt_realizarSolicitud = QPushButton(Form)
         self.bt_realizarSolicitud.setObjectName(u"bt_realizarSolicitud")
@@ -96,10 +96,6 @@ class Ui_Form(object):
         self.bt_eliminarVuelo.setObjectName(u"bt_eliminarVuelo")
         self.bt_eliminarVuelo.setGeometry(QRect(620, 350, 141, 31))
         self.bt_eliminarVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.tableWidget = QTableWidget(Form)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(20, 70, 511, 311))
-        self.tableWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(90, 20, 361, 31))
@@ -112,9 +108,14 @@ class Ui_Form(object):
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(630, 150, 121, 141))
+        self.label_2.setPixmap(QPixmap(u":/cct/iconoagenda.jpg"))
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(560, 70, 261, 71))
+        self.ls_vuelos = QTableView(Form)
+        self.ls_vuelos.setObjectName(u"ls_vuelos")
+        self.ls_vuelos.setGeometry(QRect(30, 70, 501, 291))
+        self.ls_vuelos.setStyleSheet(u"background-color: rgb(254, 254, 254);")
 
         self.retranslateUi(Form)
 
@@ -127,7 +128,7 @@ class Ui_Form(object):
         self.bt_modificarDatos.setText(QCoreApplication.translate("Form", u"Modificar Datos de Vuelo", None))
         self.bt_eliminarVuelo.setText(QCoreApplication.translate("Form", u"Eliminar Vuelo", None))
         self.label.setText(QCoreApplication.translate("Form", u"Seleccione el vuelo que desesa agendar", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><img src=\":/cct/iconoagenda.jpg\"/></p></body></html>", None))
+        self.label_2.setText("")
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">Recuerda que los vuelos ademas de ser </span></p><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">agendados, tambien pueden ser </span></p><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">modificados y eliminados</span></p></body></html>", None))
     # retranslateUi
 
