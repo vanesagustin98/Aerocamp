@@ -56,9 +56,6 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QRect(30, 210, 111, 101))
         self.label.setStyleSheet(u"border-image: url(:/cct/iconoformulario.jpg);")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
 
