@@ -34,13 +34,15 @@ class iniciar:
         self.agendamientoVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoagenda.jpg"))
         self.autenticacion.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoiniciosesion.jpg"))
         self.autenticacion.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoformulario.jpg"))
+        self.formularioRegistro.label_6.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoformulario.jpg"))
+        self.registrarAvion.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoregistroavion.jpg"))
+        self.registrarCopiloto.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconopiloto.jpg"))
+        self.registrarPiloto.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconopiloto.jpg"))
+        self.solicitudesPendientesVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoavion.jpg"))
+        self.solicitudesRegistroAerolinea.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconosolicitudregistro.jpg"))
 
-        # self.vuelo.label_4.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoprogramarvuelo.jpg"))
-        # self.agendamientoVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoagenda.jpg"))
 
-
-        # self.aerolinea.show()
-        # self.aeropuerto.show()
+        
         self.autenticacion.show()
 
         self.aerolinea.bt_programarVuelo.clicked.connect(self.ProgramarVuelo)
@@ -54,9 +56,46 @@ class iniciar:
         self.aerolinea.bt_cerrarSesion.clicked.connect(self.Salir)
         self.aeropuerto.bt_cerrarSesion.clicked.connect(self.Salir)
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
+        self.autenticacion.pushButton_3.clicked.connect(self.LlenarFormulario)
+        self.autenticacion.pushButton.clicked.connect(self.Ingresar)
+        self.autenticacion.pushButton.clicked.connect(self.Ingresar)
+        self.aeropuerto.bt_visualizarAerolineas.clicked.connect(self.VisualizarAerolineas)
+        self.aerolinea.bt_visualizarDatos.clicked.connect(self.VerDatosAerolinea)
+        self.listadoAerolineas.pushButton.clicked.connect(self.VerListadoAeropuerto)
+        self.aerolinea.pushButton_4.clicked.connect(self.RegistrarAvion)
+        self.aerolinea.pushButton_3.clicked.connect(self.RegistrarCopiloto)
+        self.aerolinea.pushButton_2.clicked.connect(self.RegistrarPiloto)
+        self.aeropuerto.bt_revisarSoliRegistros.clicked.connect(self.verSolicitudesRegistro)
         app.exec()
 
-    
+    def verSolicitudesRegistro(self):
+        self.solicitudesRegistroAerolinea.show()
+
+    def RegistrarAvion(self):
+        self.registrarAvion.show()
+
+    def RegistrarCopiloto(self):
+        self.registrarCopiloto.show()
+
+    def RegistrarPiloto(self):
+        self.registrarPiloto.show()
+
+    def VerListadoAeropuerto(self):
+        self.modicarDatosAeropuerto.show()
+
+    def VerDatosAerolinea(self):
+        self.modicarDatosAerolinea.show()
+
+    def VisualizarAerolineas(self):
+        self.listadoAerolineas.show()
+
+    def Ingresar(self):
+        self.aerolinea.show()
+        self.aeropuerto.show()
+        self.autenticacion.close()
+
+    def LlenarFormulario(self):
+        self.formularioRegistro.show()
 
     def ProgramarVuelo(self):  
         self.vuelo.show()
@@ -238,7 +277,8 @@ class iniciar:
 
     def ConsultarAgendaAeropuerto(self):
 
-        self.consultarAgenda.tableWidget.clear()
+        self.model_1 = QStandardItemModel(self.consultarAgenda.tableWidget)
+        self.model_1.clear()
         conexion = psycopg2.connect(
             host = "localhost" , 
             database = "aerocamp" ,
@@ -265,7 +305,7 @@ class iniciar:
 
 
     def consultarAgenda2(self):
-        self.consultarAgenda.tableWidget.clear()
+        
         conexion = psycopg2.connect(
             host = "localhost" , 
             database = "aerocamp" ,
@@ -275,7 +315,7 @@ class iniciar:
         print("Conexión exitosa")
         cursor = conexion.cursor()
         date= self.consultarAgenda.dateEdit.text()
-        cdvuelos= "select codvuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
+        cdvuelos= "select codvuelo, destino, fechasalida, fechallegada from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
         print(type(listcdvuelos))
@@ -283,7 +323,10 @@ class iniciar:
         print("Consulta hecha con éxito")
         for n in listcdvuelos:
             for k in n:
-                self.consultarAgenda.tableWidget.addItem(k)
+                self.model_1.setHorizontalHeaderLabels(['Codigo','Destino','Fecha Salida','Fecha llegada'])
+                print("hecho")
+                self.consultarAgenda.tableWidget.setModel(self.model_1)
+                # self.consultarAgenda.tableWidget.addItem(k)
         print(type(listcdvuelos))
         conexion.close()
 
