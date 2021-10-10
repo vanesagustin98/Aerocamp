@@ -1,0 +1,72 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+piloto
+-
+pilotoid PK char(10)
+aeronit varchar(10) FK >- aerolinea.aeronit
+nombre varchar(30)
+numerolicencia varchar(10)
+horasexperiencia varchar(7)
+revisionmedica date
+
+copiloto
+-
+copilotoid PK char(10)
+aeronit varchar(10) FK >- aerolinea.aeronit
+nombre varchar(30)
+numerolicencia varchar(10)
+horasexperiencia varchar(7)
+revisionmedica date
+
+avion
+-
+avionid PK varchar(10)
+aeronit varchar(10) FK >- aerolinea.aeronit
+modelo varchar(30)
+tipopropulsion varchar(30)
+numeromotor char(2)
+pesonominal varchar(30)
+capacidad varchar(30)
+tipovuelo char(1)
+
+vuelo
+-
+codvuelo PK varchar(10)
+aeronit varchar(10) FK >- aerolinea.aeronit
+destino varchar(30)
+fechasalida date
+fechallegada date
+horasalida time
+horaentrada time
+pilotoid char(10) FK >- piloto.pilotoid
+copilotoid char(10) FK >- copiloto.copilotoid
+avionid varchar(10) FK >- avion.avionid
+confirmacionvuelo char(1)
+
+aerolinea
+-
+aeronit PK varchar(10) FK >- usuarios.usuario
+nombreaerolinea varchar(30)
+ciudad varchar(30)
+email varchar(30)
+telefono varchar(30)
+
+aeropuerto
+-
+idaeropuerto PK varchar(10) FK >- usuarios.usuario
+nombre varchar(30)
+ciudad varchar(30)
+email varchar(30)
+telefono varchar(30)
+
+usuarios
+-
+identificador varchar(10)
+usuario PK varchar(10)
+contrasena varchar(10)
+
+soltemp
+-
+codvuelo PK varchar(10) FK >- vuelo.codvuelo
