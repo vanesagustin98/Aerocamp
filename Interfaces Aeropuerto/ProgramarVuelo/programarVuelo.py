@@ -157,12 +157,7 @@ class iniciar:
         and numerodemotor.__len__() > 0 and pesonominal.__len__() > 0 and capacidad.__len__() > 0 and cdvuelo.__len__() > 0) :
             if(capacidad.isnumeric() and numerodemotor.isnumeric() and pesonominal.isnumeric() and idcopiloto.isnumeric() 
             and idpiloto.isnumeric() and nrolicenciacopiloto.isnumeric() and nrolicenciapiloto.isnumeric()):
-                conexion = psycopg2.connect(
-                    host = "localhost" , 
-                    database = "aerocamp" ,
-                    user = "postgres" ,
-                    password = "zVGR1233191877"
-                    )
+                conexion = conexion_aerocampbd()
                 print("Conexión exitosa")
                 cursor = conexion.cursor()
                 cursor.execute(piloto)
@@ -206,12 +201,7 @@ class iniciar:
         ##aquiuiiii
         n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
         self.consultarAgenda.tableWidget.clear()
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         date= self.consultarAgenda.dateEdit.text()
@@ -250,12 +240,7 @@ class iniciar:
     def SolicitudesVuelos(self):
         
         self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         solicitudesaeroc= "select * from solicitudesaeropuerto;"
@@ -281,12 +266,7 @@ class iniciar:
 
         self.model_1 = QStandardItemModel(self.consultarAgenda.tableWidget)
         self.model_1.clear()
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         cdvuelos= "select codvuelo from vuelo where confirmacionvuelo= '0' ;"
@@ -308,12 +288,7 @@ class iniciar:
 
     def consultarAgenda2(self):
         
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         date= self.consultarAgenda.dateEdit.text()
@@ -336,12 +311,7 @@ class iniciar:
         
         self.model = QStandardItemModel(self.agendamientoVuelos.ls_vuelos)
         self.model.clear()
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         cdvuelos= "select codvuelo, destino, fechasalida, fechallegada from vuelo;"
@@ -371,12 +341,7 @@ class iniciar:
     def ConfirmarSolicitud(self):
 
         n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
 
@@ -392,12 +357,7 @@ class iniciar:
         self.dialogoVueloProgramado.show()
         
     def RealizarSolicitud(self):       
-        conexion = psycopg2.connect(
-            host = "localhost" , 
-            database = "aerocamp" ,
-            user = "postgres" ,
-            password = "zVGR1233191877"
-            )
+        conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
