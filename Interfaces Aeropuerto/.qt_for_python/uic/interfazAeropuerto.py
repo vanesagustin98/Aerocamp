@@ -18,7 +18,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(540, 455)
+        Form.resize(523, 455)
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.bt_revisarSoliRegistros = QPushButton(Form)
         self.bt_revisarSoliRegistros.setObjectName(u"bt_revisarSoliRegistros")

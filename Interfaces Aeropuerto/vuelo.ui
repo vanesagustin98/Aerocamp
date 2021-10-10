@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>574</width>
-    <height>496</height>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,11 +55,11 @@
       <x>330</x>
       <y>30</y>
       <width>131</width>
-      <height>81</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/cct/iconoavion.jpg);</string>
+     <string notr="true">border-image: url(:/cct/iconoprogramarvuelo.jpg);</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -68,8 +68,8 @@
    <widget class="QPushButton" name="crearVuelo">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>420</y>
+      <x>220</x>
+      <y>350</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -84,7 +84,7 @@
      <string notr="true">background-color: rgb(170, 170, 255);</string>
     </property>
     <property name="text">
-     <string>Programar Vuelo</string>
+     <string>Crear Vuelo</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -234,22 +234,6 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>360</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255);</string>
-    </property>
-    <property name="text">
-     <string>Crear Vuelo</string>
-    </property>
    </widget>
    <widget class="QWidget" name="formLayoutWidget_7">
     <property name="geometry">

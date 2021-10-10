@@ -1,10 +1,9 @@
 <RCC>
   <qresource prefix="cct">
     <file>iconosolicitudregistro.jpg</file>
+    <file>icono-aerolinea.png</file>
     <file>transparente.png</file>
-    <file>iconopiloto - copia.jpg</file>
     <file>fondo 2.jpg</file>
-    <file>fondo.jpg</file>
     <file>iconoaerolinea.jpg</file>
     <file>iconoagenda.jpg</file>
     <file>iconoavion.jpg</file>

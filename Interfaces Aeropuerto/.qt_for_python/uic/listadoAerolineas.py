@@ -29,7 +29,7 @@ class Ui_Form(object):
         self.pushButton.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(60, 20, 161, 16))
+        self.label.setGeometry(QRect(150, 20, 161, 16))
         self.label.setStyleSheet(u"color: rgb(85, 0, 127);")
         self.pushButton_2 = QPushButton(Form)
         self.pushButton_2.setObjectName(u"pushButton_2")
@@ -44,7 +44,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Listado de Arolineas", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Modificar Aerolinea", None))
-        self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Listado de Aeroineas</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Listado de Aerolineas</span></p></body></html>", None))
         self.pushButton_2.setText(QCoreApplication.translate("Form", u"Eliminar Aerolinea", None))
     # retranslateUi
 
