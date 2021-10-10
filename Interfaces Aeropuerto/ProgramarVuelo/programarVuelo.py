@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QStandardItemModel
 import psycopg2
-from conexion_bd import conexion
+from conexion_bd import *
 
 class iniciar:
     def __init__(self):
