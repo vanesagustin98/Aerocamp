@@ -32,18 +32,18 @@ class iniciar:
         self.dialogoCamposIncorrectos = uic.loadUi("dialogoCamposIncorrectos.ui")
         self.dialogoNoVuelosProgramados = uic.loadUi("dialogoNOvuelosprogramados.ui")
         
-        self.aeropuerto.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoavion.jpg"))
-        self.agendamientoVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoagenda.jpg"))
-        self.autenticacion.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoiniciosesion.jpg"))
-        self.autenticacion.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoformulario.jpg"))
-        self.formularioRegistro.label_6.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoformulario.jpg"))
-        self.registrarAvion.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoregistroavion.jpg"))
-        self.registrarCopiloto.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconopiloto.jpg"))
-        self.registrarPiloto.label.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconopiloto.jpg"))
-        self.solicitudesPendientesVuelos.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoavion.jpg"))
-        self.solicitudesRegistroAerolinea.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconosolicitudregistro.jpg"))
-        self.vuelo.label_3.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoprogramarvuelo.jpg"))
-        self.aerolinea.label_2.setPixmap(QPixmap("D:\Vanessa\Documents\Semestre 5\Ingeniera de Software III\Aerocamp\Interfaces Aeropuerto\iconoregistroavion.jpg"))
+        self.aeropuerto.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
+        self.agendamientoVuelos.label_2.setPixmap(QtGui.QPixmap("iconoagenda.jpg"))
+        self.autenticacion.label_2.setPixmap(QtGui.QPixmap("iconoiniciosesion.jpg"))
+        self.autenticacion.label.setPixmap(QtGui.QPixmap("iconoformulario.jpg"))
+        self.formularioRegistro.label_6.setPixmap(QtGui.QPixmap("iconoformulario.jpg"))
+        self.registrarAvion.label.setPixmap(QtGui.QPixmap("iconoregistroavion.jpg"))
+        self.registrarCopiloto.label.setPixmap(QtGui.QPixmap("iconopiloto.jpg"))
+        self.registrarPiloto.label.setPixmap(QtGui.QPixmap("iconopiloto.jpg"))
+        self.solicitudesPendientesVuelos.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
+        self.solicitudesRegistroAerolinea.label_2.setPixmap(QtGui.QPixmap("iconosolicitudregistro.jpg"))
+        self.vuelo.label_3.setPixmap(QtGui.QPixmap("iconoprogramarvuelo.jpg"))
+        self.aerolinea.label_2.setPixmap(QtGui.QPixmap("iconoregistroavion.jpg"))
 
         self.autenticacion.show()
 
@@ -60,7 +60,7 @@ class iniciar:
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
         self.autenticacion.pushButton_3.clicked.connect(self.LlenarFormulario)
         self.autenticacion.pushButton.clicked.connect(self.Ingresar)
-        self.autenticacion.pushButton.clicked.connect(self.Ingresar)
+        #self.autenticacion.pushButton.clicked.connect(self.Ingresar)
         self.aeropuerto.bt_visualizarAerolineas.clicked.connect(self.VisualizarAerolineas)
         self.aerolinea.bt_visualizarDatos.clicked.connect(self.VerDatosAerolinea)
         self.listadoAerolineas.pushButton.clicked.connect(self.VerListadoAeropuerto)
@@ -92,6 +92,7 @@ class iniciar:
         self.listadoAerolineas.show()
 
     def Ingresar(self):
+
         self.aerolinea.show()
         self.aeropuerto.show()
         self.autenticacion.close()
