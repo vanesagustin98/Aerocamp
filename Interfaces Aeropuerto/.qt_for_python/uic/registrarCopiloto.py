@@ -103,8 +103,8 @@ class Ui_Form(object):
         self.bt_registrar_piloto_7.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(200, 30, 111, 111))
-        self.label.setStyleSheet(u"border-image: url(:/cct/iconopiloto - copia.jpg);")
+        self.label.setGeometry(QRect(200, 10, 121, 131))
+        self.label.setStyleSheet(u"image: url(:/cct/iconopiloto.jpg);")
 
         self.retranslateUi(Form)
 
