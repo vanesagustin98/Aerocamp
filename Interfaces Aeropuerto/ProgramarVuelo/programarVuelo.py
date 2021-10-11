@@ -123,6 +123,7 @@ class iniciar:
         self.autenticacion.lineEdit_2.clear()
         
     def enviarpiloto(self):
+
         nombrepiloto = self.registrarPiloto.lineEdit_27.text()
         idpiloto = self.registrarPiloto.lineEdit_28.text()
         nrolicenciapiloto = self.registrarPiloto.lineEdit_29.text()
@@ -130,7 +131,10 @@ class iniciar:
         revisionmedicapiloto = self.registrarPiloto.dateEdit_10.text()
         aeronit = '1234'
         
+        
+
         formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
+        
         
         nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
         idpiloto = self.registrarPiloto.lineEdit_28.clear()
@@ -208,6 +212,23 @@ class iniciar:
 
     def VisualizarAerolineas(self):
         self.listadoAerolineas.show()
+        self.listadoAerolineas.listView.clear()
+        conexion = conexion_aerocampbd()
+        print("Conexión exitosa")
+        cursor = conexion.cursor()
+        cdvuelos= "select nombreaerolinea from aerolinea;"
+        cursor.execute(cdvuelos)
+        listcdvuelos= cursor.fetchall()
+        print(type(listcdvuelos))
+        conexion.commit()
+        print("Consulta hecha con éxito")
+        for n in listcdvuelos:
+            for k in n:
+
+                self.listadoAerolineas.listView.addItem(k)
+
+        print(type(listcdvuelos))
+        conexion.close()
 
     def Ingresar_aeropuerto(self):
         self.aeropuerto.show()

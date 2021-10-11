@@ -31,9 +31,9 @@ class Ui_Form(object):
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(240, 160, 111, 31))
         self.pushButton_2.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.listView = QListView(Form)
+        self.listView = QListWidget(Form)
         self.listView.setObjectName(u"listView")
-        self.listView.setGeometry(QRect(50, 50, 161, 231))
+        self.listView.setGeometry(QRect(30, 50, 191, 231))
         self.listView.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.retranslateUi(Form)

@@ -64,12 +64,12 @@
     <string>Eliminar Aerolinea</string>
    </property>
   </widget>
-  <widget class="QListView" name="listView">
+  <widget class="QListWidget" name="listView">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>50</y>
-     <width>161</width>
+     <width>191</width>
      <height>231</height>
     </rect>
    </property>
