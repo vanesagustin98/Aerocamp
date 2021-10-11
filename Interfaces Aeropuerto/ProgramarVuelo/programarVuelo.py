@@ -253,6 +253,13 @@ class iniciar:
                 self.formularioRegistro.lineEdit_4.clear()
                 self.dialogo.label.setText("La información de la aerolínea fue enviada \n exitosamente")
                 self.dialogo.show
+                self.dialogo.show()
+            else:
+                self.dialogo.label.setText("Uno o varios campos se han ingresado \n incorrectamente")
+                self.dialogo.show()
+        else:
+            self.dialogo.label.setText("Todos los campos se deben rellenar")
+            self.dialogo.show()
 
     def verSolicitudesRegistro(self):
         listsoliaero = listado_aerolineasusuario()
