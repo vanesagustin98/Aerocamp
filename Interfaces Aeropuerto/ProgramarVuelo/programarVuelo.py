@@ -65,6 +65,7 @@ class iniciar:
         self.aeropuerto.bt_revisarSoliRegistros.clicked.connect(self.verSolicitudesRegistro)
         self.formularioRegistro.pushButton.clicked.connect(self.enviarformulario)
         self.registrarPiloto.bt_registrar_piloto_7.clicked.connect(self.enviarpiloto)
+        self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
         app.exec()
         
     def enviarpiloto(self):
@@ -83,6 +84,22 @@ class iniciar:
         horasexperienciapiloto = self.registrarPiloto.spinBox_11.clear()
         revisionmedicapiloto = self.registrarPiloto.dateEdit_10.clear()
         aeronit = '1234'
+
+    def EnviarCopiloto(self):
+        #Copiloto
+        nombre = self.registrarCopiloto.lineEdit_24.text()
+        copilotoid = self.registrarCopiloto.lineEdit_25.text()
+        numerolicencia = self.registrarCopiloto.lineEdit_26.text()
+        horasexperiencia = self.registrarCopiloto.spinBox_10.text()
+        revisionmedica = self.registrarCopiloto.dateEdit_9.text()
+        aeronit = "1234"
+        formulario_copilotos(copilotoid,aeronit,nombre,numerolicencia,horasexperiencia,revisionmedica)
+
+        self.registrarCopiloto.lineEdit_24.clear()
+        self.registrarCopiloto.lineEdit_25.clear()
+        self.registrarCopiloto.lineEdit_26.clear()
+        self.registrarCopiloto.spinBox_10.clear()
+        self.registrarCopiloto.dateEdit_9.clear()
 
     def enviarformulario(self):
         nombre_aerolinea= self.formularioRegistro.lineEdit.text()
