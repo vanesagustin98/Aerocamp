@@ -215,7 +215,7 @@ class iniciar:
     def enviarformulario(self):
         nombre_aerolinea= self.formularioRegistro.lineEdit.text()
         nit_aerolinea= self.formularioRegistro.lineEdit_2.text()
-        ciu_aerolinea= self.formularioRegistro.comboBox.text()
+        ciu_aerolinea= self.formularioRegistro.comboBox.currentText()
         email_aerolinea= self.formularioRegistro.lineEdit_3.text()
         tel_aerolinea= self.formularioRegistro.lineEdit_4.text()
 
