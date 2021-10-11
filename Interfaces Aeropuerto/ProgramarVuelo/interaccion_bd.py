@@ -230,3 +230,40 @@ def borrar_erolineaformtemp(nombre):
     print("Consulta hecha con éxito")
     return "Borrado c:"
 
+def buscarpiloto(idpiloto):
+    bpiloto = "select pilotoid from piloto where pilotoid = '{}'".format(idpiloto)
+    conexion     = conexion_aerocampbd()
+    cursor       = conexion.cursor()
+    cursor.execute(bpiloto)
+    lstbusqueda = cursor.fetchall()
+    conexion.commit()
+    ban = True
+    
+    if len(lstbusqueda) == 0:
+        ban = True
+    else:        
+        lbusqueda = lstbusqueda[0][0]
+        if lbusqueda == idpiloto:
+            print(idpiloto)
+            ban = False
+    conexion.close()
+    return ban
+
+def buscarcopiloto(idcopiloto):
+    bpiloto = "select copilotoid from copiloto where copilotoid = '{}'".format(idcopiloto)
+    conexion     = conexion_aerocampbd()
+    cursor       = conexion.cursor()
+    cursor.execute(bpiloto)
+    lstbusqueda = cursor.fetchall()
+    conexion.commit()
+    ban = True
+    
+    if len(lstbusqueda) == 0:
+        ban = True
+    else:        
+        lbusqueda = lstbusqueda[0][0]
+        if lbusqueda == idcopiloto:
+            print(idcopiloto)
+            ban = False
+    conexion.close()
+    return ban
