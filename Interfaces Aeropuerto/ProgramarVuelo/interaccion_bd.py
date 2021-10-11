@@ -73,3 +73,68 @@ def formulario_usuario(identificador,usuario,contrasena):
     conexion.close()
     return "Formulario agregado"
 
+def listado_pilotos():
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    nom_pilotos= "select nombre from piloto;"
+    cursor.execute(nom_pilotos)
+    listpilotos= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")            
+    return listpilotos
+
+def listado_copilotos():
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    nom_copilotos= "select nombre from copiloto;"
+    cursor.execute(nom_copilotos)
+    listcopilotos= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    return listcopilotos
+
+def listado_aviones():
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    nom_aviones= "select avionid from avion;"
+    cursor.execute(nom_aviones)
+    listaviones= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    return listaviones
+
+def buscar_idpiloto(nombre, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_pilotoid= "select pilotoid from piloto where aeronit='{}' and nombre='{}';".format(aeronit,nombre)
+    cursor.execute(bus_pilotoid)
+    pilotoid= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    pilotoid=pilotoid[0][0]
+    return pilotoid  
+
+def buscar_idcopiloto(nombre,aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_copilotoid= "select copilotoid from copiloto where aeronit='{}' and nombre='{}';".format(aeronit,nombre)
+    cursor.execute( bus_copilotoid)
+    copilotoid= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    copilotoid=copilotoid[0][0]
+    return copilotoid  
+
+def formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo):
+    form_crear_vuelo="insert into vuelo values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}') ".format(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    cursor.execute( form_crear_vuelo)
+    conexion.commit()
+    conexion.close()
+    return "Formulario agregado"

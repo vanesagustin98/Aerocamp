@@ -213,99 +213,55 @@ class iniciar:
         self.formularioRegistro.show()
 
     def ProgramarVuelo(self):  
+        #Agregar los nombres de los pilotos al comboBox correspondiente
+        self.vuelo.comboBox_3.clear()
+        listpilotos = listado_pilotos()
+        for n in listpilotos:
+            for k in n:
+                self.vuelo.comboBox_3.addItem(k)
+        #Agregar los nombres de los copilotos al comboBox correspondiente
+        self.vuelo.comboBox_5.clear()
+        listcopilotos = listado_copilotos()
+        for m in listcopilotos:
+            for j in m:
+                self.vuelo.comboBox_5.addItem(j)
+        #Agregar los nombres de los aviones al comboBox correspondiente
+        self.vuelo.comboBox_6.clear()
+        listaviones = listado_aviones()
+        for d in listaviones:
+            for a in d:
+                self.vuelo.comboBox_6.addItem(a)
+        #Abrimos la ventana donde se programa el vuelo, con los combobox con los datos correspondientes        
         self.vuelo.show()
 
     def CrearVuelo(self):
 
-        #Piloto
-        nombrepiloto = self.vuelo.lineEdit_15.text()
-        idpiloto = self.vuelo.lineEdit_16.text()
-        nrolicenciapiloto = self.vuelo.lineEdit_17.text()
-        horasexperienciapiloto = self.vuelo.spinBox_6.text()
-        revisionmedicapiloto = self.vuelo.dateEdit_5.text()
-        piloto = "insert into piloto values('{}','{}','{}','{}','{}')".format(idpiloto,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
-
-        #Copiloto
-        nombrecopiloto = self.vuelo.lineEdit_4.text()
-        idcopiloto = self.vuelo.lineEdit_5.text()
-        nrolicenciacopiloto = self.vuelo.lineEdit_6.text()
-        horasexperienciacopiloto = self.vuelo.spinBox_3.text()
-        revisionmedicacopiloto = self.vuelo.dateEdit_2.text()
-        copiloto= "insert into copiloto values('{}','{}','{}','{}','{}')".format( idcopiloto,nombrecopiloto,nrolicenciacopiloto,horasexperienciacopiloto,revisionmedicacopiloto)
-
-        #Avion 
-        idavion =self.vuelo.lineEdit_7.text()
-        modelo =self.vuelo.lineEdit_8.text()
-        tipopropulsion =self.vuelo.comboBox_2.currentText()
-        numerodemotor =self.vuelo.lineEdit_10.text()
-        pesonominal =self.vuelo.lineEdit_11.text()
-        capacidad =self.vuelo.lineEdit_11.text()
-        carga= self.vuelo.radioButton.isChecked()
-        pasajeros= self.vuelo.radioButton_2.isChecked()
-        
-
-        if (carga is True) :
-            tipo= "1"
-        elif (pasajeros is True):
-            tipo="0"
-        else:
-            tipo="NS"
-
-        avion = "insert into avion values('{}','{}','{}','{}','{}','{}','{}')".format(idavion,modelo,tipopropulsion,pesonominal,capacidad,tipo,numerodemotor)
-
         #Vuelo
-        fechasalida = self.vuelo.dateEdit_3.text()
         horasalida= self.vuelo.timeEdit.text()
+        horaentrada= self.vuelo.timeEdit_2.text()
+        fechasalida = self.vuelo.dateEdit_3.text()
         fechallegada = self.vuelo.dateEdit_4.text()
-        horallegada= self.vuelo.timeEdit_2.text()
-        cdvuelo =self.vuelo.lineEdit_13.text()
+        codvuelo =self.vuelo.lineEdit_13.text()
         destino = self.vuelo.comboBox.currentText()
-        nitaerolinea= "1234"
-        confirmacionVuelo = "1"
-
-        vuelo = "insert into vuelo values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(cdvuelo,destino,fechasalida,fechallegada,horasalida,horallegada,idpiloto,idcopiloto,idavion,nitaerolinea,confirmacionVuelo)
-
-        if (nombrepiloto.__len__() > 0 and idpiloto.__len__() > 0 and nrolicenciapiloto.__len__() > 0 and nombrecopiloto.__len__() > 0 
-        and idcopiloto.__len__() > 0 and nrolicenciapiloto.__len__() > 0 and idavion.__len__() > 0 and modelo.__len__() > 0 
-        and numerodemotor.__len__() > 0 and pesonominal.__len__() > 0 and capacidad.__len__() > 0 and cdvuelo.__len__() > 0) :
-            if(capacidad.isnumeric() and numerodemotor.isnumeric() and pesonominal.isnumeric() and idcopiloto.isnumeric() 
-            and idpiloto.isnumeric() and nrolicenciacopiloto.isnumeric() and nrolicenciapiloto.isnumeric()):
-                conexion = conexion_aerocampbd()
-                print("Conexión exitosa")
-                cursor = conexion.cursor()
-                cursor.execute(piloto)
-                cursor.execute(copiloto)
-                cursor.execute(avion)
-                cursor.execute(vuelo)
-                conexion.commit()
-                print("Tablas creada con éxito")
-                conexion.close()
-                
-                print(nombrepiloto,idpiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
-                print(nombrecopiloto,idcopiloto,nrolicenciacopiloto,horasexperienciacopiloto,revisionmedicacopiloto)
-                print(idavion, modelo, tipopropulsion,numerodemotor, pesonominal, capacidad, tipo )
-                print(fechasalida, horasalida, fechallegada, horallegada, cdvuelo, destino)
-
-
-                self.dialogo.show()
-                self.vuelo.lineEdit_15.setText("")
-                self.vuelo.lineEdit_16.setText("")
-                self.vuelo.lineEdit_17.setText("")
-                self.vuelo.lineEdit_4.setText("")
-                self.vuelo.lineEdit_5.setText("")
-                self.vuelo.lineEdit_6.setText("")
-                self.vuelo.lineEdit_7.setText("")
-                self.vuelo.lineEdit_8.setText("")
-                self.vuelo.lineEdit_10.setText("")
-                self.vuelo.lineEdit_11.setText("")
-                self.vuelo.lineEdit_12.setText("")
-                self.vuelo.lineEdit_13.setText("")
-                self.vuelo.close()
-            else:
-                self.dialogo.show()
-
+        carga= self.vuelo.comboBox_2.currentText()
+        piloto= self.vuelo.comboBox_3.currentText()
+        copiloto= self.vuelo.comboBox_5.currentText()
+        avionid= self.vuelo.comboBox_6.currentText()
+        confirmacionvuelo = "1"
+        aeronit= "1234"
+        pilotoid= buscar_idpiloto(piloto,aeronit)
+        copilotoid= buscar_idcopiloto(copiloto,aeronit)
+        if (carga== "Carga"):
+            tipovuelo= "1"
+        elif (carga== "Pasajeros"):
+            tipovuelo="0"
         else:
-            self.dialogo.show()
+            tipovuelo="NS"
+
+        vuelo = formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
+        print(vuelo)
+
+        self.vuelo.lineEdit_13.setText("")
 
 
 
