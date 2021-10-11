@@ -63,11 +63,34 @@ class iniciar:
         self.solicitudesRegistroAerolinea.pushButton.clicked.connect(self.crearusuario)
         self.solicitudesRegistroAerolinea.pushButton_2.clicked.connect(self.rechazarusuario)
         self.modificarDatosAeropuerto.pushButton.clicked.connect(self.registraraerolinea)
+        self.solicitudesPendientesVuelos.bt_rechazarSolicitud.clicked.connect(self.rechazarvuelo)
         app.exec()
 
+    def rechazarvuelo(self):
+        codigo = self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
+        if self.solicitudesPendientesVuelos.cb_listaVuelos.count() == 0:
+            self.dialogo.label.setText("No hay solicitudes que rechazar")
+            self.dialogo.show()
+        else:
+            borrar_vuelosoltemp(codigo)
+            self.dialogo.label.setText("Solicitud rechazada")
+            self.dialogo.show()
+        listvuelos = listado_aerolineasusuario()
+        self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
+        for n in listvuelos:
+            for k in n:
+                self.solicitudesPendientesVuelos.cb_listaVuelos.addItem(k)
+        self.solicitudesPendientesVuelos.update()
+
     def rechazarusuario(self):
-        nombre          = self.solicitudesRegistroAerolinea.comboBox.currentText()
-        borrar_erolineaformtemp(nombre)
+        nombre = self.solicitudesRegistroAerolinea.comboBox.currentText()
+        if self.solicitudesRegistroAerolinea.comboBox.count() == 0:
+            self.dialogo.label.setText("No hay solicitudes que rechazar")
+            self.dialogo.show()
+        else:
+            borrar_erolineaformtemp(nombre)
+            self.dialogo.label.setText("Solicitud rechazada")
+            self.dialogo.show()
         listsoliaero    = listado_aerolineasusuario()
         self.solicitudesRegistroAerolinea.comboBox.clear()
         for n in listsoliaero:
@@ -102,34 +125,39 @@ class iniciar:
         contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.text()
         identificador       = 'A'
         
-        if(contrasena == contrasenar and nit_aerolinea == usuario):
-            print('son iguales')
-            formulario_usuario(identificador,usuario,contrasena)
-            formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
-            print("3")
+        if len(contrasena)>0 and len(contrasenar)>0:
+            if(contrasena == contrasenar and nit_aerolinea == usuario):
+                print('son iguales')
+                formulario_usuario(identificador,usuario,contrasena)
+                formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+                print("3")
 
-            borrar_erolineaformtemp(nombre_aerolinea)
-            listsoliaero = listado_aerolineasusuario()
-            self.solicitudesRegistroAerolinea.comboBox.clear()
-            for n in listsoliaero:
-                for k in n:
-                    self.solicitudesRegistroAerolinea.comboBox.addItem(k)
+                borrar_erolineaformtemp(nombre_aerolinea)
+                listsoliaero = listado_aerolineasusuario()
+                self.solicitudesRegistroAerolinea.comboBox.clear()
+                for n in listsoliaero:
+                    for k in n:
+                        self.solicitudesRegistroAerolinea.comboBox.addItem(k)
 
-            nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.clear()
-            nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.clear()
-            ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.clear()
-            email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.clear()
-            tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.clear()
-            usuario             = self.modificarDatosAeropuerto.lineEdit.clear()
-            contrasena          = self.modificarDatosAeropuerto.lineEdit_2.clear()
-            contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.clear()
+                nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.clear()
+                nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.clear()
+                ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.clear()
+                email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.clear()
+                tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.clear()
+                usuario             = self.modificarDatosAeropuerto.lineEdit.clear()
+                contrasena          = self.modificarDatosAeropuerto.lineEdit_2.clear()
+                contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.clear()
 
-            self.modificarDatosAeropuerto.close()
-            self.solicitudesRegistroAerolinea.update() 
-            
+                self.modificarDatosAeropuerto.close()
+                self.solicitudesRegistroAerolinea.update() 
+                self.dialogo.label.setText("La aerolínea fue registrada exitosamente")
+                self.dialogo.show()
+            else:
+                self.dialogo.label.setText("Las contraseñas no coinciden")
+                self.dialogo.show()
         else:
-            print("no son iguales")
-            print("nit = usuario")
+            self.dialogo.label.setText("Hace falta información para crear el usuario")
+            self.dialogo.show()
     
     def autenticarusuario(self):
         usuario     = self.autenticacion.lineEdit.text()
@@ -267,7 +295,11 @@ class iniciar:
         for n in listsoliaero:
             for k in n:
                 self.solicitudesRegistroAerolinea.comboBox.addItem(k)
-        self.solicitudesRegistroAerolinea.show()
+        if self.solicitudesRegistroAerolinea.comboBox.count() > 0:
+            self.solicitudesRegistroAerolinea.show()
+        else:
+            self.dialogo.label.setText("No hay aerolíneas registradas")
+            self.dialogo.show()
 
     def RegistrarAvion(self):
         self.registrarAvion.show()

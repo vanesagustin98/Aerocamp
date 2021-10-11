@@ -172,6 +172,17 @@ def listado_aerolineasusuario():
     print("Consulta hecha con éxito")            
     return listusuariosaero
 
+def listado_vuelos():
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    list_vuelos = "select codvuelo from soltemp;"
+    cursor.execute(list_vuelos)
+    listvuelotes= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")            
+    return listvuelotes
+
 def buscar_nitaerolinea(nombre):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
@@ -225,6 +236,16 @@ def borrar_erolineaformtemp(nombre):
     cursor = conexion.cursor()
     borr_aerolinea= "delete from formtemp where nombreaerolinea='{}';".format(nombre)
     cursor.execute(borr_aerolinea)
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    return "Borrado c:"
+
+def borrar_vuelosoltemp(codigo):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    borr_vuelo = "delete from soltemp where codvuelo ='{}';".format(codigo)
+    cursor.execute(borr_vuelo)
     conexion.commit()
     conexion.close()
     print("Consulta hecha con éxito")
