@@ -66,7 +66,41 @@ class iniciar:
         self.registrarPiloto.bt_registrar_piloto_7.clicked.connect(self.enviarpiloto)
         self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
         self.registrarAvion.bt_registrar_piloto_7.clicked.connect(self.enviarAvion)
+        self.solicitudesRegistroAerolinea.pushButton.clicked.connect(self.crearusuario)
+        self.modificarDatosAeropuerto.pushButton.clicked.connect(self.registraraerolinea)
         app.exec()
+        
+    def crearusuario(self):
+        self.modificarDatosAeropuerto.show()
+        
+    def registraraerolinea(self):
+        nombre_aerolinea= self.modificarDatosAeropuerto.lineEdit_4.text()
+        nit_aerolinea= self.modificarDatosAeropuerto.lineEdit_5.text()
+        ciu_aerolinea= self.modificarDatosAeropuerto.comboBox.currentText()
+        email_aerolinea= self.modificarDatosAeropuerto.lineEdit_6.text()
+        tel_aerolinea= self.modificarDatosAeropuerto.lineEdit_7.text()
+        usuario = self.modificarDatosAeropuerto.lineEdit.text()
+        contrasena = self.modificarDatosAeropuerto.lineEdit_2.text()
+        contrasenar = self.modificarDatosAeropuerto.lineEdit_3.text()
+        identificador = 'A'
+        
+        if(contrasena==contrasenar and nit_aerolinea==usuario):
+            print('son iguales')
+            formulario_usuario(identificador,usuario,contrasena)
+            formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+            print("3")
+            nombre_aerolinea= self.modificarDatosAeropuerto.lineEdit_4.clear()
+            nit_aerolinea= self.modificarDatosAeropuerto.lineEdit_5.clear()
+            ciu_aerolinea= self.modificarDatosAeropuerto.comboBox.clear()
+            email_aerolinea= self.modificarDatosAeropuerto.lineEdit_6.clear()
+            tel_aerolinea= self.modificarDatosAeropuerto.lineEdit_7.clear()
+            usuario = self.modificarDatosAeropuerto.lineEdit.clear()
+            contrasena = self.modificarDatosAeropuerto.lineEdit_2.clear()
+            contrasenar = self.modificarDatosAeropuerto.lineEdit_3.clear()
+            
+        else:
+            print("no son iguales")
+            print("nit=usuario")
     
     def autenticarusuario(self):
         usuario     = self.autenticacion.lineEdit.text()

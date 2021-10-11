@@ -54,3 +54,22 @@ def autenticar_usuario(usuario,contrasena):
             ban = True
     conexion.close()
     return ban
+
+def formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea):
+    formulario_aerolinea = "insert into aerolinea values('{}','{}','{}','{}','{}') ".format(nit_aerolinea,nombre_aerolinea,ciu_aerolinea,email_aerolinea,tel_aerolinea)
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    cursor.execute(formulario_aerolinea)
+    conexion.commit()
+    conexion.close()
+    return "Formulario agregado"
+
+def formulario_usuario(identificador,usuario,contrasena):
+    formulario_usuario = "insert into usuarios values('{}','{}','{}') ".format(identificador,usuario,contrasena)
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    cursor.execute(formulario_usuario)
+    conexion.commit()
+    conexion.close()
+    return "Formulario agregado"
+
