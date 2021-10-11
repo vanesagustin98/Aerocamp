@@ -140,6 +140,11 @@
      <string>Selccionar Ciudad</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Pasto</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">

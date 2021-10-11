@@ -4,6 +4,7 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QStandardItemModel
 import psycopg2
 from conexion_bd import *
+from interaccion_bd import *
 
 class iniciar:
     def __init__(self):
@@ -68,7 +69,22 @@ class iniciar:
         self.aerolinea.pushButton_3.clicked.connect(self.RegistrarCopiloto)
         self.aerolinea.pushButton_2.clicked.connect(self.RegistrarPiloto)
         self.aeropuerto.bt_revisarSoliRegistros.clicked.connect(self.verSolicitudesRegistro)
+        self.formularioRegistro.pushButton.clicked.connect(self.enviarformulario)
         app.exec()
+
+    def enviarformulario(self):
+        nombre_aerolinea= self.formularioRegistro.lineEdit.text()
+        nit_aerolinea= self.formularioRegistro.lineEdit_2.text()
+        ciu_aerolinea= self.formularioRegistro.comboBox.currentText()
+        email_aerolinea= self.formularioRegistro.lineEdit_3.text()
+        tel_aerolinea= self.formularioRegistro.lineEdit_4.text()
+
+        formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+
+        self.formularioRegistro.lineEdit.clear()
+        self.formularioRegistro.lineEdit_2.clear()
+        self.formularioRegistro.lineEdit_3.clear()
+        self.formularioRegistro.lineEdit_4.clear()
 
     def verSolicitudesRegistro(self):
         self.solicitudesRegistroAerolinea.show()
