@@ -107,9 +107,15 @@ class iniciar:
         contrasena  = self.autenticacion.lineEdit_2.text()
 
         a = autenticar_usuario(usuario,contrasena)
-        if autenticar_usuario(usuario,contrasena):
+        b = verificar_identificador(usuario)
+        if autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "P" :
             print(a)
-            self.Ingresar()
+            print(b)
+            self.Ingresar_aeropuerto()
+        elif autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "A":
+            print(a)
+            print(b)
+            self.Ingresar_aerolinea()
         else:
             print("usuario y/o contraseña incorrectos")
         
@@ -203,10 +209,12 @@ class iniciar:
     def VisualizarAerolineas(self):
         self.listadoAerolineas.show()
 
-    def Ingresar(self):
-
-        self.aerolinea.show()
+    def Ingresar_aeropuerto(self):
         self.aeropuerto.show()
+        self.autenticacion.close()
+
+    def Ingresar_aerolinea(self):
+        self.aerolinea.show()
         self.autenticacion.close()
 
     def LlenarFormulario(self):
@@ -444,6 +452,8 @@ class iniciar:
         self.dialogo.show()
         
     def Salir(self):
-        sys.exit()
+        self.aerolinea.close()
+        self.aeropuerto.close()
+        self.autenticacion.show()
 
 iniciar()

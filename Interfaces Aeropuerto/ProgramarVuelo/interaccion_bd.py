@@ -55,6 +55,28 @@ def autenticar_usuario(usuario,contrasena):
     conexion.close()
     return ban
 
+def verificar_identificador(usuario):
+    identificadorbd = "select identificador from usuarios where usuario = '{}'".format(usuario)
+    conexion        = conexion_aerocampbd()
+    cursor          = conexion.cursor()
+    cursor.execute(identificadorbd)
+    identificador = cursor.fetchall()
+    conexion.commit()
+    ident = ""
+
+    if len(identificador) == 0:
+        ident = ""
+    else:
+        lident = identificador[0][0]
+        if lident == "P":
+            ident = "P"
+            print(ident)
+        elif lident == "A":
+            ident = "A"
+            print(ident)
+    conexion.close()
+    return ident
+
 def formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea):
     formulario_aerolinea = "insert into aerolinea values('{}','{}','{}','{}','{}') ".format(nit_aerolinea,nombre_aerolinea,ciu_aerolinea,email_aerolinea,tel_aerolinea)
     conexion = conexion_aerocampbd()
