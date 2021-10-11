@@ -1,14 +1,11 @@
-import sys
 from PyQt5 import QtWidgets, uic
 from PyQt5 import QtGui
-from PyQt5.QtGui import QPixmap, QStandardItemModel
-import psycopg2
+from PyQt5.QtGui import QPixmap
 from conexion_bd import *
 from interaccion_bd import *
 
 class iniciar:
     def __init__(self):
-        
         app = QtWidgets.QApplication([])
         self.agendamientoVuelos = uic.loadUi("agendamientoVuelos.ui")
         self.autenticacion = uic.loadUi("autenticacion.ui")
@@ -311,9 +308,7 @@ class iniciar:
         print("Consulta hecha con éxito")
         for n in listcdvuelos:
             for k in n:
-
                 self.listadoAerolineas.listView.addItem(k)
-
         print(type(listcdvuelos))
         conexion.close()
 
@@ -382,7 +377,6 @@ class iniciar:
         else: self.dialogo.label.setText("Todos los campos se deben rellenar")
         self.dialogo.show()
         
-
         self.vuelo.lineEdit_13.setText("")
 
     def BuscarDisponibilidad(self):
