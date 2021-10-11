@@ -311,7 +311,7 @@ class iniciar:
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        solicitudesaeroc= "select * from solicitudesaeropuerto;"
+        solicitudesaeroc= "select * from soltemp;"
         cursor.execute(solicitudesaeroc)
         listsolicitudes= cursor.fetchall()
         print(type(listsolicitudes))
@@ -432,7 +432,7 @@ class iniciar:
         cursor = conexion.cursor()
         ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
         for n in ls:
-            cdvuelos= "insert into solicitudesaeropuerto values('{}');".format(n.text())
+            cdvuelos= "insert into soltemp values('{}');".format(n.text())
             print(n.text())
             cursor.execute(cdvuelos)
         conexion.commit()
