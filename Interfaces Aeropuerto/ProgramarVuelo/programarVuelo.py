@@ -6,23 +6,23 @@ from interaccion_bd import *
 
 class iniciar:
     def __init__(self):
-        app = QtWidgets.QApplication([])
-        self.agendamientoVuelos = uic.loadUi("agendamientoVuelos.ui")
-        self.autenticacion = uic.loadUi("autenticacion.ui")
-        self.consultarAgenda = uic.loadUi("consultarAgenda.ui")
-        self.formularioRegistro = uic.loadUi("formularioRegistro.ui")
-        self.aerolinea = uic.loadUi("interfazAerolinea.ui")
-        self.aeropuerto = uic.loadUi("interfazAeropuerto.ui")
-        self.listadoAerolineas = uic.loadUi("listadoAerolineas.ui")
-        self.modicarDatosAerolinea = uic.loadUi("modificarDatosAerolinea.ui")
-        self.modificarDatosAeropuerto = uic.loadUi("modificarDatosAeropuerto.ui")
-        self.registrarAvion = uic.loadUi("registrarAvion.ui")
-        self.registrarCopiloto = uic.loadUi("registrarCopiloto.ui")
-        self.registrarPiloto = uic.loadUi("registrarPiloto.ui")
-        self.solicitudesPendientesVuelos = uic.loadUi("solicitudesPendientesVuelos.ui")
-        self.solicitudesRegistroAerolinea = uic.loadUi("solicitudesRegistroAerolinea.ui")
-        self.vuelo = uic.loadUi("vuelo.ui")
-        self.dialogo = uic.loadUi("dialogo.ui")
+        app                                 = QtWidgets.QApplication([])
+        self.agendamientoVuelos             = uic.loadUi("agendamientoVuelos.ui")
+        self.autenticacion                  = uic.loadUi("autenticacion.ui")
+        self.consultarAgenda                = uic.loadUi("consultarAgenda.ui")
+        self.formularioRegistro             = uic.loadUi("formularioRegistro.ui")
+        self.aerolinea                      = uic.loadUi("interfazAerolinea.ui")
+        self.aeropuerto                     = uic.loadUi("interfazAeropuerto.ui")
+        self.listadoAerolineas              = uic.loadUi("listadoAerolineas.ui")
+        self.modicarDatosAerolinea          = uic.loadUi("modificarDatosAerolinea.ui")
+        self.modificarDatosAeropuerto       = uic.loadUi("modificarDatosAeropuerto.ui")
+        self.registrarAvion                 = uic.loadUi("registrarAvion.ui")
+        self.registrarCopiloto              = uic.loadUi("registrarCopiloto.ui")
+        self.registrarPiloto                = uic.loadUi("registrarPiloto.ui")
+        self.solicitudesPendientesVuelos    = uic.loadUi("solicitudesPendientesVuelos.ui")
+        self.solicitudesRegistroAerolinea   = uic.loadUi("solicitudesRegistroAerolinea.ui")
+        self.vuelo                          = uic.loadUi("vuelo.ui")
+        self.dialogo                        = uic.loadUi("dialogo.ui")
 
         self.aeropuerto.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
         self.agendamientoVuelos.label_2.setPixmap(QtGui.QPixmap("iconoagenda.jpg"))
@@ -35,9 +35,7 @@ class iniciar:
         self.solicitudesRegistroAerolinea.label_2.setPixmap(QtGui.QPixmap("iconosolicitudregistro.jpg"))
         self.vuelo.label_3.setPixmap(QtGui.QPixmap("iconoprogramarvuelo.jpg"))
         self.aerolinea.label_2.setPixmap(QtGui.QPixmap("iconoregistroavion.jpg"))
-
         self.autenticacion.show()
-
         self.aerolinea.bt_programarVuelo.clicked.connect(self.ProgramarVuelo)
         self.vuelo.crearVuelo.clicked.connect(self.CrearVuelo)
         self.aeropuerto.bt_solicitudesVuelos.clicked.connect(self.SolicitudesVuelos)
@@ -68,9 +66,9 @@ class iniciar:
         app.exec()
 
     def rechazarusuario(self):
-        nombre = self.solicitudesRegistroAerolinea.comboBox.currentText()
+        nombre          = self.solicitudesRegistroAerolinea.comboBox.currentText()
         borrar_erolineaformtemp(nombre)
-        listsoliaero = listado_aerolineasusuario()
+        listsoliaero    = listado_aerolineasusuario()
         self.solicitudesRegistroAerolinea.comboBox.clear()
         for n in listsoliaero:
             for k in n:
@@ -131,7 +129,7 @@ class iniciar:
             
         else:
             print("no son iguales")
-            print("nit=usuario")
+            print("nit = usuario")
     
     def autenticarusuario(self):
         usuario     = self.autenticacion.lineEdit.text()
@@ -289,10 +287,10 @@ class iniciar:
         self.listadoAerolineas.listView.clear()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
-        cursor = conexion.cursor()
-        cdvuelos= "select nombreaerolinea from aerolinea;"
+        cursor       = conexion.cursor()
+        cdvuelos     = "select nombreaerolinea from aerolinea;"
         cursor.execute(cdvuelos)
-        listcdvuelos= cursor.fetchall()
+        listcdvuelos = cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
@@ -387,8 +385,8 @@ class iniciar:
         cursor.execute(horallegadacomp)
         horallegadacres = cursor.fetchall()
 
-        f=fechallegadares[0][0]
-        h=horallegadacres[0][0]
+        f = fechallegadares[0][0]
+        h = horallegadacres[0][0]
 
         busquedadis = "select codvuelo, confirmacionvuelo, fechallegada, horaentrada from vuelo where confirmacionvuelo='0' and fechallegada='{}' and horaentrada ='{}';".format(f,h)
         cursor.execute(busquedadis)
@@ -413,7 +411,7 @@ class iniciar:
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        solicitudesaeroc= "select * from soltemp;"
+        solicitudesaeroc = "select * from soltemp;"
         cursor.execute(solicitudesaeroc)
         listsolicitudes= cursor.fetchall()
         print(type(listsolicitudes))
