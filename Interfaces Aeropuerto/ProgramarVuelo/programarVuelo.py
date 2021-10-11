@@ -332,12 +332,10 @@ class iniciar:
 
     def ConsultarAgendaAeropuerto(self):
 
-        self.model_1 = QStandardItemModel(self.consultarAgenda.tableWidget)
-        self.model_1.clear()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        cdvuelos= "select codvuelo from vuelo where confirmacionvuelo= '0' ;"
+        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' ;"
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
 
@@ -355,28 +353,31 @@ class iniciar:
 
 
     def consultarAgenda2(self):
-        
+        self.consultarAgenda.tableWidget.clearContents()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
         date= self.consultarAgenda.dateEdit.text()
-        cdvuelos= "select codvuelo, destino, fechasalida, fechallegada from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
+        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
+        fila=0
         for n in listcdvuelos:
+            columna=0
+            self.consultarAgenda.tableWidget.insertRow(fila)
             for k in n:
-                self.model_1.setHorizontalHeaderLabels(['Codigo','Destino','Fecha Salida','Fecha llegada'])
-                print("hecho")
-                self.consultarAgenda.tableWidget.setModel(self.model_1)
-                # self.consultarAgenda.tableWidget.addItem(k)
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
         print(type(listcdvuelos))
         conexion.close()
 
     def SolicitarAgendamiento(self):
-        
+        self.agendamientoVuelos.ls_vuelos.clearContents()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()

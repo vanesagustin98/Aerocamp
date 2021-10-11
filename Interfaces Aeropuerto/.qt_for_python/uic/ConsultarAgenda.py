@@ -31,12 +31,8 @@ class Ui_Agenda(object):
         self.bt_consultarAgenda.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.bt_cancelarVuelo = QPushButton(self.centralwidget)
         self.bt_cancelarVuelo.setObjectName(u"bt_cancelarVuelo")
-        self.bt_cancelarVuelo.setGeometry(QRect(220, 390, 131, 31))
+        self.bt_cancelarVuelo.setGeometry(QRect(200, 390, 131, 31))
         self.bt_cancelarVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.tableWidget = QListWidget(self.centralwidget)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(50, 140, 501, 231))
-        self.tableWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(50, 20, 341, 16))
@@ -50,6 +46,16 @@ class Ui_Agenda(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet(u"color: rgb(85, 0, 127);")
+        self.tableWidget = QTableWidget(self.centralwidget)
+        if (self.tableWidget.columnCount() < 2):
+            self.tableWidget.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(160, 150, 231, 211))
+        self.tableWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         Agenda.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(Agenda)
         self.statusbar.setObjectName(u"statusbar")
@@ -66,5 +72,9 @@ class Ui_Agenda(object):
         self.bt_cancelarVuelo.setText(QCoreApplication.translate("Agenda", u"Cancelar Vuelo", None))
         self.label.setText(QCoreApplication.translate("Agenda", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Seleccione la fecha de vuelo que desea consultar</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("Agenda", u"Seleccione el vuelo que desa cancelar", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Agenda", u"Codigo", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Agenda", u"Vuelo", None));
     # retranslateUi
 

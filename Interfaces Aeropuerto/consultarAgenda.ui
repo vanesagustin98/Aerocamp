@@ -49,7 +49,7 @@
    <widget class="QPushButton" name="bt_cancelarVuelo">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>200</x>
       <y>390</y>
       <width>131</width>
       <height>31</height>
@@ -60,19 +60,6 @@
     </property>
     <property name="text">
      <string>Cancelar Vuelo</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>140</y>
-      <width>501</width>
-      <height>231</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -113,6 +100,29 @@
     <property name="text">
      <string>Seleccione el vuelo que desa cancelar</string>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>150</y>
+      <width>231</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <column>
+     <property name="text">
+      <string>Codigo</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Vuelo</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
