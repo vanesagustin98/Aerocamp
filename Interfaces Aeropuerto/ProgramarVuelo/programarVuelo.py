@@ -27,7 +27,6 @@ class iniciar:
         self.vuelo = uic.loadUi("vuelo.ui")
         self.dialogo = uic.loadUi("dialogo.ui")
 
-        
         self.aeropuerto.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
         self.agendamientoVuelos.label_2.setPixmap(QtGui.QPixmap("iconoagenda.jpg"))
         self.autenticacion.label_2.setPixmap(QtGui.QPixmap("iconoiniciosesion.jpg"))
@@ -140,24 +139,28 @@ class iniciar:
         usuario     = self.autenticacion.lineEdit.text()
         contrasena  = self.autenticacion.lineEdit_2.text()
 
-        a = autenticar_usuario(usuario,contrasena)
-        b = verificar_identificador(usuario)
-        if autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "P" :
-            print(a)
-            print(b)
-            self.Ingresar_aeropuerto()
-        elif autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "A":
-            print(a)
-            print(b)
-            self.Ingresar_aerolinea()
-        else:
-            print("usuario y/o contraseña incorrectos")
+        if len(usuario)>0 and len(contrasena)>0:
+            a = autenticar_usuario(usuario,contrasena)
+            b = verificar_identificador(usuario)
+            if autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "P" :
+                print(a)
+                print(b)
+                self.Ingresar_aeropuerto()
+            elif autenticar_usuario(usuario,contrasena) and verificar_identificador(usuario) == "A":
+                print(a)
+                print(b)
+                self.Ingresar_aerolinea()
+            else:
+                self.dialogo.label.setText("El nombre de usuario y/o la contraseña son \n incorrectos")
+                self.dialogo.show()
+        else: 
+            self.dialogo.label.setText("Se debe llenar la información de todos los campos")
+            self.dialogo.show()
         
         self.autenticacion.lineEdit.clear()
         self.autenticacion.lineEdit_2.clear()
         
     def enviarpiloto(self):
-
         nombrepiloto = self.registrarPiloto.lineEdit_27.text()
         idpiloto = self.registrarPiloto.lineEdit_28.text()
         nrolicenciapiloto = self.registrarPiloto.lineEdit_29.text()
@@ -165,10 +168,7 @@ class iniciar:
         revisionmedicapiloto = self.registrarPiloto.dateEdit_10.text()
         aeronit = '1234'
         
-        
-
         formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
-        
         
         nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
         idpiloto = self.registrarPiloto.lineEdit_28.clear()
@@ -178,7 +178,6 @@ class iniciar:
         aeronit = '1234'
 
     def EnviarCopiloto(self):
-        #Copiloto
         nombre = self.registrarCopiloto.lineEdit_24.text()
         copilotoid = self.registrarCopiloto.lineEdit_25.text()
         numerolicencia = self.registrarCopiloto.lineEdit_26.text()
@@ -194,23 +193,31 @@ class iniciar:
         self.registrarCopiloto.dateEdit_9.clear()
         
     def enviarAvion(self):
-        avionid =self.registrarAvion.lineEdit.text()
-        modelo =self.registrarAvion.lineEdit_2.text()
-        tipopropulsion =self.registrarAvion.comboBox_2.currentText()
-        numeromotor =self.registrarAvion.lineEdit_10.text()
-        pesonominal =self.registrarAvion.lineEdit_11.text()
-        capacidad =self.registrarAvion.lineEdit_12.text()
-        aeronit = "1234"
-        formulario_aviones(avionid, aeronit, modelo, tipopropulsion, numeromotor, pesonominal, capacidad)
+        avionid         = self.registrarAvion.lineEdit.text()
+        modelo          = self.registrarAvion.lineEdit_2.text()
+        tipopropulsion  = self.registrarAvion.comboBox_2.currentText()
+        numeromotor     = self.registrarAvion.lineEdit_10.text()
+        pesonominal     = self.registrarAvion.lineEdit_11.text()
+        capacidad       = self.registrarAvion.lineEdit_12.text()
+        aeronit         = "1234"
+
+        if len(avionid) > 0 and len(modelo) > 0 and len(tipopropulsion) > 0 and len(numeromotor) > 0 and len(pesonominal) and len(capacidad) > 0:
+            if numeromotor.isnumeric() and pesonominal.isnumeric() and capacidad.isnumeric():
+                formulario_aviones(avionid, aeronit, modelo, tipopropulsion, numeromotor, pesonominal, capacidad)
+                self.dialogo.label.setText("Se ha registrado el avión correctamente")
+                self.dialogo.show()
+            else:
+                self.dialogo.label.setText("Uno o varios campos se han ingresado \n incorrectamente")
+                self.dialogo.show()
+        else:
+            self.dialogo.label.setText("Todos los campos se deben rellenar")
+            self.dialogo.show()
+
         avionid =self.registrarAvion.lineEdit.clear()
         modelo =self.registrarAvion.lineEdit_2.clear()
-        tipopropulsion =self.registrarAvion.comboBox_2.clear()
         numeromotor =self.registrarAvion.lineEdit_10.clear()
         pesonominal =self.registrarAvion.lineEdit_11.clear()
         capacidad =self.registrarAvion.lineEdit_12.clear()
-        aero_nit = "1234"
-
-    
 
     def enviarformulario(self):
         nombre_aerolinea= self.formularioRegistro.lineEdit.text()
@@ -303,7 +310,6 @@ class iniciar:
         self.vuelo.show()
 
     def CrearVuelo(self):
-
         #Vuelo
         horasalida= self.vuelo.timeEdit.text()
         horaentrada= self.vuelo.timeEdit_2.text()
@@ -331,8 +337,6 @@ class iniciar:
 
         self.vuelo.lineEdit_13.setText("")
 
-
-
     def BuscarDisponibilidad(self):
         ##aquiuiiii
         n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
@@ -349,7 +353,6 @@ class iniciar:
         horallegadacomp=  "select horaentrada from vuelo where codvuelo ='{}'".format(n)
         cursor.execute(horallegadacomp)
         horallegadacres= cursor.fetchall()
-
 
         f=fechallegadares[0][0]
         h=horallegadacres[0][0]
@@ -372,9 +375,7 @@ class iniciar:
         print("Consulta hecha con éxito")
         conexion.close()
 
-
     def SolicitudesVuelos(self):
-        
         self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
@@ -397,9 +398,7 @@ class iniciar:
             self.solicitudesPendientesVuelos.bt_rechazarSolicitud.setEnabled(False)
         self.solicitudesPendientesVuelos.show()
         
-
     def ConsultarAgendaAeropuerto(self):
-
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
@@ -417,8 +416,6 @@ class iniciar:
         print("Consulta hecha con éxito")
 
         conexion.close()
-
-
 
     def consultarAgenda2(self):
         self.consultarAgenda.tableWidget.clearContents()
@@ -475,10 +472,7 @@ class iniciar:
             self.agendamientoVuelos.bt_modificarDatos.setEnabled(False)
             self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(False)
     
-        
-
     def ConfirmarSolicitud(self):
-
         n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
