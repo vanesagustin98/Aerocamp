@@ -43,6 +43,7 @@ def autenticar_usuario(usuario,contrasena):
     cursor.execute(contrasenabd)
     lstcontrasena = cursor.fetchall()
     conexion.commit()
+    ban = False
 
     if len(lstcontrasena) == 0:
         ban = False
