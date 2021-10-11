@@ -54,8 +54,7 @@ class iniciar:
         self.aeropuerto.bt_cerrarSesion.clicked.connect(self.Salir)
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
         self.autenticacion.pushButton_3.clicked.connect(self.LlenarFormulario)
-        self.autenticacion.pushButton.clicked.connect(self.Ingresar)
-        #self.autenticacion.pushButton.clicked.connect(self.Ingresar)
+        self.autenticacion.pushButton.clicked.connect(self.autenticarusuario)
         self.aeropuerto.bt_visualizarAerolineas.clicked.connect(self.VisualizarAerolineas)
         self.aerolinea.bt_visualizarDatos.clicked.connect(self.VerDatosAerolinea)
         self.listadoAerolineas.pushButton.clicked.connect(self.VerListadoAeropuerto)
@@ -68,6 +67,20 @@ class iniciar:
         self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
         self.registrarAvion.bt_registrar_piloto_7.clicked.connect(self.enviarAvion)
         app.exec()
+    
+    def autenticarusuario(self):
+        usuario     = self.autenticacion.lineEdit.text()
+        contrasena  = self.autenticacion.lineEdit_2.text()
+
+        a = autenticar_usuario(usuario,contrasena)
+        if autenticar_usuario(usuario,contrasena):
+            print(a)
+            self.Ingresar()
+        else:
+            print("usuario y/o contraseña incorrectos")
+        
+        self.autenticacion.lineEdit.clear()
+        self.autenticacion.lineEdit_2.clear()
         
     def enviarpiloto(self):
         nombrepiloto = self.registrarPiloto.lineEdit_27.text()

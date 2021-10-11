@@ -35,3 +35,21 @@ def formulario_aviones(avionid, aeronit, modelo, tipopropulsion, numeromotor, pe
     conexion.commit()
     conexion.close()
     return "Formulario agregado"
+
+def autenticar_usuario(usuario,contrasena):
+    contrasenabd = "select contrasena from usuarios where usuario = '{}'".format(usuario)
+    conexion     = conexion_aerocampbd()
+    cursor       = conexion.cursor()
+    cursor.execute(contrasenabd)
+    lstcontrasena = cursor.fetchall()
+    conexion.commit()
+
+    if len(lstcontrasena) == 0:
+        ban = False
+    else:        
+        lcontrasena = lstcontrasena[0][0]
+        if lcontrasena == contrasena:
+            print(contrasena)
+            ban = True
+    conexion.close()
+    return ban
