@@ -160,3 +160,73 @@ def formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, f
     conexion.commit()
     conexion.close()
     return "Formulario agregado"
+
+def listado_aerolineasusuario():
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    list_aerousu= "select nombreaerolinea from formtemp;"
+    cursor.execute(list_aerousu)
+    listusuariosaero= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")            
+    return listusuariosaero
+
+def buscar_nitaerolinea(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_nitaerolinea= "select aeronit from formtemp where nombreaerolinea='{}';".format(nombre)
+    cursor.execute( bus_nitaerolinea)
+    nitaerolinea= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    nitaerolinea=nitaerolinea[0][0]
+    return nitaerolinea
+
+def buscar_correoaerolinea(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_correoaerolinea= "select email from formtemp where nombreaerolinea='{}';".format(nombre)
+    cursor.execute( bus_correoaerolinea)
+    correoaerolinea= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    correoaerolinea=correoaerolinea[0][0]
+    return correoaerolinea
+
+def buscar_ciuaerolinea(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_ciuaerolinea= "select ciudad from formtemp where nombreaerolinea='{}';".format(nombre)
+    cursor.execute( bus_ciuaerolinea)
+    ciuaerolinea= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    ciuaerolinea=ciuaerolinea[0][0]
+    return ciuaerolinea
+
+def buscar_telaerolinea(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_telaerolinea= "select telefono from formtemp where nombreaerolinea='{}';".format(nombre)
+    cursor.execute( bus_telaerolinea)
+    telaerolinea = cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    telaerolinea = telaerolinea[0][0]
+    return telaerolinea
+
+def borrar_erolineaformtemp(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    borr_aerolinea= "delete from formtemp where nombreaerolinea='{}';".format(nombre)
+    cursor.execute(borr_aerolinea)
+    conexion.commit()
+    conexion.close()
+    print("Consulta hecha con éxito")
+    return "Borrado c:"
+
