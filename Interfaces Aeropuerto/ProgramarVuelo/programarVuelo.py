@@ -425,7 +425,7 @@ class iniciar:
         cursor = conexion.cursor()
 
         cfvuelos= "update vuelo set confirmacionvuelo='0'where codvuelo='{}';".format(n)
-        borrartupla= "delete from solicitudesaeropuerto where codvuelo='{}';".format(n)
+        borrartupla= "delete from soltemp where codvuelo='{}';".format(n)
         cursor.execute(cfvuelos)
         cursor.execute(borrartupla)
         conexion.commit()

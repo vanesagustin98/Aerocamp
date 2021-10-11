@@ -3,8 +3,8 @@ import psycopg2
 def conexion_aerocampbd():
     conexion = psycopg2.connect(
         host = "localhost" , 
-        database = "aerocamp" ,
+        database = "aerocampbd" ,
         user = "postgres" ,
-        password = "1204"
+        password = "zVGR1233191877"
         )
     return conexion

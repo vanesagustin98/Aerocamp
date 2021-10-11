@@ -25,6 +25,14 @@ class Ui_Dialog(object):
         self.buttonBox.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Ok)
+        self.label = QLabel(Dialog)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(110, 50, 321, 51))
+        font = QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
@@ -35,5 +43,6 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        self.label.setText("")
     # retranslateUi
 
