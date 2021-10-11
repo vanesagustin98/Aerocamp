@@ -3,7 +3,8 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from conexion_bd import *
 from interaccion_bd import *
-
+print("1")
+2
 class iniciar:
     def __init__(self):
         app                                 = QtWidgets.QApplication([])
