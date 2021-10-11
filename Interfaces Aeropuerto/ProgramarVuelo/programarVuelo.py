@@ -66,6 +66,7 @@ class iniciar:
         self.formularioRegistro.pushButton.clicked.connect(self.enviarformulario)
         self.registrarPiloto.bt_registrar_piloto_7.clicked.connect(self.enviarpiloto)
         self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
+        self.registrarAvion.bt_registrar_piloto_7.clicked.connect(self.enviarAvion)
         app.exec()
         
     def enviarpiloto(self):
@@ -100,6 +101,25 @@ class iniciar:
         self.registrarCopiloto.lineEdit_26.clear()
         self.registrarCopiloto.spinBox_10.clear()
         self.registrarCopiloto.dateEdit_9.clear()
+        
+    def enviarAvion(self):
+        avionid =self.registrarAvion.lineEdit.text()
+        modelo =self.registrarAvion.lineEdit_2.text()
+        tipopropulsion =self.registrarAvion.comboBox_2.currentText()
+        numeromotor =self.registrarAvion.lineEdit_10.text()
+        pesonominal =self.registrarAvion.lineEdit_11.text()
+        capacidad =self.registrarAvion.lineEdit_12.text()
+        aeronit = "1234"
+        formulario_aviones(avionid, aeronit, modelo, tipopropulsion, numeromotor, pesonominal, capacidad)
+        avionid =self.registrarAvion.lineEdit.clear()
+        modelo =self.registrarAvion.lineEdit_2.clear()
+        tipopropulsion =self.registrarAvion.comboBox_2.clear()
+        numeromotor =self.registrarAvion.lineEdit_10.clear()
+        pesonominal =self.registrarAvion.lineEdit_11.clear()
+        capacidad =self.registrarAvion.lineEdit_12.clear()
+        aero_nit = "1234"
+
+    
 
     def enviarformulario(self):
         nombre_aerolinea= self.formularioRegistro.lineEdit.text()

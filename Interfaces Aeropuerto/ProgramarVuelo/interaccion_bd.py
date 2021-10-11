@@ -26,3 +26,12 @@ def formulario_copilotos(copilotoid,aeronit,nombre,numerolicencia,horasexperienc
     conexion.commit()
     conexion.close()
     return "Formulario agregado"
+
+def formulario_aviones(avionid, aeronit, modelo, tipopropulsion, numeromotor, pesonominal, capacidad):
+    formulario_avion = "insert into avion values('{}','{}','{}','{}','{}','{}','{}') ".format(avionid, aeronit, modelo, tipopropulsion, numeromotor, pesonominal, capacidad)
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    cursor.execute(formulario_avion)
+    conexion.commit()
+    conexion.close()
+    return "Formulario agregado"
