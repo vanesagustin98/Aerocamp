@@ -87,7 +87,7 @@ class iniciar:
         if(contrasena==contrasenar and nit_aerolinea==usuario):
             print('son iguales')
             formulario_usuario(identificador,usuario,contrasena)
-            formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+            formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
             print("3")
             nombre_aerolinea= self.modificarDatosAeropuerto.lineEdit_4.clear()
             nit_aerolinea= self.modificarDatosAeropuerto.lineEdit_5.clear()
