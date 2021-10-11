@@ -157,7 +157,6 @@ class iniciar:
         self.autenticacion.lineEdit_2.clear()
         
     def enviarpiloto(self):
-
         nombrepiloto = self.registrarPiloto.lineEdit_27.text()
         idpiloto = self.registrarPiloto.lineEdit_28.text()
         nrolicenciapiloto = self.registrarPiloto.lineEdit_29.text()
@@ -165,17 +164,30 @@ class iniciar:
         revisionmedicapiloto = self.registrarPiloto.dateEdit_10.text()
         aeronit = '1234'
         
-        
-
-        formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
-        
-        
-        nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
-        idpiloto = self.registrarPiloto.lineEdit_28.clear()
-        nrolicenciapiloto = self.registrarPiloto.lineEdit_29.clear()
-        horasexperienciapiloto = self.registrarPiloto.spinBox_11.clear()
-        revisionmedicapiloto = self.registrarPiloto.dateEdit_10.clear()
-        aeronit = '1234'
+        if(len(nombrepiloto)>0 and len(idpiloto)>0 and len(nrolicenciapiloto)>0):
+            if(idpiloto.isnumeric()):
+                #if(buscarpiloto(idpiloto) is False):
+                    
+                    formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
+                    
+                    nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
+                    idpiloto = self.registrarPiloto.lineEdit_28.clear()
+                    nrolicenciapiloto = self.registrarPiloto.lineEdit_29.clear()
+                    horasexperienciapiloto = self.registrarPiloto.spinBox_11.clear()
+                    revisionmedicapiloto = self.registrarPiloto.dateEdit_10.clear()
+                    aeronit = '1234'
+                    self.dialogo.label.setText("Se ha registrado el piloto correctamente")
+                    self.dialogo.show()
+                    
+                #else:
+                #    self.dialogo.label.setText("El piloto ya ha sido registrado")
+                #    self.dialogo.show()
+            else:        
+                self.dialogo.label.setText("Uno o varios campos se han \n ingresado incorrectamente")
+                self.dialogo.show()
+        else:
+            self.dialogo.label.setText("Todos los campos se deben rellenar")
+            self.dialogo.show()
 
     def EnviarCopiloto(self):
         #Copiloto
@@ -185,13 +197,30 @@ class iniciar:
         horasexperiencia = self.registrarCopiloto.spinBox_10.text()
         revisionmedica = self.registrarCopiloto.dateEdit_9.text()
         aeronit = "1234"
-        formulario_copilotos(copilotoid,aeronit,nombre,numerolicencia,horasexperiencia,revisionmedica)
+        
+        if(len(nombre)>0 and len(copilotoid)>0 and len(numerolicencia)>0):
+            if(copilotoid.isnumeric()):
+                
+                #if(buscarcopiloto(copilotoid) is True):
+                    
+                    formulario_copilotos(copilotoid,aeronit,nombre,numerolicencia,horasexperiencia,revisionmedica)
 
-        self.registrarCopiloto.lineEdit_24.clear()
-        self.registrarCopiloto.lineEdit_25.clear()
-        self.registrarCopiloto.lineEdit_26.clear()
-        self.registrarCopiloto.spinBox_10.clear()
-        self.registrarCopiloto.dateEdit_9.clear()
+                    self.registrarCopiloto.lineEdit_24.clear()
+                    self.registrarCopiloto.lineEdit_25.clear()
+                    self.registrarCopiloto.lineEdit_26.clear()
+                    
+                    self.dialogo.label.setText("Se ha registrado el copiloto correctamente")
+                    self.dialogo.show()
+                    
+                #else:
+                #    self.dialogo.label.setText("El copiloto ya ha sido registrado")
+                #    self.dialogo.show()
+            else:        
+                self.dialogo.label.setText("Uno o varios campos se han \n ingresado incorrectamente")
+                self.dialogo.show()
+        else:
+            self.dialogo.label.setText("Todos los campos se deben rellenar")
+            self.dialogo.show()
         
     def enviarAvion(self):
         avionid =self.registrarAvion.lineEdit.text()
