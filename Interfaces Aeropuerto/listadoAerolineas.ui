@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>473</width>
-    <height>348</height>
+    <width>387</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,24 +16,11 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(232, 228, 255);</string>
   </property>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>50</y>
-     <width>341</width>
-     <height>221</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>300</y>
+     <x>240</x>
+     <y>90</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -48,7 +35,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>50</x>
      <y>20</y>
      <width>161</width>
      <height>16</height>
@@ -64,9 +51,9 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>300</y>
-     <width>101</width>
+     <x>240</x>
+     <y>160</y>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
@@ -75,6 +62,19 @@
    </property>
    <property name="text">
     <string>Eliminar Aerolinea</string>
+   </property>
+  </widget>
+  <widget class="QListView" name="listView">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>161</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
  </widget>
