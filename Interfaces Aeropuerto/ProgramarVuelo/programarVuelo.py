@@ -246,18 +246,28 @@ class iniciar:
         capacidad       = self.registrarAvion.lineEdit_12.clear()
 
     def enviarformulario(self):
-        nombre_aerolinea    = self.formularioRegistro.lineEdit.text()
-        nit_aerolinea       = self.formularioRegistro.lineEdit_2.text()
-        ciu_aerolinea       = self.formularioRegistro.comboBox.currentText()
-        email_aerolinea     = self.formularioRegistro.lineEdit_3.text()
-        tel_aerolinea       = self.formularioRegistro.lineEdit_4.text()
+        nombre_aerolinea= self.formularioRegistro.lineEdit.text()
+        nit_aerolinea= self.formularioRegistro.lineEdit_2.text()
+        ciu_aerolinea= self.formularioRegistro.comboBox.currentText()
+        email_aerolinea= self.formularioRegistro.lineEdit_3.text()
+        tel_aerolinea= self.formularioRegistro.lineEdit_4.text()
 
-        formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
-
-        self.formularioRegistro.lineEdit.clear()
-        self.formularioRegistro.lineEdit_2.clear()
-        self.formularioRegistro.lineEdit_3.clear()
-        self.formularioRegistro.lineEdit_4.clear()
+        if(len(nombre_aerolinea)>0 and len(nit_aerolinea)>0 and len(ciu_aerolinea)>0 and len(email_aerolinea)>0 and len(tel_aerolinea)>0):
+            if nit_aerolinea.isnumeric() and tel_aerolinea.isnumeric():
+                formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+                self.formularioRegistro.lineEdit.clear()
+                self.formularioRegistro.lineEdit_2.clear()
+                self.formularioRegistro.lineEdit_3.clear()
+                self.formularioRegistro.lineEdit_4.clear()
+                self.dialogo.label.setText("La información de la aerolínea fue enviada \n exitosamente")
+                self.dialogo.show()
+            else:
+                self.dialogo.label.setText("Uno o varios campos se han ingresado \n incorrectamente")
+                self.dialogo.show()
+        else:
+            self.dialogo.label.setText("Todos los campos se deben rellenar")
+            self.dialogo.show()
+        
 
     def verSolicitudesRegistro(self):
         listsoliaero = listado_aerolineasusuario()
