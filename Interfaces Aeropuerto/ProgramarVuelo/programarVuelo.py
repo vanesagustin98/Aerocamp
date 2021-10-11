@@ -64,6 +64,7 @@ class iniciar:
         self.solicitudesRegistroAerolinea.pushButton_2.clicked.connect(self.rechazarusuario)
         self.modificarDatosAeropuerto.pushButton.clicked.connect(self.registraraerolinea)
         self.solicitudesPendientesVuelos.bt_rechazarSolicitud.clicked.connect(self.rechazarvuelo)
+    
         app.exec()
 
     def rechazarvuelo(self):
@@ -75,7 +76,7 @@ class iniciar:
             borrar_vuelosoltemp(codigo)
             self.dialogo.label.setText("Solicitud rechazada")
             self.dialogo.show()
-        listvuelos = listado_aerolineasusuario()
+        listvuelos = listado_vuelos()
         self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
         for n in listvuelos:
             for k in n:
@@ -280,7 +281,6 @@ class iniciar:
                 self.formularioRegistro.lineEdit_3.clear()
                 self.formularioRegistro.lineEdit_4.clear()
                 self.dialogo.label.setText("La información de la aerolínea fue enviada \n exitosamente")
-                self.dialogo.show
                 self.dialogo.show()
             else:
                 self.dialogo.label.setText("Uno o varios campos se han ingresado \n incorrectamente")
@@ -317,22 +317,32 @@ class iniciar:
         self.modicarDatosAerolinea.show()
 
     def VisualizarAerolineas(self):
-        self.listadoAerolineas.show()
-        self.listadoAerolineas.listView.clear()
-        conexion = conexion_aerocampbd()
-        print("Conexión exitosa")
-        cursor       = conexion.cursor()
-        cdvuelos     = "select nombreaerolinea from aerolinea;"
-        cursor.execute(cdvuelos)
-        listcdvuelos = cursor.fetchall()
-        print(type(listcdvuelos))
-        conexion.commit()
-        print("Consulta hecha con éxito")
-        for n in listcdvuelos:
-            for k in n:
-                self.listadoAerolineas.listView.addItem(k)
-        print(type(listcdvuelos))
-        conexion.close()
+        # if self.listadoAerolineas.listView.count() == 0:
+        #     self.dialogo.label.setText("No hay aerolíneas registradas")
+        #     self.dialogo.show()
+        # else:
+        #     self.listadoAerolineas.show()
+            self.listadoAerolineas.listView.clear()
+            conexion = conexion_aerocampbd()
+            print("Conexión exitosa")
+            cursor       = conexion.cursor()
+            cdvuelos     = "select nombreaerolinea from aerolinea;"
+            cursor.execute(cdvuelos)
+            listcdvuelos = cursor.fetchall()
+            print(type(listcdvuelos))
+            conexion.commit()
+            print("Consulta hecha con éxito")
+            
+            for n in listcdvuelos:
+                for k in n:
+                    self.listadoAerolineas.listView.addItem(k)
+            print(type(listcdvuelos))
+            if self.listadoAerolineas.listView.count() == 0:
+                self.dialogo.label.setText("No hay aerolíneas registradas")
+                self.dialogo.show()
+            else:
+                self.listadoAerolineas.show()
+            conexion.close()
 
     def Ingresar_aeropuerto(self):
         self.aeropuerto.show()
@@ -458,7 +468,7 @@ class iniciar:
         conexion.close()
         
         if self.solicitudesPendientesVuelos.cb_listaVuelos.count()==0:
-            self.solicitudesPendientesVuelos.bt_buscarDisponibilidad.setEnabled(False)
+            self.solicitudesPendientesVuelos.bt_buscarDisponibilidad.setEnabled(True)
             self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(False)
             self.solicitudesPendientesVuelos.bt_rechazarSolicitud.setEnabled(False)
         self.solicitudesPendientesVuelos.show()
@@ -483,28 +493,23 @@ class iniciar:
         conexion.close()
 
     def consultarAgenda2(self):
-        self.consultarAgenda.tableWidget.clearContents()
+        self.consultarAgenda.tableWidget.clear()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        date = self.consultarAgenda.dateEdit.text()
-        cdvuelos = "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
+        date= self.consultarAgenda.dateEdit.text()
+        cdvuelos= "select codvuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
         cursor.execute(cdvuelos)
-        listcdvuelos = cursor.fetchall()
+        listcdvuelos= cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
-        fila = 0
         for n in listcdvuelos:
-            columna = 0
-            self.consultarAgenda.tableWidget.insertRow(fila)
             for k in n:
-                celda = QtWidgets.QTableWidgetItem(k)
-                self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
-                columna+=1
-            fila+=1
+                self.consultarAgenda.tableWidget.addItem(k)
         print(type(listcdvuelos))
         conexion.close()
+
 
     def SolicitarAgendamiento(self):
         self.agendamientoVuelos.ls_vuelos.clearContents()

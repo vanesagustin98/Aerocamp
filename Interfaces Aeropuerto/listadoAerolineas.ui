@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>387</width>
+    <width>301</width>
     <height>303</height>
    </rect>
   </property>
@@ -17,10 +17,13 @@
    <string notr="true">background-color: rgb(232, 228, 255);</string>
   </property>
   <widget class="QPushButton" name="pushButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>90</y>
+     <x>160</x>
+     <y>100</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -35,7 +38,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>20</y>
      <width>161</width>
      <height>16</height>
@@ -45,13 +48,16 @@
     <string notr="true">color: rgb(85, 0, 127);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Listado de Aerolineas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Nombre Aerolíneas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>160</x>
      <y>160</y>
      <width>111</width>
      <height>31</height>
@@ -69,7 +75,7 @@
     <rect>
      <x>30</x>
      <y>50</y>
-     <width>191</width>
+     <width>91</width>
      <height>231</height>
     </rect>
    </property>

@@ -549,20 +549,15 @@
   <widget class="QTableWidget" name="ls_vuelos">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>50</x>
      <y>70</y>
-     <width>231</width>
+     <width>271</width>
      <height>281</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
    <column>
     <property name="text">
      <string>Codigo</string>
@@ -573,11 +568,6 @@
      <string>Destino</string>
     </property>
    </column>
-   <item row="0" column="0">
-    <property name="text">
-     <string/>
-    </property>
-   </item>
   </widget>
  </widget>
  <resources>
