@@ -373,8 +373,15 @@ class iniciar:
         else:
             tipovuelo="NS"
 
-        vuelo = formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
-        print(vuelo)
+        if(len(codvuelo)>0):
+            vuelo = formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
+            print(vuelo)
+            self.dialogo.label.setText("Se ha registrado el vuelo correctamente")
+            self.dialogo.show()
+            
+        else: self.dialogo.label.setText("Todos los campos se deben rellenar")
+        self.dialogo.show()
+        
 
         self.vuelo.lineEdit_13.setText("")
 
