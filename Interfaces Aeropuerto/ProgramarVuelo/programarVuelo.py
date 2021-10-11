@@ -163,16 +163,7 @@ class iniciar:
         horasexperienciapiloto  = self.registrarPiloto.spinBox_11.text()
         revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.text()
         aeronit                 = '1234'
-        
-        formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
-        
-        nombrepiloto            = self.registrarPiloto.lineEdit_27.clear()
-        idpiloto                = self.registrarPiloto.lineEdit_28.clear()
-        nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.clear()
-        horasexperienciapiloto  = self.registrarPiloto.spinBox_11.clear()
-        revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.clear()
-        aeronit                 = '1234'
-
+             
         if(len(nombrepiloto)>0 and len(idpiloto)>0 and len(nrolicenciapiloto)>0):
             if(idpiloto.isnumeric()):
                     formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
@@ -192,6 +183,7 @@ class iniciar:
         else:
             self.dialogo.label.setText("Todos los campos se deben rellenar")
             self.dialogo.show()
+    
 
     def EnviarCopiloto(self):
         nombre              = self.registrarCopiloto.lineEdit_24.text()
@@ -246,28 +238,18 @@ class iniciar:
         capacidad       = self.registrarAvion.lineEdit_12.clear()
 
     def enviarformulario(self):
-        nombre_aerolinea= self.formularioRegistro.lineEdit.text()
-        nit_aerolinea= self.formularioRegistro.lineEdit_2.text()
-        ciu_aerolinea= self.formularioRegistro.comboBox.currentText()
-        email_aerolinea= self.formularioRegistro.lineEdit_3.text()
-        tel_aerolinea= self.formularioRegistro.lineEdit_4.text()
+        nombre_aerolinea    = self.formularioRegistro.lineEdit.text()
+        nit_aerolinea       = self.formularioRegistro.lineEdit_2.text()
+        ciu_aerolinea       = self.formularioRegistro.comboBox.currentText()
+        email_aerolinea     = self.formularioRegistro.lineEdit_3.text()
+        tel_aerolinea       = self.formularioRegistro.lineEdit_4.text()
 
-        if(len(nombre_aerolinea)>0 and len(nit_aerolinea)>0 and len(ciu_aerolinea)>0 and len(email_aerolinea)>0 and len(tel_aerolinea)>0):
-            if nit_aerolinea.isnumeric() and tel_aerolinea.isnumeric():
-                formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
-                self.formularioRegistro.lineEdit.clear()
-                self.formularioRegistro.lineEdit_2.clear()
-                self.formularioRegistro.lineEdit_3.clear()
-                self.formularioRegistro.lineEdit_4.clear()
-                self.dialogo.label.setText("La información de la aerolínea fue enviada \n exitosamente")
-                self.dialogo.show()
-            else:
-                self.dialogo.label.setText("Uno o varios campos se han ingresado \n incorrectamente")
-                self.dialogo.show()
-        else:
-            self.dialogo.label.setText("Todos los campos se deben rellenar")
-            self.dialogo.show()
-        
+        formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
+
+        self.formularioRegistro.lineEdit.clear()
+        self.formularioRegistro.lineEdit_2.clear()
+        self.formularioRegistro.lineEdit_3.clear()
+        self.formularioRegistro.lineEdit_4.clear()
 
     def verSolicitudesRegistro(self):
         listsoliaero = listado_aerolineasusuario()
