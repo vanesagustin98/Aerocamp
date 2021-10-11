@@ -78,11 +78,11 @@ class iniciar:
         self.solicitudesRegistroAerolinea.update()
         
     def crearusuario(self):
-        nombre = self.solicitudesRegistroAerolinea.comboBox.currentText()
-        aeronit = buscar_nitaerolinea(nombre)
-        ciudad = buscar_ciuaerolinea(nombre)
-        email = buscar_correoaerolinea(nombre)
-        telefono = buscar_telaerolinea(nombre)
+        nombre      = self.solicitudesRegistroAerolinea.comboBox.currentText()
+        aeronit     = buscar_nitaerolinea(nombre)
+        ciudad      = buscar_ciuaerolinea(nombre)
+        email       = buscar_correoaerolinea(nombre)
+        telefono    = buscar_telaerolinea(nombre)
 
         self.modificarDatosAeropuerto.lineEdit_4.setText(nombre)
         self.modificarDatosAeropuerto.lineEdit_5.setText(aeronit)
@@ -94,17 +94,17 @@ class iniciar:
         self.modificarDatosAeropuerto.show()
         
     def registraraerolinea(self):
-        nombre_aerolinea= self.modificarDatosAeropuerto.lineEdit_4.text()
-        nit_aerolinea= self.modificarDatosAeropuerto.lineEdit_5.text()
-        ciu_aerolinea= self.modificarDatosAeropuerto.comboBox.text()
-        email_aerolinea= self.modificarDatosAeropuerto.lineEdit_6.text()
-        tel_aerolinea= self.modificarDatosAeropuerto.lineEdit_7.text()
-        usuario = self.modificarDatosAeropuerto.lineEdit.text()
-        contrasena = self.modificarDatosAeropuerto.lineEdit_2.text()
-        contrasenar = self.modificarDatosAeropuerto.lineEdit_3.text()
-        identificador = 'A'
+        nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.text()
+        nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.text()
+        ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.text()
+        email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.text()
+        tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.text()
+        usuario             = self.modificarDatosAeropuerto.lineEdit.text()
+        contrasena          = self.modificarDatosAeropuerto.lineEdit_2.text()
+        contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.text()
+        identificador       = 'A'
         
-        if(contrasena==contrasenar and nit_aerolinea==usuario):
+        if(contrasena == contrasenar and nit_aerolinea == usuario):
             print('son iguales')
             formulario_usuario(identificador,usuario,contrasena)
             formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
@@ -117,14 +117,15 @@ class iniciar:
                 for k in n:
                     self.solicitudesRegistroAerolinea.comboBox.addItem(k)
 
-            nombre_aerolinea= self.modificarDatosAeropuerto.lineEdit_4.clear()
-            nit_aerolinea= self.modificarDatosAeropuerto.lineEdit_5.clear()
-            ciu_aerolinea= self.modificarDatosAeropuerto.comboBox.clear()
-            email_aerolinea= self.modificarDatosAeropuerto.lineEdit_6.clear()
-            tel_aerolinea= self.modificarDatosAeropuerto.lineEdit_7.clear()
-            usuario = self.modificarDatosAeropuerto.lineEdit.clear()
-            contrasena = self.modificarDatosAeropuerto.lineEdit_2.clear()
-            contrasenar = self.modificarDatosAeropuerto.lineEdit_3.clear()
+            nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.clear()
+            nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.clear()
+            ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.clear()
+            email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.clear()
+            tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.clear()
+            usuario             = self.modificarDatosAeropuerto.lineEdit.clear()
+            contrasena          = self.modificarDatosAeropuerto.lineEdit_2.clear()
+            contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.clear()
+
             self.modificarDatosAeropuerto.close()
             self.solicitudesRegistroAerolinea.update() 
             
@@ -158,39 +159,35 @@ class iniciar:
         self.autenticacion.lineEdit_2.clear()
         
     def enviarpiloto(self):
-        nombrepiloto = self.registrarPiloto.lineEdit_27.text()
-        idpiloto = self.registrarPiloto.lineEdit_28.text()
-        nrolicenciapiloto = self.registrarPiloto.lineEdit_29.text()
-        horasexperienciapiloto = self.registrarPiloto.spinBox_11.text()
-        revisionmedicapiloto = self.registrarPiloto.dateEdit_10.text()
-        aeronit = '1234'
+        nombrepiloto            = self.registrarPiloto.lineEdit_27.text()
+        idpiloto                = self.registrarPiloto.lineEdit_28.text()
+        nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.text()
+        horasexperienciapiloto  = self.registrarPiloto.spinBox_11.text()
+        revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.text()
+        aeronit                 = '1234'
         
         formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
         
-        nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
-        idpiloto = self.registrarPiloto.lineEdit_28.clear()
-        nrolicenciapiloto = self.registrarPiloto.lineEdit_29.clear()
-        horasexperienciapiloto = self.registrarPiloto.spinBox_11.clear()
-        revisionmedicapiloto = self.registrarPiloto.dateEdit_10.clear()
-        aeronit = '1234'
+        nombrepiloto            = self.registrarPiloto.lineEdit_27.clear()
+        idpiloto                = self.registrarPiloto.lineEdit_28.clear()
+        nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.clear()
+        horasexperienciapiloto  = self.registrarPiloto.spinBox_11.clear()
+        revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.clear()
+        aeronit                 = '1234'
+
         if(len(nombrepiloto)>0 and len(idpiloto)>0 and len(nrolicenciapiloto)>0):
             if(idpiloto.isnumeric()):
-                #if(buscarpiloto(idpiloto) is False):
-                    
                     formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
                     
-                    nombrepiloto = self.registrarPiloto.lineEdit_27.clear()
-                    idpiloto = self.registrarPiloto.lineEdit_28.clear()
-                    nrolicenciapiloto = self.registrarPiloto.lineEdit_29.clear()
-                    horasexperienciapiloto = self.registrarPiloto.spinBox_11.clear()
-                    revisionmedicapiloto = self.registrarPiloto.dateEdit_10.clear()
-                    aeronit = '1234'
+                    nombrepiloto            = self.registrarPiloto.lineEdit_27.clear()
+                    idpiloto                = self.registrarPiloto.lineEdit_28.clear()
+                    nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.clear()
+                    horasexperienciapiloto  = self.registrarPiloto.spinBox_11.clear()
+                    revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.clear()
+                    aeronit                 = '1234'
+
                     self.dialogo.label.setText("Se ha registrado el piloto correctamente")
                     self.dialogo.show()
-                    
-                #else:
-                #    self.dialogo.label.setText("El piloto ya ha sido registrado")
-                #    self.dialogo.show()
             else:        
                 self.dialogo.label.setText("Uno o varios campos se han \n ingresado incorrectamente")
                 self.dialogo.show()
@@ -199,18 +196,15 @@ class iniciar:
             self.dialogo.show()
 
     def EnviarCopiloto(self):
-        nombre = self.registrarCopiloto.lineEdit_24.text()
-        copilotoid = self.registrarCopiloto.lineEdit_25.text()
-        numerolicencia = self.registrarCopiloto.lineEdit_26.text()
-        horasexperiencia = self.registrarCopiloto.spinBox_10.text()
-        revisionmedica = self.registrarCopiloto.dateEdit_9.text()
-        aeronit = "1234"
+        nombre              = self.registrarCopiloto.lineEdit_24.text()
+        copilotoid          = self.registrarCopiloto.lineEdit_25.text()
+        numerolicencia      = self.registrarCopiloto.lineEdit_26.text()
+        horasexperiencia    = self.registrarCopiloto.spinBox_10.text()
+        revisionmedica      = self.registrarCopiloto.dateEdit_9.text()
+        aeronit             = "1234"
         
         if(len(nombre)>0 and len(copilotoid)>0 and len(numerolicencia)>0):
             if(copilotoid.isnumeric()):
-                
-                #if(buscarcopiloto(copilotoid) is True):
-                    
                     formulario_copilotos(copilotoid,aeronit,nombre,numerolicencia,horasexperiencia,revisionmedica)
 
                     self.registrarCopiloto.lineEdit_24.clear()
@@ -219,10 +213,6 @@ class iniciar:
                     
                     self.dialogo.label.setText("Se ha registrado el copiloto correctamente")
                     self.dialogo.show()
-                    
-                #else:
-                #    self.dialogo.label.setText("El copiloto ya ha sido registrado")
-                #    self.dialogo.show()
             else:        
                 self.dialogo.label.setText("Uno o varios campos se han \n ingresado incorrectamente")
                 self.dialogo.show()
@@ -251,18 +241,18 @@ class iniciar:
             self.dialogo.label.setText("Todos los campos se deben rellenar")
             self.dialogo.show()
 
-        avionid =self.registrarAvion.lineEdit.clear()
-        modelo =self.registrarAvion.lineEdit_2.clear()
-        numeromotor =self.registrarAvion.lineEdit_10.clear()
-        pesonominal =self.registrarAvion.lineEdit_11.clear()
-        capacidad =self.registrarAvion.lineEdit_12.clear()
+        avionid         = self.registrarAvion.lineEdit.clear()
+        modelo          = self.registrarAvion.lineEdit_2.clear()
+        numeromotor     = self.registrarAvion.lineEdit_10.clear()
+        pesonominal     = self.registrarAvion.lineEdit_11.clear()
+        capacidad       = self.registrarAvion.lineEdit_12.clear()
 
     def enviarformulario(self):
-        nombre_aerolinea= self.formularioRegistro.lineEdit.text()
-        nit_aerolinea= self.formularioRegistro.lineEdit_2.text()
-        ciu_aerolinea= self.formularioRegistro.comboBox.currentText()
-        email_aerolinea= self.formularioRegistro.lineEdit_3.text()
-        tel_aerolinea= self.formularioRegistro.lineEdit_4.text()
+        nombre_aerolinea    = self.formularioRegistro.lineEdit.text()
+        nit_aerolinea       = self.formularioRegistro.lineEdit_2.text()
+        ciu_aerolinea       = self.formularioRegistro.comboBox.currentText()
+        email_aerolinea     = self.formularioRegistro.lineEdit_3.text()
+        tel_aerolinea       = self.formularioRegistro.lineEdit_4.text()
 
         formulario_aerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
 
@@ -347,26 +337,27 @@ class iniciar:
 
     def CrearVuelo(self):
         #Vuelo
-        horasalida= self.vuelo.timeEdit.text()
-        horaentrada= self.vuelo.timeEdit_2.text()
-        fechasalida = self.vuelo.dateEdit_3.text()
-        fechallegada = self.vuelo.dateEdit_4.text()
-        codvuelo =self.vuelo.lineEdit_13.text()
-        destino = self.vuelo.comboBox.currentText()
-        carga= self.vuelo.comboBox_2.currentText()
-        piloto= self.vuelo.comboBox_3.currentText()
-        copiloto= self.vuelo.comboBox_5.currentText()
-        avionid= self.vuelo.comboBox_6.currentText()
-        confirmacionvuelo = "1"
-        aeronit= "1234"
-        pilotoid= buscar_idpiloto(piloto,aeronit)
-        copilotoid= buscar_idcopiloto(copiloto,aeronit)
-        if (carga== "Carga"):
-            tipovuelo= "1"
-        elif (carga== "Pasajeros"):
-            tipovuelo="0"
+        horasalida          = self.vuelo.timeEdit.text()
+        horaentrada         = self.vuelo.timeEdit_2.text()
+        fechasalida         = self.vuelo.dateEdit_3.text()
+        fechallegada        = self.vuelo.dateEdit_4.text()
+        codvuelo            = self.vuelo.lineEdit_13.text()
+        destino             = self.vuelo.comboBox.currentText()
+        carga               = self.vuelo.comboBox_2.currentText()
+        piloto              = self.vuelo.comboBox_3.currentText()
+        copiloto            = self.vuelo.comboBox_5.currentText()
+        avionid             = self.vuelo.comboBox_6.currentText()
+        confirmacionvuelo   = "1"
+        aeronit             = "1234"
+        pilotoid            = buscar_idpiloto(piloto,aeronit)
+        copilotoid          = buscar_idcopiloto(copiloto,aeronit)
+
+        if (carga == "Carga"):
+            tipovuelo = "1"
+        elif (carga == "Pasajeros"):
+            tipovuelo ="0"
         else:
-            tipovuelo="NS"
+            tipovuelo ="NS"
 
         if(len(codvuelo)>0):
             vuelo = formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
@@ -386,22 +377,22 @@ class iniciar:
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        date= self.consultarAgenda.dateEdit.text()
+        date = self.consultarAgenda.dateEdit.text()
 
-        fechallegadacomp= "select fechallegada from vuelo where codvuelo ='{}'".format(n)
+        fechallegadacomp = "select fechallegada from vuelo where codvuelo ='{}'".format(n)
         cursor.execute(fechallegadacomp)
-        fechallegadares= cursor.fetchall()
+        fechallegadares = cursor.fetchall()
 
-        horallegadacomp=  "select horaentrada from vuelo where codvuelo ='{}'".format(n)
+        horallegadacomp = "select horaentrada from vuelo where codvuelo ='{}'".format(n)
         cursor.execute(horallegadacomp)
-        horallegadacres= cursor.fetchall()
+        horallegadacres = cursor.fetchall()
 
         f=fechallegadares[0][0]
         h=horallegadacres[0][0]
 
-        busquedadis= "select codvuelo, confirmacionvuelo, fechallegada, horaentrada from vuelo where confirmacionvuelo='0' and fechallegada='{}' and horaentrada ='{}';".format(f,h)
+        busquedadis = "select codvuelo, confirmacionvuelo, fechallegada, horaentrada from vuelo where confirmacionvuelo='0' and fechallegada='{}' and horaentrada ='{}';".format(f,h)
         cursor.execute(busquedadis)
-        listbusqueda= cursor.fetchall()
+        listbusqueda = cursor.fetchall()
 
         if len(listbusqueda)== 0:
             self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(True)
@@ -444,9 +435,9 @@ class iniciar:
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' ;"
+        cdvuelos = "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' ;"
         cursor.execute(cdvuelos)
-        listcdvuelos= cursor.fetchall()
+        listcdvuelos = cursor.fetchall()
 
         if len(listcdvuelos)>0:
             self.consultarAgenda.show()
@@ -464,16 +455,16 @@ class iniciar:
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        date= self.consultarAgenda.dateEdit.text()
-        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
+        date = self.consultarAgenda.dateEdit.text()
+        cdvuelos = "select codvuelo, destino, tipovuelo from vuelo where confirmacionvuelo= '0' and fechallegada='{}';".format(date)
         cursor.execute(cdvuelos)
-        listcdvuelos= cursor.fetchall()
+        listcdvuelos = cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
-        fila=0
+        fila = 0
         for n in listcdvuelos:
-            columna=0
+            columna = 0
             self.consultarAgenda.tableWidget.insertRow(fila)
             for k in n:
                 celda = QtWidgets.QTableWidgetItem(k)
@@ -487,17 +478,17 @@ class iniciar:
         self.agendamientoVuelos.ls_vuelos.clearContents()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
-        cursor = conexion.cursor()
-        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo;"
+        cursor   = conexion.cursor()
+        cdvuelos = "select codvuelo, destino, tipovuelo from vuelo;"
 
         cursor.execute(cdvuelos)
-        listcdvuelos= cursor.fetchall()
+        listcdvuelos = cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
-        fila=0
+        fila = 0
         for n in listcdvuelos:
-            columna=0
+            columna = 0
             self.agendamientoVuelos.ls_vuelos.insertRow(fila)
             for k in n:
                 celda = QtWidgets.QTableWidgetItem(k)
@@ -515,10 +506,10 @@ class iniciar:
             self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(False)
     
     def ConfirmarSolicitud(self):
-        n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
-        conexion = conexion_aerocampbd()
+        n           = self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
+        conexion    = conexion_aerocampbd()
         print("Conexión exitosa")
-        cursor = conexion.cursor()
+        cursor      = conexion.cursor()
 
         cfvuelos= "update vuelo set confirmacionvuelo='0'where codvuelo='{}';".format(n)
         borrartupla= "delete from soltemp where codvuelo='{}';".format(n)
