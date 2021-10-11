@@ -35,52 +35,9 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.crearVuelo.setFont(font)
         self.crearVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.verticalLayoutWidget = QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(330, 150, 191, 191))
-        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.comboBox_2 = QComboBox(self.verticalLayoutWidget)
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setObjectName(u"comboBox_2")
-        self.comboBox_2.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
-        self.verticalLayout.addWidget(self.comboBox_2)
-
-        self.comboBox_3 = QComboBox(self.verticalLayoutWidget)
-        self.comboBox_3.addItem("")
-        self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
-        self.verticalLayout.addWidget(self.comboBox_3)
-
-        self.comboBox_5 = QComboBox(self.verticalLayoutWidget)
-        self.comboBox_5.addItem("")
-        self.comboBox_5.setObjectName(u"comboBox_5")
-        self.comboBox_5.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
-        self.verticalLayout.addWidget(self.comboBox_5)
-
-        self.comboBox_6 = QComboBox(self.verticalLayoutWidget)
-        self.comboBox_6.addItem("")
-        self.comboBox_6.setObjectName(u"comboBox_6")
-        self.comboBox_6.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
-        self.verticalLayout.addWidget(self.comboBox_6)
-
-        self.comboBox_4 = QComboBox(self.verticalLayoutWidget)
-        self.comboBox_4.addItem("")
-        self.comboBox_4.setObjectName(u"comboBox_4")
-        self.comboBox_4.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
-        self.verticalLayout.addWidget(self.comboBox_4)
-
         self.formLayoutWidget_6 = QWidget(self.centralwidget)
         self.formLayoutWidget_6.setObjectName(u"formLayoutWidget_6")
-        self.formLayoutWidget_6.setGeometry(QRect(60, 170, 221, 161))
+        self.formLayoutWidget_6.setGeometry(QRect(60, 170, 221, 141))
         self.formLayout_6 = QFormLayout(self.formLayoutWidget_6)
         self.formLayout_6.setObjectName(u"formLayout_6")
         self.formLayout_6.setVerticalSpacing(20)
@@ -172,6 +129,63 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(1, QFormLayout.FieldRole, self.timeEdit_2)
 
+        self.formLayoutWidget = QWidget(self.centralwidget)
+        self.formLayoutWidget.setObjectName(u"formLayoutWidget")
+        self.formLayoutWidget.setGeometry(QRect(327, 170, 221, 141))
+        self.formLayout = QFormLayout(self.formLayoutWidget)
+        self.formLayout.setObjectName(u"formLayout")
+        self.formLayout.setVerticalSpacing(20)
+        self.formLayout.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.formLayoutWidget)
+        self.label.setObjectName(u"label")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+
+        self.comboBox_2 = QComboBox(self.formLayoutWidget)
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.setObjectName(u"comboBox_2")
+        self.comboBox_2.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.comboBox_2)
+
+        self.label_2 = QLabel(self.formLayoutWidget)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+
+        self.comboBox_3 = QComboBox(self.formLayoutWidget)
+        self.comboBox_3.addItem("")
+        self.comboBox_3.setObjectName(u"comboBox_3")
+        self.comboBox_3.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.comboBox_3)
+
+        self.label_4 = QLabel(self.formLayoutWidget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_4)
+
+        self.comboBox_5 = QComboBox(self.formLayoutWidget)
+        self.comboBox_5.addItem("")
+        self.comboBox_5.setObjectName(u"comboBox_5")
+        self.comboBox_5.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.comboBox_5)
+
+        self.label_5 = QLabel(self.formLayoutWidget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.label_5)
+
+        self.comboBox_6 = QComboBox(self.formLayoutWidget)
+        self.comboBox_6.addItem("")
+        self.comboBox_6.setObjectName(u"comboBox_6")
+        self.comboBox_6.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.comboBox_6)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -183,18 +197,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Programar Vuelo", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
         self.crearVuelo.setText(QCoreApplication.translate("MainWindow", u"Crear Vuelo", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Tipo Vuelo", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"Pasajeros", None))
-        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"Carga", None))
-
-        self.comboBox_3.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Piloto", None))
-
-        self.comboBox_5.setItemText(0, QCoreApplication.translate("MainWindow", u"Selecconar Copiloto", None))
-
-        self.comboBox_6.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Avion", None))
-
-        self.comboBox_4.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Vuelo", None))
-
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Fecha Salida", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Fecha llegada", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Cod. Vuelo", None))
@@ -209,5 +211,19 @@ class Ui_MainWindow(object):
         self.timeEdit.setDisplayFormat(QCoreApplication.translate("MainWindow", u"h:mm", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Hora llegada", None))
         self.timeEdit_2.setDisplayFormat(QCoreApplication.translate("MainWindow", u"h:mm", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Tipo de Vuelo", None))
+        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Tipo Vuelo", None))
+        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"Pasajeros", None))
+        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"Carga", None))
+
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Piloto", None))
+        self.comboBox_3.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Piloto", None))
+
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Copiloto", None))
+        self.comboBox_5.setItemText(0, QCoreApplication.translate("MainWindow", u"Selecconar Copiloto", None))
+
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Avion", None))
+        self.comboBox_6.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Avion", None))
+
     # retranslateUi
 
