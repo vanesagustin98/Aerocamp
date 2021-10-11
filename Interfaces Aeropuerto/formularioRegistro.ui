@@ -145,6 +145,21 @@
      <string>Pasto</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Bogota</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Medellin</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cali</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">

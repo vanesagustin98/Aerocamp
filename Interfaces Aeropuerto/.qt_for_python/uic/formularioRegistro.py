@@ -3,20 +3,15 @@
 ################################################################################
 ## Form generated from reading UI file 'formularioRegistro.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.0
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QWidget)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 import logo usuario_rc
 
 class Ui_Form(object):
@@ -55,6 +50,9 @@ class Ui_Form(object):
         self.comboBox = QComboBox(Form)
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setGeometry(QRect(310, 100, 141, 22))
         self.comboBox.setStyleSheet(u"background-color: rgb(255, 255, 255);")
@@ -86,6 +84,9 @@ class Ui_Form(object):
         self.pushButton.setText(QCoreApplication.translate("Form", u"Enviar", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("Form", u"Selccionar Ciudad", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("Form", u"Pasto", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("Form", u"Bogota", None))
+        self.comboBox.setItemText(3, QCoreApplication.translate("Form", u"Medellin", None))
+        self.comboBox.setItemText(4, QCoreApplication.translate("Form", u"Cali", None))
 
         self.label_6.setText("")
     # retranslateUi

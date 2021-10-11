@@ -134,6 +134,11 @@
       </property>
       <item>
        <property name="text">
+        <string>Seleccionar Tipo Propulsion</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>Reacción</string>
        </property>
       </item>
@@ -154,7 +159,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>220</x>
      <y>10</y>
      <width>121</width>
      <height>111</height>

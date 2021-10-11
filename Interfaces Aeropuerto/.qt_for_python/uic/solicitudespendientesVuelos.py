@@ -12,13 +12,14 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
+import logo usuario_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(509, 185)
+        MainWindow.resize(506, 223)
         MainWindow.setMinimumSize(QSize(0, 0))
         MainWindow.setMaximumSize(QSize(1456156, 1456156))
         palette = QPalette()
@@ -85,19 +86,20 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(110, 30, 91, 21))
+        self.label.setGeometry(QRect(270, 20, 91, 21))
         font = QFont()
         font.setPointSize(8)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
         self.cb_listaVuelos = QComboBox(self.centralwidget)
+        self.cb_listaVuelos.addItem("")
         self.cb_listaVuelos.setObjectName(u"cb_listaVuelos")
-        self.cb_listaVuelos.setGeometry(QRect(240, 30, 131, 22))
+        self.cb_listaVuelos.setGeometry(QRect(240, 50, 181, 22))
         self.cb_listaVuelos.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.bt_buscarDisponibilidad = QPushButton(self.centralwidget)
         self.bt_buscarDisponibilidad.setObjectName(u"bt_buscarDisponibilidad")
-        self.bt_buscarDisponibilidad.setGeometry(QRect(30, 90, 111, 41))
+        self.bt_buscarDisponibilidad.setGeometry(QRect(30, 140, 111, 41))
         palette1 = QPalette()
         palette1.setBrush(QPalette.Active, QPalette.WindowText, brush)
         brush6 = QBrush(QColor(170, 170, 255, 255))
@@ -151,7 +153,7 @@ class Ui_MainWindow(object):
         self.bt_confirmarSolicitud = QPushButton(self.centralwidget)
         self.bt_confirmarSolicitud.setObjectName(u"bt_confirmarSolicitud")
         self.bt_confirmarSolicitud.setEnabled(False)
-        self.bt_confirmarSolicitud.setGeometry(QRect(190, 90, 111, 41))
+        self.bt_confirmarSolicitud.setGeometry(QRect(190, 140, 111, 41))
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush6)
@@ -203,7 +205,7 @@ class Ui_MainWindow(object):
         self.bt_rechazarSolicitud = QPushButton(self.centralwidget)
         self.bt_rechazarSolicitud.setObjectName(u"bt_rechazarSolicitud")
         self.bt_rechazarSolicitud.setEnabled(False)
-        self.bt_rechazarSolicitud.setGeometry(QRect(350, 90, 111, 41))
+        self.bt_rechazarSolicitud.setGeometry(QRect(340, 140, 111, 41))
         palette3 = QPalette()
         palette3.setBrush(QPalette.Active, QPalette.Button, brush6)
         palette3.setBrush(QPalette.Active, QPalette.ButtonText, brush)
@@ -221,6 +223,14 @@ class Ui_MainWindow(object):
         palette3.setBrush(QPalette.Disabled, QPalette.Window, brush6)
         self.bt_rechazarSolicitud.setPalette(palette3)
         self.bt_rechazarSolicitud.setStyleSheet(u"background-color: rgb(170, 170, 255);")
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(50, 20, 141, 71))
+        self.label_2.setStyleSheet(u"border-image: url(:/cct/iconoavion.jpg);")
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(30, 110, 231, 16))
+        self.label_3.setStyleSheet(u"color: rgb(85, 0, 127);")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -234,8 +244,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Solicitudes Pendientes de Vuelos", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Codigo de Vuelo", None))
+        self.cb_listaVuelos.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar Vuelo", None))
+
         self.bt_buscarDisponibilidad.setText(QCoreApplication.translate("MainWindow", u"Buscar Disponibilidad", None))
         self.bt_confirmarSolicitud.setText(QCoreApplication.translate("MainWindow", u"Confirmar Solicitud", None))
         self.bt_rechazarSolicitud.setText(QCoreApplication.translate("MainWindow", u"Rechazar Solicitud", None))
+        self.label_2.setText("")
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:9pt;\">Seleccione la operacion que desa realizar</span></p></body></html>", None))
     # retranslateUi
 

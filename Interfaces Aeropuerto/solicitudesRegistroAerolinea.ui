@@ -41,6 +41,11 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
+   <item>
+    <property name="text">
+     <string>Seleccionar Aerolinea</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">

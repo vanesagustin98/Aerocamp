@@ -24,19 +24,13 @@ class iniciar:
         self.registrarPiloto = uic.loadUi("registrarPiloto.ui")
         self.solicitudesPendientesVuelos = uic.loadUi("solicitudesPendientesVuelos.ui")
         self.solicitudesRegistroAerolinea = uic.loadUi("solicitudesRegistroAerolinea.ui")
-        self.usuarioAerolinea = uic.loadUi("usuarioAerolinea.ui")
         self.vuelo = uic.loadUi("vuelo.ui")
-        self.dialogoVueloProgramado = uic.loadUi("dialogoVueloProgramado.ui")
-        self.dialogoDisponibilidad = uic.loadUi("dialogoDisponibilidad.ui")
-        self.dialogoAgendamiento = uic.loadUi("dialogoAgendamiento.ui")
-        self.dialogoCampos = uic.loadUi("dialogoCampos.ui")
-        self.dialogoCamposIncorrectos = uic.loadUi("dialogoCamposIncorrectos.ui")
-        self.dialogoNoVuelosProgramados = uic.loadUi("dialogoNOvuelosprogramados.ui")
+        self.dialogo = uic.loadUi("dialogo.ui")
+
         
         self.aeropuerto.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
         self.agendamientoVuelos.label_2.setPixmap(QtGui.QPixmap("iconoagenda.jpg"))
         self.autenticacion.label_2.setPixmap(QtGui.QPixmap("iconoiniciosesion.jpg"))
-        self.autenticacion.label.setPixmap(QtGui.QPixmap("iconoformulario.jpg"))
         self.formularioRegistro.label_6.setPixmap(QtGui.QPixmap("iconoformulario.jpg"))
         self.registrarAvion.label.setPixmap(QtGui.QPixmap("iconoregistroavion.jpg"))
         self.registrarCopiloto.label.setPixmap(QtGui.QPixmap("iconopiloto.jpg"))
@@ -191,7 +185,7 @@ class iniciar:
                 print(fechasalida, horasalida, fechallegada, horallegada, cdvuelo, destino)
 
 
-                self.dialogoVueloProgramado.show()
+                self.dialogo.show()
                 self.vuelo.lineEdit_15.setText("")
                 self.vuelo.lineEdit_16.setText("")
                 self.vuelo.lineEdit_17.setText("")
@@ -206,13 +200,12 @@ class iniciar:
                 self.vuelo.lineEdit_13.setText("")
                 self.vuelo.close()
             else:
-                self.dialogoCamposIncorrectos.show()
+                self.dialogo.show()
 
         else:
-            self.dialogoCampos.show()
+            self.dialogo.show()
 
 
-        #self.dialogoVueloProgramado.show()
 
     def BuscarDisponibilidad(self):
         ##aquiuiiii
@@ -241,13 +234,13 @@ class iniciar:
 
         if len(listbusqueda)== 0:
             self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(True)
-            self.dialogoDisponibilidad.label.setText("Hay espacio en la agenda para programar el vuelo")
-            self.dialogoDisponibilidad.show()
+            self.dialogo.label.setText("Hay espacio en la agenda para programar el vuelo")
+            self.dialogo.show()
         else: 
             self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(False)
             self.solicitudesPendientesVuelos.bt_rechazarSolicitud.setEnabled(True)
-            self.dialogoDisponibilidad.label.setText("No hay espacio en la agenda para programar el vuelo")
-            self.dialogoDisponibilidad.show()
+            self.dialogo.label.setText("No hay espacio en la agenda para programar el vuelo")
+            self.dialogo.show()
         
         conexion.commit()
         print("Consulta hecha con éxito")
@@ -293,7 +286,7 @@ class iniciar:
         if len(listcdvuelos)>0:
             self.consultarAgenda.show()
         else:
-            self.dialogoNoVuelosProgramados.show()
+            self.dialogo.show()
 
         print(type(listcdvuelos))
         conexion.commit()
@@ -371,7 +364,7 @@ class iniciar:
         conexion.close()
         self.solicitudesPendientesVuelos.close()
 
-        self.dialogoVueloProgramado.show()
+        self.dialogo.show()
         
     def RealizarSolicitud(self):       
         conexion = conexion_aerocampbd()
@@ -387,7 +380,7 @@ class iniciar:
         
         conexion.close()
 
-        self.dialogoAgendamiento.show()
+        self.dialogo.show()
         
     def Salir(self):
         sys.exit()

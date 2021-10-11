@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(420, 350)
+        Form.resize(420, 339)
         self.tabWidget = QTabWidget(Form)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(0, 0, 421, 351))
@@ -81,6 +81,11 @@ class Ui_Form(object):
         self.lineEdit_5.setGeometry(QRect(180, 80, 131, 20))
         self.lineEdit_5.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.comboBox = QComboBox(self.tab_2)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setGeometry(QRect(180, 120, 131, 22))
         self.comboBox.setStyleSheet(u"background-color: rgb(255, 255, 255);")
@@ -100,7 +105,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -118,6 +123,12 @@ class Ui_Form(object):
         self.label_6.setText(QCoreApplication.translate("Form", u"Ciudad", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"Correo Electronico", None))
         self.label_8.setText(QCoreApplication.translate("Form", u"Telefono", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("Form", u"Seleccionar Ciudad", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("Form", u"Pasto", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("Form", u"Bogota", None))
+        self.comboBox.setItemText(3, QCoreApplication.translate("Form", u"Medellin", None))
+        self.comboBox.setItemText(4, QCoreApplication.translate("Form", u"Cali", None))
+
         self.pushButton_2.setText(QCoreApplication.translate("Form", u"Confirmar Datos", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Form", u"                    Datos Aerolinea               ", None))
     # retranslateUi

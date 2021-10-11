@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>447</width>
+    <width>413</width>
     <height>470</height>
    </rect>
   </property>
@@ -16,135 +16,11 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(232, 228, 255);</string>
   </property>
-  <widget class="QWidget" name="formLayoutWidget_11">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>170</y>
-     <width>291</width>
-     <height>121</height>
-    </rect>
-   </property>
-   <layout class="QFormLayout" name="formLayout_12">
-    <property name="labelAlignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-    <property name="formAlignment">
-     <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-    </property>
-    <property name="verticalSpacing">
-     <number>20</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_43">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(232, 228, 255);</string>
-      </property>
-      <property name="text">
-       <string>Nombre</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_24">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_44">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(232, 228, 255);</string>
-      </property>
-      <property name="text">
-       <string>ID</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_25">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_45">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(232, 228, 255);</string>
-      </property>
-      <property name="text">
-       <string>N° de licencia</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit_26">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="formLayoutWidget_9">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>290</y>
-     <width>291</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <layout class="QFormLayout" name="formLayout_13">
-    <property name="labelAlignment">
-     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-    </property>
-    <property name="verticalSpacing">
-     <number>20</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_46">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(232, 228, 255);</string>
-      </property>
-      <property name="text">
-       <string>Horas de Experiencia</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_47">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(232, 228, 255);</string>
-      </property>
-      <property name="text">
-       <string>Ultima Revision Medica</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QSpinBox" name="spinBox_10">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QDateEdit" name="dateEdit_9">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="bt_registrar_piloto_7">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>400</y>
+     <x>120</x>
+     <y>390</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -159,8 +35,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>10</y>
+     <x>150</x>
+     <y>20</y>
      <width>121</width>
      <height>131</height>
     </rect>
@@ -171,6 +47,112 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_12">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>170</y>
+     <width>291</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_14">
+    <property name="labelAlignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="formAlignment">
+     <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+    </property>
+    <property name="verticalSpacing">
+     <number>20</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_48">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(232, 228, 255);</string>
+      </property>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_27">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_49">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(232, 228, 255);</string>
+      </property>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_28">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_50">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(232, 228, 255);</string>
+      </property>
+      <property name="text">
+       <string>N° de licencia</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_29">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_51">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(232, 228, 255);</string>
+      </property>
+      <property name="text">
+       <string>Horas de Experiencia</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QSpinBox" name="spinBox_11">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_52">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(232, 228, 255);</string>
+      </property>
+      <property name="text">
+       <string>Ultima Revision Medica</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDateEdit" name="dateEdit_10">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>

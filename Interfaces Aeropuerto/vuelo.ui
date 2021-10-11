@@ -17,45 +17,13 @@
    <string notr="true">background-color: rgb(232, 228, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QRadioButton" name="radioButton_3">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>80</y>
-      <width>53</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(232, 228, 255);</string>
-    </property>
-    <property name="text">
-     <string>Carga</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_2">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>40</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(232, 228, 255);</string>
-    </property>
-    <property name="text">
-     <string>Pasajeros</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>350</x>
       <y>30</y>
-      <width>131</width>
-      <height>91</height>
+      <width>171</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -97,6 +65,28 @@
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Seleccionar Tipo Vuelo</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pasajeros</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Carga</string>
+        </property>
+       </item>
+      </widget>
+     </item>
      <item>
       <widget class="QComboBox" name="comboBox_3">
        <property name="styleSheet">
@@ -153,7 +143,7 @@
       <x>60</x>
       <y>170</y>
       <width>221</width>
-      <height>171</height>
+      <height>161</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_6">
@@ -229,6 +219,26 @@
        <item>
         <property name="text">
          <string>Seleccionar Lugar</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pasto</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Bogota</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Medellin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Cali</string>
         </property>
        </item>
       </widget>
