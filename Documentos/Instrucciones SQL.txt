@@ -1,3 +1,7 @@
 Instrucciones SQL
+--AEROPUERTO
 insert into usuarios values ('P','1111','1234')
 insert into aeropuerto values ('1111','AeroCamp','Pasto','aerocamp@gmail.com','7202020')
+--AEROLINEA
+insert into usuarios values ('A','1234','0000')
+insert into aerolinea values ('1234','Sat','Pasto','satp@gmail.com','7202020')
