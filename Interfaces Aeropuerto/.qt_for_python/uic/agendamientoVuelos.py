@@ -18,11 +18,11 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(856, 470)
+        Form.resize(702, 470)
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.bt_realizarSolicitud = QPushButton(Form)
         self.bt_realizarSolicitud.setObjectName(u"bt_realizarSolicitud")
-        self.bt_realizarSolicitud.setGeometry(QRect(180, 400, 211, 41))
+        self.bt_realizarSolicitud.setGeometry(QRect(80, 380, 211, 41))
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -90,15 +90,15 @@ class Ui_Form(object):
         self.bt_realizarSolicitud.setInputMethodHints(Qt.ImhNone)
         self.bt_modificarDatos = QPushButton(Form)
         self.bt_modificarDatos.setObjectName(u"bt_modificarDatos")
-        self.bt_modificarDatos.setGeometry(QRect(600, 300, 181, 41))
+        self.bt_modificarDatos.setGeometry(QRect(430, 280, 181, 41))
         self.bt_modificarDatos.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.bt_eliminarVuelo = QPushButton(Form)
         self.bt_eliminarVuelo.setObjectName(u"bt_eliminarVuelo")
-        self.bt_eliminarVuelo.setGeometry(QRect(620, 350, 141, 31))
+        self.bt_eliminarVuelo.setGeometry(QRect(450, 330, 141, 31))
         self.bt_eliminarVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(90, 20, 361, 31))
+        self.label.setGeometry(QRect(30, 20, 361, 31))
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -107,15 +107,27 @@ class Ui_Form(object):
         self.label.setStyleSheet(u"color: rgb(85, 0, 127);")
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(630, 150, 121, 141))
+        self.label_2.setGeometry(QRect(460, 130, 121, 141))
         self.label_2.setPixmap(QPixmap(u":/cct/iconoagenda.jpg"))
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(560, 70, 261, 71))
-        self.ls_vuelos = QTableView(Form)
+        self.label_3.setGeometry(QRect(400, 50, 261, 71))
+        self.ls_vuelos = QTableWidget(Form)
+        if (self.ls_vuelos.columnCount() < 2):
+            self.ls_vuelos.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.ls_vuelos.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.ls_vuelos.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        if (self.ls_vuelos.rowCount() < 1):
+            self.ls_vuelos.setRowCount(1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.ls_vuelos.setVerticalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.ls_vuelos.setItem(0, 0, __qtablewidgetitem3)
         self.ls_vuelos.setObjectName(u"ls_vuelos")
-        self.ls_vuelos.setGeometry(QRect(30, 70, 501, 291))
-        self.ls_vuelos.setStyleSheet(u"background-color: rgb(254, 254, 254);")
+        self.ls_vuelos.setGeometry(QRect(70, 70, 231, 281))
+        self.ls_vuelos.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.retranslateUi(Form)
 
@@ -130,5 +142,14 @@ class Ui_Form(object):
         self.label.setText(QCoreApplication.translate("Form", u"Seleccione el vuelo que desesa agendar", None))
         self.label_2.setText("")
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">Recuerda que los vuelos ademas de ser </span></p><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">agendados, tambien pueden ser </span></p><p align=\"center\"><span style=\" font-size:9pt; font-weight:600;\">modificados y eliminados</span></p></body></html>", None))
+        ___qtablewidgetitem = self.ls_vuelos.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"Codigo", None));
+        ___qtablewidgetitem1 = self.ls_vuelos.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Destino", None));
+
+        __sortingEnabled = self.ls_vuelos.isSortingEnabled()
+        self.ls_vuelos.setSortingEnabled(False)
+        self.ls_vuelos.setSortingEnabled(__sortingEnabled)
+
     # retranslateUi
 

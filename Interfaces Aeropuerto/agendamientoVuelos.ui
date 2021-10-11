@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>856</width>
+    <width>702</width>
     <height>470</height>
    </rect>
   </property>
@@ -19,8 +19,8 @@
   <widget class="QPushButton" name="bt_realizarSolicitud">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>400</y>
+     <x>80</x>
+     <y>380</y>
      <width>211</width>
      <height>41</height>
     </rect>
@@ -459,8 +459,8 @@
   <widget class="QPushButton" name="bt_modificarDatos">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>300</y>
+     <x>430</x>
+     <y>280</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -475,8 +475,8 @@
   <widget class="QPushButton" name="bt_eliminarVuelo">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>350</y>
+     <x>450</x>
+     <y>330</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -491,7 +491,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>30</x>
      <y>20</y>
      <width>361</width>
      <height>31</height>
@@ -514,8 +514,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>150</y>
+     <x>460</x>
+     <y>130</y>
      <width>121</width>
      <height>141</height>
     </rect>
@@ -530,8 +530,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>70</y>
+     <x>400</x>
+     <y>50</y>
      <width>261</width>
      <height>71</height>
     </rect>
@@ -540,18 +540,38 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Recuerda que los vuelos ademas de ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;agendados, tambien pueden ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;modificados y eliminados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTableView" name="ls_vuelos">
+  <widget class="QTableWidget" name="ls_vuelos">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>70</x>
      <y>70</y>
-     <width>501</width>
-     <height>291</height>
+     <width>231</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(254, 254, 254);</string>
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Codigo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Destino</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string/>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>

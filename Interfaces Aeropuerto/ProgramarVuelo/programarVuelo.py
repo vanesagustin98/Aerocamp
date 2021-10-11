@@ -377,23 +377,25 @@ class iniciar:
 
     def SolicitarAgendamiento(self):
         
-        self.model = QStandardItemModel(self.agendamientoVuelos.ls_vuelos)
-        self.model.clear()
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
-        cdvuelos= "select codvuelo, destino, fechasalida, fechallegada from vuelo;"
+        cdvuelos= "select codvuelo, destino, tipovuelo from vuelo;"
+
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
+        fila=0
         for n in listcdvuelos:
+            columna=0
+            self.agendamientoVuelos.ls_vuelos.insertRow(fila)
             for k in n:
-                
-                self.model.setHorizontalHeaderLabels(['Codigo','Destino','Fecha Salida','Fecha llegada'])
-                self.agendamientoVuelos.ls_vuelos.setModel(self.model)
-                # self.model.setItem(1, 1, k)
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
         print(type(listcdvuelos))
         conexion.close()
 
