@@ -19,7 +19,7 @@
   <widget class="QPushButton" name="bt_realizarSolicitud">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>100</x>
      <y>380</y>
      <width>211</width>
      <height>41</height>
@@ -549,9 +549,9 @@
   <widget class="QTableWidget" name="ls_vuelos">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>70</y>
-     <width>271</width>
+     <width>341</width>
      <height>281</height>
     </rect>
    </property>

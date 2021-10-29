@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>322</width>
+    <width>463</width>
     <height>406</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
      <rect>
       <x>30</x>
       <y>60</y>
-      <width>111</width>
+      <width>251</width>
       <height>31</height>
      </rect>
     </property>
@@ -33,7 +33,7 @@
    <widget class="QPushButton" name="bt_consultarAgenda">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>300</x>
       <y>60</y>
       <width>131</width>
       <height>31</height>
@@ -52,7 +52,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>160</x>
       <y>350</y>
       <width>131</width>
       <height>31</height>
@@ -68,9 +68,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>341</width>
+      <x>130</x>
+      <y>20</y>
+      <width>241</width>
       <height>16</height>
      </rect>
     </property>
@@ -84,7 +84,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>110</x>
       <y>110</y>
       <width>251</width>
       <height>16</height>
@@ -104,31 +104,28 @@
      <string>Seleccione el vuelo que desea cancelar</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="tableWidget">
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>151</y>
-      <width>81</width>
-      <height>171</height>
+      <x>90</x>
+      <y>140</y>
+      <width>281</width>
+      <height>192</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>130</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Código de vuelo</string>
-    </property>
+    <column>
+     <property name="text">
+      <string>Codigo</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Destino</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

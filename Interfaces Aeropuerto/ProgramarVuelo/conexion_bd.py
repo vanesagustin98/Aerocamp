@@ -5,6 +5,6 @@ def conexion_aerocampbd():
         host = "localhost" , 
         database = "aerocampbd" ,
         user = "postgres" ,
-        password = "981113"
+        password = "zVGR1233191877"
         )
     return conexion

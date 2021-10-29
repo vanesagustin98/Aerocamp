@@ -192,7 +192,7 @@ class iniciar:
         horasexperienciapiloto  = self.registrarPiloto.spinBox_11.text()
         revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.text()
         aeronit                 = '1234'
-             
+
         if(len(nombrepiloto)>0 and len(idpiloto)>0 and len(nrolicenciapiloto)>0):
             if(idpiloto.isnumeric()):
                     formulario_pilotos(idpiloto,aeronit,nombrepiloto,nrolicenciapiloto,horasexperienciapiloto,revisionmedicapiloto)
@@ -488,12 +488,14 @@ class iniciar:
 
         print(type(listcdvuelos))
         conexion.commit()
-        print("Consulta hecha con éxito")
+        print("Consulta hecha con éxito00")
 
         conexion.close()
 
     def consultarAgenda2(self):
-        self.consultarAgenda.tableWidget.clear()
+        self.consultarAgenda.tableWidget.setColumnWidth(0,100)
+        self.consultarAgenda.tableWidget.setColumnWidth(1,100)
+        print("entro")
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor = conexion.cursor()
@@ -504,15 +506,24 @@ class iniciar:
         print(type(listcdvuelos))
         conexion.commit()
         print("Consulta hecha con éxito")
+        fila=0
         for n in listcdvuelos:
+            columna=0
+            self.consultarAgenda.tableWidget.removeRow(fila)
+            self.consultarAgenda.tableWidget.insertRow(fila)
             for k in n:
-                self.consultarAgenda.tableWidget.addItem(k)
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
         print(type(listcdvuelos))
         conexion.close()
 
 
     def SolicitarAgendamiento(self):
-        self.agendamientoVuelos.ls_vuelos.clearContents()
+        self.agendamientoVuelos.ls_vuelos.setColumnWidth(0,162)
+        self.agendamientoVuelos.ls_vuelos.setColumnWidth(1,162)
+        
         conexion = conexion_aerocampbd()
         print("Conexión exitosa")
         cursor   = conexion.cursor()
@@ -526,6 +537,7 @@ class iniciar:
         fila = 0
         for n in listcdvuelos:
             columna = 0
+            self.agendamientoVuelos.ls_vuelos.removeRow(fila)
             self.agendamientoVuelos.ls_vuelos.insertRow(fila)
             for k in n:
                 celda = QtWidgets.QTableWidgetItem(k)

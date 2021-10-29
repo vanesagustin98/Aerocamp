@@ -22,7 +22,7 @@ class Ui_Form(object):
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.bt_realizarSolicitud = QPushButton(Form)
         self.bt_realizarSolicitud.setObjectName(u"bt_realizarSolicitud")
-        self.bt_realizarSolicitud.setGeometry(QRect(80, 380, 211, 41))
+        self.bt_realizarSolicitud.setGeometry(QRect(100, 380, 211, 41))
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -90,10 +90,12 @@ class Ui_Form(object):
         self.bt_realizarSolicitud.setInputMethodHints(Qt.ImhNone)
         self.bt_modificarDatos = QPushButton(Form)
         self.bt_modificarDatos.setObjectName(u"bt_modificarDatos")
+        self.bt_modificarDatos.setEnabled(False)
         self.bt_modificarDatos.setGeometry(QRect(430, 280, 181, 41))
         self.bt_modificarDatos.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.bt_eliminarVuelo = QPushButton(Form)
         self.bt_eliminarVuelo.setObjectName(u"bt_eliminarVuelo")
+        self.bt_eliminarVuelo.setEnabled(False)
         self.bt_eliminarVuelo.setGeometry(QRect(450, 330, 141, 31))
         self.bt_eliminarVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.label = QLabel(Form)
@@ -119,14 +121,8 @@ class Ui_Form(object):
         self.ls_vuelos.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.ls_vuelos.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        if (self.ls_vuelos.rowCount() < 1):
-            self.ls_vuelos.setRowCount(1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.ls_vuelos.setVerticalHeaderItem(0, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.ls_vuelos.setItem(0, 0, __qtablewidgetitem3)
         self.ls_vuelos.setObjectName(u"ls_vuelos")
-        self.ls_vuelos.setGeometry(QRect(70, 70, 231, 281))
+        self.ls_vuelos.setGeometry(QRect(30, 70, 341, 281))
         self.ls_vuelos.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.retranslateUi(Form)
@@ -146,10 +142,5 @@ class Ui_Form(object):
         ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"Codigo", None));
         ___qtablewidgetitem1 = self.ls_vuelos.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Destino", None));
-
-        __sortingEnabled = self.ls_vuelos.isSortingEnabled()
-        self.ls_vuelos.setSortingEnabled(False)
-        self.ls_vuelos.setSortingEnabled(__sortingEnabled)
-
     # retranslateUi
 
