@@ -90,12 +90,12 @@ class Ui_Form(object):
         self.bt_realizarSolicitud.setInputMethodHints(Qt.ImhNone)
         self.bt_modificarDatos = QPushButton(Form)
         self.bt_modificarDatos.setObjectName(u"bt_modificarDatos")
-        self.bt_modificarDatos.setEnabled(False)
+        self.bt_modificarDatos.setEnabled(True)
         self.bt_modificarDatos.setGeometry(QRect(430, 280, 181, 41))
         self.bt_modificarDatos.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.bt_eliminarVuelo = QPushButton(Form)
         self.bt_eliminarVuelo.setObjectName(u"bt_eliminarVuelo")
-        self.bt_eliminarVuelo.setEnabled(False)
+        self.bt_eliminarVuelo.setEnabled(True)
         self.bt_eliminarVuelo.setGeometry(QRect(450, 330, 141, 31))
         self.bt_eliminarVuelo.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.label = QLabel(Form)
@@ -115,12 +115,14 @@ class Ui_Form(object):
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(400, 50, 261, 71))
         self.ls_vuelos = QTableWidget(Form)
-        if (self.ls_vuelos.columnCount() < 2):
-            self.ls_vuelos.setColumnCount(2)
+        if (self.ls_vuelos.columnCount() < 3):
+            self.ls_vuelos.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
         self.ls_vuelos.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.ls_vuelos.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.ls_vuelos.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.ls_vuelos.setObjectName(u"ls_vuelos")
         self.ls_vuelos.setGeometry(QRect(30, 70, 341, 281))
         self.ls_vuelos.setStyleSheet(u"background-color: rgb(255, 255, 255);")
@@ -141,6 +143,8 @@ class Ui_Form(object):
         ___qtablewidgetitem = self.ls_vuelos.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"Codigo", None));
         ___qtablewidgetitem1 = self.ls_vuelos.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Destino", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"Fecha de salida", None));
+        ___qtablewidgetitem2 = self.ls_vuelos.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Estado", None));
     # retranslateUi
 

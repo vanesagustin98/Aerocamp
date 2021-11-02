@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>346</height>
+    <width>592</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
    <widget class="QPushButton" name="bt_programarVuelo">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>130</y>
+      <x>30</x>
+      <y>230</y>
       <width>121</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -41,10 +41,10 @@
    <widget class="QPushButton" name="bt_solicitarAgendamiento">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>130</y>
-      <width>141</width>
-      <height>61</height>
+      <x>420</x>
+      <y>230</y>
+      <width>131</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -61,14 +61,14 @@
    </widget>
    <widget class="QPushButton" name="bt_visualizarDatos">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>130</y>
+      <x>290</x>
+      <y>230</y>
       <width>121</width>
-      <height>61</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -86,8 +86,8 @@
    <widget class="QPushButton" name="bt_cerrarSesion">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>280</y>
+      <x>460</x>
+      <y>300</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -109,10 +109,10 @@ color: rgb(85, 0, 127);</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>220</y>
-      <width>121</width>
-      <height>41</height>
+      <x>30</x>
+      <y>140</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -125,10 +125,10 @@ color: rgb(85, 0, 127);</string>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>220</y>
-      <width>121</width>
-      <height>41</height>
+      <x>400</x>
+      <y>140</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -141,10 +141,10 @@ color: rgb(85, 0, 127);</string>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>220</y>
-      <width>141</width>
-      <height>41</height>
+      <x>210</x>
+      <y>140</y>
+      <width>161</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -157,7 +157,7 @@ color: rgb(85, 0, 127);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>230</x>
       <y>10</y>
       <width>121</width>
       <height>111</height>
@@ -174,6 +174,27 @@ color: rgb(85, 0, 127);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>230</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Visualizar Vuelos</string>
     </property>
    </widget>
   </widget>

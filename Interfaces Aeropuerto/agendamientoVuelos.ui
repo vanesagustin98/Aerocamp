@@ -458,7 +458,7 @@
   </widget>
   <widget class="QPushButton" name="bt_modificarDatos">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -477,7 +477,7 @@
   </widget>
   <widget class="QPushButton" name="bt_eliminarVuelo">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -565,7 +565,12 @@
    </column>
    <column>
     <property name="text">
-     <string>Destino</string>
+     <string>Fecha de salida</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Estado</string>
     </property>
    </column>
   </widget>

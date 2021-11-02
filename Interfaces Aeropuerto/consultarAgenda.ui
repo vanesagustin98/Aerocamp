@@ -48,7 +48,7 @@
    </widget>
    <widget class="QPushButton" name="bt_cancelarVuelo">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -109,7 +109,7 @@
      <rect>
       <x>90</x>
       <y>140</y>
-      <width>281</width>
+      <width>311</width>
       <height>192</height>
      </rect>
     </property>
@@ -124,6 +124,11 @@
     <column>
      <property name="text">
       <string>Destino</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Fecha de salida</string>
      </property>
     </column>
    </widget>

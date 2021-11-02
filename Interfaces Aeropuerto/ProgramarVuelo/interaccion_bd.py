@@ -50,7 +50,6 @@ def autenticar_usuario(usuario,contrasena):
     else:        
         lcontrasena = lstcontrasena[0][0]
         if lcontrasena == contrasena:
-            print(contrasena)
             ban = True
     conexion.close()
     return ban
@@ -70,10 +69,8 @@ def verificar_identificador(usuario):
         lident = identificador[0][0]
         if lident == "P":
             ident = "P"
-            print(ident)
         elif lident == "A":
             ident = "A"
-            print(ident)
     conexion.close()
     return ident
 
@@ -102,8 +99,7 @@ def listado_pilotos():
     cursor.execute(nom_pilotos)
     listpilotos= cursor.fetchall()
     conexion.commit()
-    conexion.close()
-    print("Consulta hecha con éxito")            
+    conexion.close()        
     return listpilotos
 
 def listado_copilotos():
@@ -114,7 +110,6 @@ def listado_copilotos():
     listcopilotos= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     return listcopilotos
 
 def listado_aviones():
@@ -125,7 +120,6 @@ def listado_aviones():
     listaviones= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     return listaviones
 
 def buscar_idpiloto(nombre, aeronit):
@@ -136,7 +130,6 @@ def buscar_idpiloto(nombre, aeronit):
     pilotoid= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     pilotoid=pilotoid[0][0]
     return pilotoid  
 
@@ -148,7 +141,6 @@ def buscar_idcopiloto(nombre,aeronit):
     copilotoid= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     copilotoid=copilotoid[0][0]
     return copilotoid  
 
@@ -168,8 +160,7 @@ def listado_aerolineasusuario():
     cursor.execute(list_aerousu)
     listusuariosaero= cursor.fetchall()
     conexion.commit()
-    conexion.close()
-    print("Consulta hecha con éxito")            
+    conexion.close()           
     return listusuariosaero
 
 def listado_vuelos():
@@ -179,8 +170,7 @@ def listado_vuelos():
     cursor.execute(list_vuelos)
     listvuelotes= cursor.fetchall()
     conexion.commit()
-    conexion.close()
-    print("Consulta hecha con éxito")            
+    conexion.close()       
     return listvuelotes
 
 def buscar_nitaerolinea(nombre):
@@ -191,7 +181,6 @@ def buscar_nitaerolinea(nombre):
     nitaerolinea= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     nitaerolinea=nitaerolinea[0][0]
     return nitaerolinea
 
@@ -203,7 +192,6 @@ def buscar_correoaerolinea(nombre):
     correoaerolinea= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     correoaerolinea=correoaerolinea[0][0]
     return correoaerolinea
 
@@ -215,7 +203,6 @@ def buscar_ciuaerolinea(nombre):
     ciuaerolinea= cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     ciuaerolinea=ciuaerolinea[0][0]
     return ciuaerolinea
 
@@ -227,7 +214,6 @@ def buscar_telaerolinea(nombre):
     telaerolinea = cursor.fetchall()
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     telaerolinea = telaerolinea[0][0]
     return telaerolinea
 
@@ -238,7 +224,6 @@ def borrar_erolineaformtemp(nombre):
     cursor.execute(borr_aerolinea)
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     return "Borrado c:"
 
 def borrar_vuelosoltemp(codigo):
@@ -248,7 +233,6 @@ def borrar_vuelosoltemp(codigo):
     cursor.execute(borr_vuelo)
     conexion.commit()
     conexion.close()
-    print("Consulta hecha con éxito")
     return "Borrado c:"
 
 def buscarpiloto(idpiloto):
@@ -265,7 +249,6 @@ def buscarpiloto(idpiloto):
     else:        
         lbusqueda = lstbusqueda[0][0]
         if lbusqueda == idpiloto:
-            print(idpiloto)
             ban = False
     conexion.close()
     return ban
@@ -284,7 +267,6 @@ def buscarcopiloto(idcopiloto):
     else:        
         lbusqueda = lstbusqueda[0][0]
         if lbusqueda == idcopiloto:
-            print(idcopiloto)
             ban = False
     conexion.close()
     return ban
