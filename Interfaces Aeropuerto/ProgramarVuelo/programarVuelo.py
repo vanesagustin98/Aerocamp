@@ -52,7 +52,7 @@ class iniciar:
         self.autenticacion.pushButton.clicked.connect(self.autenticarusuario)
         self.aeropuerto.bt_visualizarAerolineas.clicked.connect(self.VisualizarAerolineas)
         self.aerolinea.bt_visualizarDatos.clicked.connect(self.VerDatosAerolinea)
-        self.listadoAerolineas.pushButton.clicked.connect(self.VerListadoAeropuerto)
+        self.listadoAerolineas.pushButton.clicked.connect(self.modificarDatosAerop)
         self.aerolinea.pushButton_4.clicked.connect(self.RegistrarAvion)
         self.aerolinea.pushButton_3.clicked.connect(self.RegistrarCopiloto)
         self.aerolinea.pushButton_2.clicked.connect(self.RegistrarPiloto)
@@ -66,6 +66,7 @@ class iniciar:
         self.modificarDatosAeropuerto.pushButton.clicked.connect(self.registraraerolinea)
         self.solicitudesPendientesVuelos.bt_rechazarSolicitud.clicked.connect(self.rechazarvuelo)
         self.aerolinea.pushButton.clicked.connect(self.visualizarvuelos)
+        self.listadoAerolineas.pushButton_2.clicked.connect(self.eliminarAerolinea)
     
         app.exec()
 
@@ -94,6 +95,7 @@ class iniciar:
         self.visualizarVuelos.show()
 
     def rechazarvuelo(self):
+        
         codigo = self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
         if self.solicitudesPendientesVuelos.cb_listaVuelos.count() == 0:
             self.dialogo.label.setText("No hay solicitudes que rechazar")
@@ -102,6 +104,14 @@ class iniciar:
             borrar_vuelosoltemp(codigo)
             self.dialogo.label.setText("Solicitud rechazada")
             self.dialogo.show()
+            conexion    = conexion_aerocampbd()
+            cursor      = conexion.cursor()
+
+            cfvuelos= "update vuelo set confirmacionvuelo='R'where codvuelo='{}';".format(codigo)
+
+            cursor.execute(cfvuelos)
+            conexion.commit()
+            conexion.close()
         listvuelos = listado_vuelos()
         self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
         for n in listvuelos:
@@ -115,7 +125,7 @@ class iniciar:
             self.dialogo.label.setText("No hay solicitudes que rechazar")
             self.dialogo.show()
         else:
-            borrar_erolineaformtemp(nombre)
+            borrar_aerolineaformtemp(nombre)
             self.dialogo.label.setText("Solicitud rechazada")
             self.dialogo.show()
         listsoliaero    = listado_aerolineasusuario()
@@ -157,7 +167,7 @@ class iniciar:
                 formulario_usuario(identificador,usuario,contrasena)
                 formulario_registrosaerolineas(nombre_aerolinea,nit_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
 
-                borrar_erolineaformtemp(nombre_aerolinea)
+                borrar_aerolineaformtemp(nombre_aerolinea)
                 listsoliaero = listado_aerolineasusuario()
                 self.solicitudesRegistroAerolinea.comboBox.clear()
                 for n in listsoliaero:
@@ -330,7 +340,7 @@ class iniciar:
     def RegistrarPiloto(self):
         self.registrarPiloto.show()
 
-    def VerListadoAeropuerto(self):
+    def modificarDatosAerop(self):
         self.modificarDatosAeropuerto.show()
 
     def VerDatosAerolinea(self):
@@ -410,8 +420,16 @@ class iniciar:
 
         if(len(codvuelo)>0):
             vuelo = formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
-            self.dialogo.label.setText("Se ha registrado el vuelo correctamente")
             self.dialogo.show()
+            conexion    = conexion_aerocampbd()
+            cursor      = conexion.cursor()
+
+            cfvuelos= "update vuelo set confirmacionvuelo='C'where codvuelo='{}';".format(codvuelo)
+            self.dialogo.label.setText("Se ha registrado el vuelo correctamente")
+
+            cursor.execute(cfvuelos)
+            conexion.commit()
+            conexion.close()
             
         else: self.dialogo.label.setText("Todos los campos se deben rellenar")
         self.dialogo.show()
@@ -419,39 +437,45 @@ class iniciar:
         self.vuelo.lineEdit_13.setText("")
 
     def BuscarDisponibilidad(self):
-        n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
-        self.consultarAgenda.tableWidget.clear()
-        conexion = conexion_aerocampbd()
-        cursor = conexion.cursor()
-        date = self.consultarAgenda.dateEdit.text()
-
-        fechallegadacomp = "select fechallegada from vuelo where codvuelo ='{}'".format(n)
-        cursor.execute(fechallegadacomp)
-        fechallegadares = cursor.fetchall()
-
-        horallegadacomp = "select horaentrada from vuelo where codvuelo ='{}'".format(n)
-        cursor.execute(horallegadacomp)
-        horallegadacres = cursor.fetchall()
-
-        f = fechallegadares[0][0]
-        h = horallegadacres[0][0]
-
-        busquedadis = "select codvuelo, confirmacionvuelo, fechallegada, horaentrada from vuelo where confirmacionvuelo='0' and fechallegada='{}' and horaentrada ='{}';".format(f,h)
-        cursor.execute(busquedadis)
-        listbusqueda = cursor.fetchall()
-
-        if len(listbusqueda)== 0:
-            self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(True)
-            self.dialogo.label.setText("Hay espacio en la agenda para programar el vuelo")
+        if (self.solicitudesPendientesVuelos.cb_listaVuelos.count() == 0):
+            self.dialogo.label.setText("No hay solicitudes donde buscar disponibilidad")
             self.dialogo.show()
-        else: 
-            self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(False)
-            self.solicitudesPendientesVuelos.bt_rechazarSolicitud.setEnabled(True)
-            self.dialogo.label.setText("No hay espacio en la agenda para programar el vuelo")
-            self.dialogo.show()
-        
-        conexion.commit()
-        conexion.close()
+        else:
+            n=self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
+            self.consultarAgenda.tableWidget.clear()
+            conexion = conexion_aerocampbd()
+            cursor = conexion.cursor()
+            date = self.consultarAgenda.dateEdit.text()
+
+            fechallegadacomp = "select fechallegada from vuelo where codvuelo ='{}'".format(n)
+            cursor.execute(fechallegadacomp)
+            fechallegadares = cursor.fetchall()
+
+            horallegadacomp = "select horaentrada from vuelo where codvuelo ='{}'".format(n)
+            cursor.execute(horallegadacomp)
+            horallegadacres = cursor.fetchall()
+
+            
+            f = fechallegadares[0][0]
+            h = horallegadacres[0][0]
+
+            busquedadis = "select codvuelo, confirmacionvuelo, fechallegada, horaentrada from vuelo where confirmacionvuelo='0' and fechallegada='{}' and horaentrada ='{}';".format(f,h)
+            cursor.execute(busquedadis)
+            listbusqueda = cursor.fetchall()
+
+            if len(listbusqueda)== 0:
+                self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(True)
+                self.dialogo.label.setText("Hay espacio en la agenda para programar el vuelo")
+                self.dialogo.show()
+            else: 
+                self.solicitudesPendientesVuelos.bt_confirmarSolicitud.setEnabled(False)
+                self.solicitudesPendientesVuelos.bt_rechazarSolicitud.setEnabled(True)
+                self.dialogo.label.setText("No hay espacio en la agenda para programar el vuelo")
+                self.dialogo.show()
+            
+            
+            conexion.commit()
+            conexion.close()
 
     def SolicitudesVuelos(self):
         self.solicitudesPendientesVuelos.cb_listaVuelos.clear()
@@ -510,6 +534,21 @@ class iniciar:
             fila+=1
         conexion.close()
 
+    def ConfirmarSolicitud(self):
+        n           = self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
+        conexion    = conexion_aerocampbd()
+        cursor      = conexion.cursor()
+
+        cfvuelos= "update vuelo set confirmacionvuelo='A'where codvuelo='{}';".format(n)
+        borrartupla= "delete from soltemp where codvuelo='{}';".format(n)
+        cursor.execute(cfvuelos)
+        cursor.execute(borrartupla)
+        conexion.commit()
+        conexion.close()
+        self.solicitudesPendientesVuelos.close()
+        self.dialogo.label.setText("Toca cambiar este dialogo")
+        self.dialogo.show()
+        
     def SolicitarAgendamiento(self):
         self.agendamientoVuelos.ls_vuelos.setColumnWidth(0,100)
         self.agendamientoVuelos.ls_vuelos.setColumnWidth(1,100)
@@ -517,7 +556,7 @@ class iniciar:
         
         conexion = conexion_aerocampbd()
         cursor   = conexion.cursor()
-        cdvuelos = "select codvuelo from soltemp;"
+        cdvuelos = "select codvuelo from vuelo where confirmacionvuelo= 'C';"
 
         cursor.execute(cdvuelos)
         listcdvuelos = cursor.fetchall()
@@ -532,44 +571,67 @@ class iniciar:
                 self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
                 columna+=1
             fila+=1
+        
         conexion.close()
 
         if len(listcdvuelos)>0:
             self.agendamientoVuelos.show()
         else:
-            self.agendamientoVuelos.bt_realizarSolicitud.setEnabled(False)
+            self.agendamientoVuelos.bt_realizarSolicitud.setEnabled(True)
             self.agendamientoVuelos.bt_modificarDatos.setEnabled(False)
             self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(False)
+        self.agendamientoVuelos.update()
         self.agendamientoVuelos.show()
     
-    def ConfirmarSolicitud(self):
-        n           = self.solicitudesPendientesVuelos.cb_listaVuelos.currentText()
-        conexion    = conexion_aerocampbd()
-        cursor      = conexion.cursor()
-
-        cfvuelos= "update vuelo set confirmacionvuelo='0'where codvuelo='{}';".format(n)
-        borrartupla= "delete from soltemp where codvuelo='{}';".format(n)
-        cursor.execute(cfvuelos)
-        cursor.execute(borrartupla)
-        conexion.commit()
-        conexion.close()
-        self.solicitudesPendientesVuelos.close()
-        self.dialogo.label.setText("Toca cambiar este dialogo")
-        self.dialogo.show()
-        
-    def RealizarSolicitud(self):       
+    def RealizarSolicitud(self):
+        row = self.agendamientoVuelos.ls_vuelos.currentRow()  
+        codigo = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
         conexion = conexion_aerocampbd()
         cursor = conexion.cursor()
+        cfvuelos= "update vuelo set confirmacionvuelo='E'where codvuelo='{}';".format(codigo)
+        cursor.execute(cfvuelos)
+        cdvuelos = "select codvuelo from vuelo where confirmacionvuelo= 'C';"
+
+        cursor.execute(cdvuelos)
+        listcdvuelos = cursor.fetchall()
+        conexion.commit()
+        fila = 0
+        for n in listcdvuelos:
+            columna = 0
+            self.agendamientoVuelos.ls_vuelos.removeRow(fila)
+            self.agendamientoVuelos.ls_vuelos.insertRow(fila)
+            for k in n:
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
         ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
         for n in ls:
             cdvuelos= "insert into soltemp values('{}');".format(n.text())
             cursor.execute(cdvuelos)
-
         conexion.commit()
         conexion.close()
+        self.agendamientoVuelos.update()
         self.dialogo.label.setText("La solicitud fue enviada con éxito")
         self.dialogo.show()
         
+    def eliminarAerolinea(self):
+        row = self.listadoAerolineas.listView.currentRow()
+        nombre = self.listadoAerolineas.listView.item(row).text()
+        if self.listadoAerolineas.listView.count() == 0:
+            self.dialogo.label.setText("No hay Aerolineas que eliminar")
+            self.dialogo.show()
+        else:
+            borrar_aerolineaformtemp(nombre)
+            self.dialogo.label.setText("Aerolinea Eliminada")
+            self.dialogo.show()
+        listsoliaero    = listado_aerolineasusuario()
+        self.listadoAerolineas.listView.clear()
+        for n in listsoliaero:
+            for k in n:
+                self.listadoAerolineas.listView.addItem(k)
+        self.listadoAerolineas.update()
+
     def Salir(self):
         self.aerolinea.close()
         self.aeropuerto.close()

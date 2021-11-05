@@ -217,7 +217,7 @@ def buscar_telaerolinea(nombre):
     telaerolinea = telaerolinea[0][0]
     return telaerolinea
 
-def borrar_erolineaformtemp(nombre):
+def borrar_aerolineaformtemp(nombre):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
     borr_aerolinea= "delete from formtemp where nombreaerolinea='{}';".format(nombre)
@@ -270,3 +270,12 @@ def buscarcopiloto(idcopiloto):
             ban = False
     conexion.close()
     return ban
+
+def eliminar_aerolineaformtemp(nombre):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    borr_aerolinea= "delete from aerolinea where nombreaerolinea='{}';".format(nombre)
+    cursor.execute(borr_aerolinea)
+    conexion.commit()
+    conexion.close()
+    return "Borrado c:"
