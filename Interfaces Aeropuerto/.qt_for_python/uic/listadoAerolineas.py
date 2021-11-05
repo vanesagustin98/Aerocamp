@@ -18,25 +18,27 @@ class Ui_Form(object):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.setEnabled(True)
-        Form.resize(301, 303)
+        Form.resize(410, 303)
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.pushButton = QPushButton(Form)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setEnabled(True)
-        self.pushButton.setGeometry(QRect(160, 100, 111, 31))
+        self.pushButton.setGeometry(QRect(260, 70, 111, 31))
         self.pushButton.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.label = QLabel(Form)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 20, 161, 16))
-        self.label.setStyleSheet(u"color: rgb(85, 0, 127);")
         self.pushButton_2 = QPushButton(Form)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setEnabled(True)
-        self.pushButton_2.setGeometry(QRect(160, 160, 111, 31))
+        self.pushButton_2.setGeometry(QRect(260, 160, 111, 31))
         self.pushButton_2.setStyleSheet(u"background-color: rgb(170, 170, 255);")
-        self.listView = QListWidget(Form)
+        self.listView = QTableWidget(Form)
+        if (self.listView.columnCount() < 2):
+            self.listView.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.listView.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.listView.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         self.listView.setObjectName(u"listView")
-        self.listView.setGeometry(QRect(30, 50, 91, 231))
+        self.listView.setGeometry(QRect(10, 20, 211, 251))
         self.listView.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.retranslateUi(Form)
@@ -47,7 +49,10 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Listado de Arolineas", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Modificar Aerolinea", None))
-        self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Nombre Aerol\u00edneas</span></p></body></html>", None))
         self.pushButton_2.setText(QCoreApplication.translate("Form", u"Eliminar Aerolinea", None))
+        ___qtablewidgetitem = self.listView.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"Nombre", None));
+        ___qtablewidgetitem1 = self.listView.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"NIT", None));
     # retranslateUi
 

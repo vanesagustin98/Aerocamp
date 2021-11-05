@@ -77,7 +77,7 @@ class iniciar:
         
         conexion = conexion_aerocampbd()
         cursor   = conexion.cursor()
-        cdvuelos = "select codvuelo,to_char(fechasalida,'YYYY-MM-DD'),confirmacionvuelo from vuelo;"
+        cdvuelos = "select codvuelo,to_char(fechasalida,'YYYY-MM-DD'),confirmacionvuelo from vuelo where aeronit='{}';".format(usuario)
         cursor.execute(cdvuelos)
         listcdvuelos = cursor.fetchall()
         conexion.commit()
@@ -195,6 +195,7 @@ class iniciar:
             self.dialogo.show()
     
     def autenticarusuario(self):
+        global usuario
         usuario     = self.autenticacion.lineEdit.text()
         contrasena  = self.autenticacion.lineEdit_2.text()
 
@@ -221,7 +222,7 @@ class iniciar:
         nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.text()
         horasexperienciapiloto  = self.registrarPiloto.spinBox_11.text()
         revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.text()
-        aeronit                 = '1234'
+        aeronit                 = usuario
 
         if(len(nombrepiloto)>0 and len(idpiloto)>0 and len(nrolicenciapiloto)>0):
             if(idpiloto.isnumeric()):
@@ -232,7 +233,7 @@ class iniciar:
                     nrolicenciapiloto       = self.registrarPiloto.lineEdit_29.clear()
                     horasexperienciapiloto  = self.registrarPiloto.spinBox_11.clear()
                     revisionmedicapiloto    = self.registrarPiloto.dateEdit_10.clear()
-                    aeronit                 = '1234'
+                    aeronit                 = usuario
 
                     self.dialogo.label.setText("Se ha registrado el piloto correctamente")
                     self.dialogo.show()
@@ -250,7 +251,7 @@ class iniciar:
         numerolicencia      = self.registrarCopiloto.lineEdit_26.text()
         horasexperiencia    = self.registrarCopiloto.spinBox_10.text()
         revisionmedica      = self.registrarCopiloto.dateEdit_9.text()
-        aeronit             = "1234"
+        aeronit             = usuario
         
         if(len(nombre)>0 and len(copilotoid)>0 and len(numerolicencia)>0):
             if(copilotoid.isnumeric()):
@@ -276,7 +277,7 @@ class iniciar:
         numeromotor     = self.registrarAvion.lineEdit_10.text()
         pesonominal     = self.registrarAvion.lineEdit_11.text()
         capacidad       = self.registrarAvion.lineEdit_12.text()
-        aeronit         = "1234"
+        aeronit         = usuario
 
         if len(avionid) > 0 and len(modelo) > 0 and len(tipopropulsion) > 0 and len(numeromotor) > 0 and len(pesonominal) and len(capacidad) > 0:
             if numeromotor.isnumeric() and pesonominal.isnumeric() and capacidad.isnumeric():
@@ -346,24 +347,29 @@ class iniciar:
     def VerDatosAerolinea(self):
         self.modicarDatosAerolinea.show()
 
-    def VisualizarAerolineas(self):
-            self.listadoAerolineas.listView.clear()
-            conexion = conexion_aerocampbd()
-            cursor       = conexion.cursor()
-            cdvuelos     = "select nombreaerolinea from aerolinea;"
-            cursor.execute(cdvuelos)
-            listcdvuelos = cursor.fetchall()
-            conexion.commit()
-            
-            for n in listcdvuelos:
-                for k in n:
-                    self.listadoAerolineas.listView.addItem(k)
-            if self.listadoAerolineas.listView.count() == 0:
-                self.dialogo.label.setText("No hay aerolíneas registradas")
-                self.dialogo.show()
-            else:
-                self.listadoAerolineas.show()
-            conexion.close()
+    def VisualizarAerolineas(self):        
+        conexion = conexion_aerocampbd()
+        cursor       = conexion.cursor()
+        cdvuelos     = "select nombreaerolinea, aeronit from aerolinea;"
+        cursor.execute(cdvuelos)
+        listcdvuelos = cursor.fetchall()
+        conexion.commit()
+        fila = 0
+        for n in listcdvuelos:
+            columna = 0 
+            self.listadoAerolineas.listView.removeRow(fila)
+            self.listadoAerolineas.listView.insertRow(fila)
+            for k in n:
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.listadoAerolineas.listView.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
+        if self.listadoAerolineas.listView.rowCount() == 0:
+            self.dialogo.label.setText("No hay aerolíneas registradas")
+            self.dialogo.show()
+        else:
+            self.listadoAerolineas.show()
+        conexion.close()
 
     def Ingresar_aeropuerto(self):
         self.aeropuerto.show()
@@ -376,19 +382,20 @@ class iniciar:
     def LlenarFormulario(self):
         self.formularioRegistro.show()
 
-    def ProgramarVuelo(self):  
+    def ProgramarVuelo(self):
+        aeronit = usuario
         self.vuelo.comboBox_3.clear()
-        listpilotos = listado_pilotos()
+        listpilotos = listado_pilotos(aeronit)
         for n in listpilotos:
             for k in n:
                 self.vuelo.comboBox_3.addItem(k)
         self.vuelo.comboBox_5.clear()
-        listcopilotos = listado_copilotos()
+        listcopilotos = listado_copilotos(aeronit)
         for m in listcopilotos:
             for j in m:
                 self.vuelo.comboBox_5.addItem(j)
         self.vuelo.comboBox_6.clear()
-        listaviones = listado_aviones()
+        listaviones = listado_aviones(aeronit)
         for d in listaviones:
             for a in d:
                 self.vuelo.comboBox_6.addItem(a)       
@@ -407,7 +414,7 @@ class iniciar:
         copiloto            = self.vuelo.comboBox_5.currentText()
         avionid             = self.vuelo.comboBox_6.currentText()
         confirmacionvuelo   = "1"
-        aeronit             = "1234"
+        aeronit             = usuario
         pilotoid            = buscar_idpiloto(piloto,aeronit)
         copilotoid          = buscar_idcopiloto(copiloto,aeronit)
 
@@ -571,17 +578,20 @@ class iniciar:
                 self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
                 columna+=1
             fila+=1
-        
+            print(fila)
+        # self.agendamientoVuelos.ls_vuelos.removeRow(listcdvuelos.count())
         conexion.close()
 
         if len(listcdvuelos)>0:
             self.agendamientoVuelos.show()
-        else:
             self.agendamientoVuelos.bt_realizarSolicitud.setEnabled(True)
+            self.agendamientoVuelos.bt_modificarDatos.setEnabled(True)
+            self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(True)
+        else:
+            self.agendamientoVuelos.show()
+            self.agendamientoVuelos.bt_realizarSolicitud.setEnabled(False)
             self.agendamientoVuelos.bt_modificarDatos.setEnabled(False)
             self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(False)
-        self.agendamientoVuelos.update()
-        self.agendamientoVuelos.show()
     
     def RealizarSolicitud(self):
         row = self.agendamientoVuelos.ls_vuelos.currentRow()  
@@ -596,6 +606,10 @@ class iniciar:
         listcdvuelos = cursor.fetchall()
         conexion.commit()
         fila = 0
+        ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
+        for n in ls:
+            cdvuelos= "insert into soltemp values('{}');".format(n.text())
+            cursor.execute(cdvuelos)
         for n in listcdvuelos:
             columna = 0
             self.agendamientoVuelos.ls_vuelos.removeRow(fila)
@@ -605,32 +619,23 @@ class iniciar:
                 self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
                 columna+=1
             fila+=1
-        ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
-        for n in ls:
-            cdvuelos= "insert into soltemp values('{}');".format(n.text())
-            cursor.execute(cdvuelos)
+            print(fila)
         conexion.commit()
         conexion.close()
-        self.agendamientoVuelos.update()
         self.dialogo.label.setText("La solicitud fue enviada con éxito")
         self.dialogo.show()
         
     def eliminarAerolinea(self):
-        row = self.listadoAerolineas.listView.currentRow()
-        nombre = self.listadoAerolineas.listView.item(row).text()
-        if self.listadoAerolineas.listView.count() == 0:
+        row = self.listadoAerolineas.listView.currentRow()  
+        aeronit = self.listadoAerolineas.listView.item(row,1).text()
+        if self.listadoAerolineas.listView.rowCount() == 0:
             self.dialogo.label.setText("No hay Aerolineas que eliminar")
             self.dialogo.show()
         else:
-            borrar_aerolineaformtemp(nombre)
+            eliminar_aerolineaformtemp(aeronit)
             self.dialogo.label.setText("Aerolinea Eliminada")
             self.dialogo.show()
-        listsoliaero    = listado_aerolineasusuario()
-        self.listadoAerolineas.listView.clear()
-        for n in listsoliaero:
-            for k in n:
-                self.listadoAerolineas.listView.addItem(k)
-        self.listadoAerolineas.update()
+        self.VisualizarAerolineas()
 
     def Salir(self):
         self.aerolinea.close()

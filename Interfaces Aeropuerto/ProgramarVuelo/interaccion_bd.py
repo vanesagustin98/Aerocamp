@@ -92,30 +92,30 @@ def formulario_usuario(identificador,usuario,contrasena):
     conexion.close()
     return "Formulario agregado"
 
-def listado_pilotos():
+def listado_pilotos(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    nom_pilotos= "select nombre from piloto;"
+    nom_pilotos= "select nombre from piloto where aeronit='{}';".format(aeronit)
     cursor.execute(nom_pilotos)
     listpilotos= cursor.fetchall()
     conexion.commit()
     conexion.close()        
     return listpilotos
 
-def listado_copilotos():
+def listado_copilotos(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    nom_copilotos= "select nombre from copiloto;"
+    nom_copilotos= "select nombre from copiloto where aeronit='{}';".format(aeronit)
     cursor.execute(nom_copilotos)
     listcopilotos= cursor.fetchall()
     conexion.commit()
     conexion.close()
     return listcopilotos
 
-def listado_aviones():
+def listado_aviones(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    nom_aviones= "select avionid from avion;"
+    nom_aviones= "select avionid from avion where aeronit='{}';".format(aeronit)
     cursor.execute(nom_aviones)
     listaviones= cursor.fetchall()
     conexion.commit()
@@ -272,10 +272,22 @@ def buscarcopiloto(idcopiloto):
     return ban
 
 def eliminar_aerolineaformtemp(nombre):
+    print(nombre)
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    borr_aerolinea= "delete from aerolinea where nombreaerolinea='{}';".format(nombre)
+    # usuario = "select aeronit from aerolinea where nombreaerolinea ='{}';".format(nombre)
+    borr_avion= "delete from avion where aeronit ='{}';".format(nombre)
+    borr_piloto= "delete from piloto where aeronit ='{}';".format(nombre)
+    borr_copiloto= "delete from copiloto where aeronit ='{}';".format(nombre)
+    borr_vuelos= "delete from vuelo where aeronit ='{}';".format(nombre)
+    borr_aerolinea= "delete from aerolinea where aeronit ='{}';".format(nombre)
+    borr_usuario= "delete from usuarios where usuario ='{}';".format(nombre)
+    cursor.execute(borr_vuelos)
+    cursor.execute(borr_avion)
+    cursor.execute(borr_piloto)
+    cursor.execute(borr_copiloto)
     cursor.execute(borr_aerolinea)
+    cursor.execute(borr_usuario)
     conexion.commit()
     conexion.close()
     return "Borrado c:"
