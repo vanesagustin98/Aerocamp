@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(420, 341)
+        Form.resize(419, 338)
         self.tabWidget = QTabWidget(Form)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(0, 0, 421, 341))
@@ -107,7 +107,7 @@ class Ui_Form(object):
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"AeroCamp", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Datos Aerol\u00ednea", None))
         self.label.setText(QCoreApplication.translate("Form", u"Usuario", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Nueva Contrase\u00f1a", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Repetir Contrase\u00f1a", None))

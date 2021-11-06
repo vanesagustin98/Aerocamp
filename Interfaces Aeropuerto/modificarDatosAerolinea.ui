@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>341</height>
+    <width>419</width>
+    <height>338</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AeroCamp</string>
+   <string>Datos Aerolínea</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">

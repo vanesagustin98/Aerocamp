@@ -463,7 +463,7 @@
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>280</y>
+     <y>260</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -482,7 +482,7 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>330</y>
+     <y>320</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -520,10 +520,10 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>130</y>
+     <x>560</x>
+     <y>100</y>
      <width>121</width>
-     <height>141</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="text">
@@ -537,13 +537,13 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>50</y>
-     <width>261</width>
-     <height>71</height>
+     <y>100</y>
+     <width>151</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Recuerda que los vuelos ademas de ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;agendados, tambien pueden ser &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;modificados y eliminados&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;      Estado:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;C: Vuelo Creado&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;E: Solicitud Enviada&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;A: Vuelo Agendado&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;R: Vuelo Rechazado&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="ls_vuelos">
