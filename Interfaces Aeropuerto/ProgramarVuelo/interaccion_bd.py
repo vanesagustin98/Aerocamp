@@ -162,6 +162,17 @@ def buscar_idcopiloto(nombre,aeronit):
     copilotoid=copilotoid[0][0]
     return copilotoid  
 
+def buscar_identificador(usuario):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_identificador= "select identificador from usuarios where usuario='{}' ;".format(usuario)
+    cursor.execute( bus_identificador)
+    identificador= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    identificador=identificador[0][0]
+    return identificador  
+
 def formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo):
     form_crear_vuelo="insert into vuelo values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}') ".format(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
     conexion = conexion_aerocampbd()
@@ -235,10 +246,10 @@ def buscar_telaerolinea(nombre):
     telaerolinea = telaerolinea[0][0]
     return telaerolinea
 
-def buscar_nitaerolinea2(nombre):
+def buscar_nombreaerolinea2(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    bus_nitaerolinea= "select aeronit from aerolinea where nombreaerolinea='{}';".format(nombre)
+    bus_nitaerolinea= "select nombreaerolinea from aerolinea where aeronit='{}';".format(aeronit)
     cursor.execute( bus_nitaerolinea)
     nitaerolinea= cursor.fetchall()
     conexion.commit()
@@ -246,10 +257,21 @@ def buscar_nitaerolinea2(nombre):
     nitaerolinea=nitaerolinea[0][0]
     return nitaerolinea
 
-def buscar_correoaerolinea2(nombre):
+def buscar_nitaerolinea2(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    bus_correoaerolinea= "select email from aerolinea where nombreaerolinea='{}';".format(nombre)
+    bus_nitaerolinea= "select aeronit from aerolinea where aeronit='{}';".format(aeronit)
+    cursor.execute( bus_nitaerolinea)
+    nitaerolinea= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    nitaerolinea=nitaerolinea[0][0]
+    return nitaerolinea
+
+def buscar_correoaerolinea2(aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_correoaerolinea= "select email from aerolinea where aeronit='{}';".format(aeronit)
     cursor.execute( bus_correoaerolinea)
     correoaerolinea= cursor.fetchall()
     conexion.commit()
@@ -257,10 +279,10 @@ def buscar_correoaerolinea2(nombre):
     correoaerolinea=correoaerolinea[0][0]
     return correoaerolinea
 
-def buscar_ciuaerolinea2(nombre):
+def buscar_ciuaerolinea2(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    bus_ciuaerolinea= "select ciudad from aerolinea where nombreaerolinea='{}';".format(nombre)
+    bus_ciuaerolinea= "select ciudad from aerolinea where aeronit='{}';".format(aeronit)
     cursor.execute( bus_ciuaerolinea)
     ciuaerolinea= cursor.fetchall()
     conexion.commit()
@@ -268,10 +290,10 @@ def buscar_ciuaerolinea2(nombre):
     ciuaerolinea=ciuaerolinea[0][0]
     return ciuaerolinea
 
-def buscar_telaerolinea2(nombre):
+def buscar_telaerolinea2(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    bus_telaerolinea= "select telefono from aerolinea where nombreaerolinea='{}';".format(nombre)
+    bus_telaerolinea= "select telefono from aerolinea where aeronit='{}';".format(aeronit)
     cursor.execute( bus_telaerolinea)
     telaerolinea = cursor.fetchall()
     conexion.commit()
