@@ -1,8 +1,9 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5 import QtGui
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import *
 from conexion_bd import *
 from interaccion_bd import *
+from PySide2.QtWidgets import *
 
 class iniciar:
     def __init__(self):
@@ -60,6 +61,7 @@ class iniciar:
         self.listadoAerolineas.pushButton_2.clicked.connect(self.eliminarAerolinea)
         self.modicarDatosAerolinea.pushButton.clicked.connect(self.registraraerolinea)
         self.modicarDatosAeropuerto.pushButton.clicked.connect(self.modificarAerolinea)
+        self.modicarDatosAeropuerto.pushButton_2.clicked.connect(self.editarDatosAerolinea)
         self.registrarAvion.bt_registrar_piloto_7.clicked.connect(self.enviarAvion)
         self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
         self.registrarPiloto.bt_registrar_piloto_7.clicked.connect(self.enviarpiloto)
@@ -178,18 +180,21 @@ class iniciar:
             tipovuelo ="N"
 
         if(len(codvuelo)>0) and (destino!="Seleccionar Lugar") and (tipovuelo != "N"):
-            formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
+            if codvuelo!= buscar_vuelo(codvuelo):
+                formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
+                self.dialogo.show()
+                conexion    = conexion_aerocampbd()
+                cursor      = conexion.cursor()
+
+                cfvuelos= "update vuelo set confirmacionvuelo='C'where codvuelo='{}';".format(codvuelo)
+                self.dialogo.label.setText("Se ha registrado el vuelo correctamente")
+
+                cursor.execute(cfvuelos)
+                conexion.commit()
+                conexion.close()
+            else: self.dialogo.label.setText("Ya existe un vuelo con este codigo")
             self.dialogo.show()
-            conexion    = conexion_aerocampbd()
-            cursor      = conexion.cursor()
-
-            cfvuelos= "update vuelo set confirmacionvuelo='C'where codvuelo='{}';".format(codvuelo)
-            self.dialogo.label.setText("Se ha registrado el vuelo correctamente")
-
-            cursor.execute(cfvuelos)
-            conexion.commit()
-            conexion.close()
-            
+            print(buscar_vuelo(codvuelo))
         else: self.dialogo.label.setText("Todos los campos se deben rellenar")
         self.dialogo.show()
         
@@ -247,6 +252,15 @@ class iniciar:
                 columna+=1
             fila+=1
         conexion.close()
+
+    def editarDatosAerolinea(self):
+        self.modicarDatosAeropuerto.pushButton.setEnabled(True)
+        self.modicarDatosAeropuerto.lineEdit_2.setEnabled(True)
+        self.modicarDatosAeropuerto.lineEdit_3.setEnabled(True)
+        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(True)
+        self.modicarDatosAeropuerto.lineEdit_6.setEnabled(True)
+        self.modicarDatosAeropuerto.lineEdit_7.setEnabled(True)
+        self.modicarDatosAeropuerto.comboBox.setEnabled(True)
 
     def eliminarAerolinea(self):
         row = self.listadoAerolineas.listView.currentRow()  
@@ -410,9 +424,6 @@ class iniciar:
             self.dialogo.show()
 
     def modificarDatosAerop(self):
-        self.modicarDatosAeropuerto.lineEdit.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_5.setEnabled(True)
         row = self.listadoAerolineas.listView.currentRow()  
         aeronit     = self.listadoAerolineas.listView.item(row,1).text()
         nombre      = buscar_nombreaerolinea2(aeronit)
@@ -430,9 +441,15 @@ class iniciar:
         self.modicarDatosAeropuerto.show()
     
     def modificarDatosAerolineaPropios(self):
-        self.modicarDatosAeropuerto.lineEdit.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_5.setEnabled(True)
+        self.modicarDatosAeropuerto.pushButton.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_2.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_3.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_5.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_6.setEnabled(False)
+        self.modicarDatosAeropuerto.lineEdit_7.setEnabled(False)
+        self.modicarDatosAeropuerto.comboBox.setEnabled(False)
         aeronit     = usuario
         nombre      = buscar_nombreaerolinea2(aeronit)
         ciudad      = buscar_ciuaerolinea2(aeronit)
@@ -620,7 +637,7 @@ class iniciar:
         
         conexion = conexion_aerocampbd()
         cursor   = conexion.cursor()
-        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C';"
+        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C' and aeronit='{}';".format(usuario)
 
         cursor.execute(cdvuelos)
         listcdvuelos = cursor.fetchall()

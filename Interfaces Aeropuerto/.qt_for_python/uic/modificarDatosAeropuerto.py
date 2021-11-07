@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(420, 339)
+        Form.resize(419, 349)
         self.tabWidget = QTabWidget(Form)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(0, 0, 421, 351))
@@ -52,8 +52,12 @@ class Ui_Form(object):
         self.lineEdit_3.setEchoMode(QLineEdit.Password)
         self.pushButton = QPushButton(self.tab)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(150, 240, 111, 31))
+        self.pushButton.setGeometry(QRect(230, 230, 111, 31))
         self.pushButton.setStyleSheet(u"background-color: rgb(170, 170, 255);")
+        self.pushButton_2 = QPushButton(self.tab)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(70, 230, 111, 31))
+        self.pushButton_2.setStyleSheet(u"background-color: rgb(170, 170, 255);")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
@@ -79,7 +83,7 @@ class Ui_Form(object):
         self.lineEdit_4.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.lineEdit_5 = QLineEdit(self.tab_2)
         self.lineEdit_5.setObjectName(u"lineEdit_5")
-        self.lineEdit_5.setEnabled(True)
+        self.lineEdit_5.setEnabled(False)
         self.lineEdit_5.setGeometry(QRect(180, 80, 131, 20))
         self.lineEdit_5.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.lineEdit_6 = QLineEdit(self.tab_2)
@@ -98,18 +102,19 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Datos Aerol\u00ednea", None))
         self.label.setText(QCoreApplication.translate("Form", u"Usuario", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Nueva Contrase\u00f1a", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Repetir Contrase\u00f1a", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Confirmar Datos", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Form", u"Editar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Form", u"                     Datos De Cuenta               ", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"Nombre Aerolinea", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"NIT. Aerolinea", None))

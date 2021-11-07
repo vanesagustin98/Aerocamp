@@ -301,6 +301,17 @@ def buscar_telaerolinea2(aeronit):
     telaerolinea = telaerolinea[0][0]
     return telaerolinea
 
+def buscar_vuelo(codigo):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    bus_vuelo= "select codvuelo from vuelo where codvuelo='{}';".format(codigo)
+    cursor.execute( bus_vuelo)
+    vuelo = cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    vuelo = vuelo[0][0]
+    return vuelo
+
 def borrar_aerolineaformtemp(nombre):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
@@ -354,6 +365,8 @@ def buscarcopiloto(idcopiloto):
             ban = False
     conexion.close()
     return ban
+
+
 
 def eliminar_aerolineaformtemp(nombre):
     print(nombre)
