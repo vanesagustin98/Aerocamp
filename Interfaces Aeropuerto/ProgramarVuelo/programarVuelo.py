@@ -514,9 +514,17 @@ class iniciar:
         codvuelo     = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
         aeronit = usuario
         tipovuelo = buscar_tipovuelo(codvuelo,aeronit)
+        fechasalida = buscar_fechasalida (codvuelo,aeronit)
+        fechallegada = buscar_fechallegada (codvuelo,aeronit)
+        horasalida = buscar_horasalida (codvuelo,aeronit)
+        horallegada = buscar_horallegada (codvuelo,aeronit)
         
         self.vuelo.lineEdit_13.setEnabled(False)
         self.vuelo.lineEdit_13.setText(codvuelo)
+        self.vuelo.dateEdit_3.setDate(fechasalida)
+        self.vuelo.dateEdit_4.setDate(fechallegada)
+        self.vuelo.timeEdit.setDate(horasalida)
+        self.vuelo.timeEdit_2.setDate(horallegada)
         self.vuelo.comboBox_2.setEditText(tipovuelo)
         self.vuelo.show()
 

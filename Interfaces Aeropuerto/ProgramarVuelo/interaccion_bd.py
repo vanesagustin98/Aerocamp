@@ -332,6 +332,50 @@ def buscar_tipovuelo(codvuelo, aeronit):
     buscardato=buscardato[0][0]
     return buscardato  
 
+def buscar_fechasalida(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato  
+
+def buscar_fechallegada(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato  
+
+def buscar_horasalida(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato  
+
+def buscar_horallegada(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato  
+
 def borrar_aerolineaformtemp(nombre):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
