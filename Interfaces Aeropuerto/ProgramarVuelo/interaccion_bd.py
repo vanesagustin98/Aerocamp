@@ -346,7 +346,7 @@ def buscar_fechasalida(codvuelo, aeronit):
 def buscar_fechallegada(codvuelo, aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    buscar= "select fechallegada from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
     cursor.execute(buscar)
     buscardato= cursor.fetchall()
     conexion.commit()
@@ -357,7 +357,7 @@ def buscar_fechallegada(codvuelo, aeronit):
 def buscar_horasalida(codvuelo, aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    buscar= "select horasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
     cursor.execute(buscar)
     buscardato= cursor.fetchall()
     conexion.commit()
@@ -368,7 +368,7 @@ def buscar_horasalida(codvuelo, aeronit):
 def buscar_horallegada(codvuelo, aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    buscar= "select fechasalida from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    buscar= "select horallegada from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
     cursor.execute(buscar)
     buscardato= cursor.fetchall()
     conexion.commit()
