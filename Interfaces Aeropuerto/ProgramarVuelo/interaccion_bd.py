@@ -368,7 +368,7 @@ def buscar_horasalida(codvuelo, aeronit):
 def buscar_horallegada(codvuelo, aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
-    buscar= "select horallegada from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    buscar= "select horaentrada from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
     cursor.execute(buscar)
     buscardato= cursor.fetchall()
     conexion.commit()

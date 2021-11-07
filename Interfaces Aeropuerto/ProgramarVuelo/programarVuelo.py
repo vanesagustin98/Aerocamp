@@ -25,6 +25,7 @@ class iniciar:
         self.visualizarVuelos               = uic.loadUi("visualizarVuelos.ui")
         self.vuelo                          = uic.loadUi("vuelo.ui")
         self.dialogo                        = uic.loadUi("dialogo.ui")
+        self.modificarVuelo                 = uic.loadUi("modificarVuelo.ui")
 
         self.aeropuerto.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
         self.aerolinea.label_2.setPixmap(QtGui.QPixmap("iconoregistroavion.jpg"))
@@ -37,6 +38,7 @@ class iniciar:
         self.solicitudesPendientesVuelos.label_2.setPixmap(QtGui.QPixmap("iconoavion.jpg"))
         self.solicitudesRegistroAerolinea.label_2.setPixmap(QtGui.QPixmap("iconosolicitudregistro.jpg"))
         self.vuelo.label_3.setPixmap(QtGui.QPixmap("iconoprogramarvuelo.jpg"))
+        self.modificarVuelo.label_3.setPixmap(QtGui.QPixmap("iconoprogramarvuelo.jpg"))
 
         self.aeropuerto.bt_solicitudesVuelos.clicked.connect(self.SolicitudesVuelos)
         self.aeropuerto.bt_agendaVuelosAeropuerto.clicked.connect(self.ConsultarAgendaAeropuerto)
@@ -519,14 +521,13 @@ class iniciar:
         horasalida = buscar_horasalida (codvuelo,aeronit)
         horallegada = buscar_horallegada (codvuelo,aeronit)
         
-        self.vuelo.lineEdit_13.setEnabled(False)
-        self.vuelo.lineEdit_13.setText(codvuelo)
-        self.vuelo.dateEdit_3.setDate(fechasalida)
-        self.vuelo.dateEdit_4.setDate(fechallegada)
-        self.vuelo.timeEdit.setDate(horasalida)
-        self.vuelo.timeEdit_2.setDate(horallegada)
-        self.vuelo.comboBox_2.setEditText(tipovuelo)
-        self.vuelo.show()
+        
+        self.modificarVuelo.lineEdit_13.setEnabled(False)
+        self.modificarVuelo.lineEdit_13.setText(codvuelo)
+        self.modificarVuelo.dateEdit_3.setDate(fechasalida)
+        self.modificarVuelo.dateEdit_4.setDate(fechallegada)
+        self.modificarVuelo.comboBox_2.setEditText(tipovuelo)
+        self.modificarVuelo.show()
 
     def rechazarvuelo(self):
         
