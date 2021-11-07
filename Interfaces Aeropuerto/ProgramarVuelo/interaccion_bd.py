@@ -110,6 +110,15 @@ def formulario_usuario_modificar(usuario, contrasena):
     conexion.close()
     return "Formulario agregado"
 
+def formulario_vuelo_modificar(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo):
+    formulario_vuelo ="update vuelo set tipovuelo ='{}', destino ='{}', fechasalida ='{}', fechallegada ='{}', horasalida ='{}', horaentrada ='{}', pilotoid ='{}', copilotoid ='{}', avionid ='{}', confimacionvuelo ='{}'  where codvuelo = '{}' and aeronit ='{}'".format(tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo, codvuelo, aeronit)
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    cursor.execute(formulario_vuelo)
+    conexion.commit()
+    conexion.close()
+    return "Vuelo Modificado"
+
 def listado_pilotos(aeronit):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
@@ -312,6 +321,17 @@ def buscar_vuelo(codigo):
     vuelo = vuelo[0][0]
     return vuelo
 
+def buscar_tipovuelo(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select tipovuelo from vuelo where aeronit='{}' and codvuelo='{}';".format(aeronit,codvuelo)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato  
+
 def borrar_aerolineaformtemp(nombre):
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
@@ -366,10 +386,7 @@ def buscarcopiloto(idcopiloto):
     conexion.close()
     return ban
 
-
-
 def eliminar_aerolineaformtemp(nombre):
-    print(nombre)
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
     borr_avion= "delete from avion where aeronit ='{}';".format(nombre)
@@ -384,6 +401,15 @@ def eliminar_aerolineaformtemp(nombre):
     cursor.execute(borr_copiloto)
     cursor.execute(borr_aerolinea)
     cursor.execute(borr_usuario)
+    conexion.commit()
+    conexion.close()
+    #return "Borrado"
+
+def eliminar_vueloAerolinea(codvuelo):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    borr_vuelos= "delete from vuelo where codvuelo ='{}';".format(codvuelo)
+    cursor.execute(borr_vuelos)
     conexion.commit()
     conexion.close()
     return "Borrado c:"

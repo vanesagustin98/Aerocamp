@@ -3,7 +3,7 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import *
 from conexion_bd import *
 from interaccion_bd import *
-from PySide2.QtWidgets import *
+#from PySide2.QtWidgets import *
 
 class iniciar:
     def __init__(self):
@@ -53,6 +53,7 @@ class iniciar:
         self.aerolinea.pushButton.clicked.connect(self.visualizarvuelos)
         self.agendamientoVuelos.bt_realizarSolicitud.clicked.connect(self.RealizarSolicitud)
         self.agendamientoVuelos.bt_modificarDatos.clicked.connect(self.modificarVueloAerolinea)
+        self.agendamientoVuelos.bt_eliminarVuelo.clicked.connect(self.eliminarVueloAerolinea)
         self.autenticacion.pushButton_3.clicked.connect(self.LlenarFormulario)
         self.autenticacion.pushButton.clicked.connect(self.autenticarusuario)
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
@@ -180,7 +181,10 @@ class iniciar:
             tipovuelo ="N"
 
         if(len(codvuelo)>0) and (destino!="Seleccionar Lugar") and (tipovuelo != "N"):
-            if codvuelo!= buscar_vuelo(codvuelo):
+            try:
+                vuelo =buscar_vuelo(codvuelo)
+            except: vuelo = 0 
+            if codvuelo!= vuelo:
                 formulario_crear_vuelo(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo)
                 self.dialogo.show()
                 conexion    = conexion_aerocampbd()
@@ -194,7 +198,6 @@ class iniciar:
                 conexion.close()
             else: self.dialogo.label.setText("Ya existe un vuelo con este codigo")
             self.dialogo.show()
-            print(buscar_vuelo(codvuelo))
         else: self.dialogo.label.setText("Todos los campos se deben rellenar")
         self.dialogo.show()
         
@@ -263,16 +266,57 @@ class iniciar:
         self.modicarDatosAeropuerto.comboBox.setEnabled(True)
 
     def eliminarAerolinea(self):
-        row = self.listadoAerolineas.listView.currentRow()  
-        aeronit = self.listadoAerolineas.listView.item(row,1).text()
-        if self.listadoAerolineas.listView.rowCount() == 0:
-            self.dialogo.label.setText("No hay Aerolineas que eliminar")
+        try:
+            row = self.listadoAerolineas.listView.currentRow()  
+            aeronit = self.listadoAerolineas.listView.item(row,1).text()
+            if self.listadoAerolineas.listView.rowCount() == 0:
+                self.dialogo.label.setText("No hay Aerolineas que eliminar")
+                self.dialogo.show()
+            else:
+                eliminar_aerolineaformtemp(aeronit)
+                self.dialogo.label.setText("Aerolinea Eliminada")
+                self.dialogo.show()
+            self.VisualizarAerolineas()
+        except AttributeError:
+            self.dialogo.label.setText("No se ha seleccionado una aerolínea")
             self.dialogo.show()
-        else:
-            eliminar_aerolineaformtemp(aeronit)
-            self.dialogo.label.setText("Aerolinea Eliminada")
+    
+    def eliminarVueloAerolinea(self):
+        try:
+            row = self.agendamientoVuelos.ls_vuelos.currentRow()  
+            codvuelo = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
+            if self.agendamientoVuelos.ls_vuelos.rowCount() == 0:
+                self.dialogo.label.setText("No hay vuelos que eliminar")
+                self.dialogo.show()
+            else:
+                eliminar_vueloAerolinea(codvuelo)
+                self.dialogo.label.setText("El vuelo ha sido eliminado")
+                self.dialogo.show()
+        except AttributeError:
+            self.dialogo.label.setText("No se ha seleccionado ningún vuelo")
             self.dialogo.show()
-        self.VisualizarAerolineas()
+        
+        conexion = conexion_aerocampbd()
+        cursor = conexion.cursor()
+        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C';"
+
+        cursor.execute(cdvuelos)
+        listcdvuelos = cursor.fetchall()
+        conexion.commit()
+        self.agendamientoVuelos.ls_vuelos.setRowCount(0)
+        fila = 0
+        for n in listcdvuelos:
+            columna = 0
+            self.agendamientoVuelos.ls_vuelos.insertRow(fila)
+            for k in n:
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
+        conexion.commit()
+        conexion.close()
+        self.dialogo.label.setText("La solicitud fue enviada con éxito")
+        self.dialogo.show()
 
     def enviarpiloto(self):
         nombrepiloto            = self.registrarPiloto.lineEdit_27.text()
@@ -466,7 +510,15 @@ class iniciar:
         self.modicarDatosAeropuerto.show()
 
     def modificarVueloAerolinea(self):
-        pass
+        row = self.agendamientoVuelos.ls_vuelos.currentRow()  
+        codvuelo     = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
+        aeronit = usuario
+        tipovuelo = buscar_tipovuelo(codvuelo,aeronit)
+        
+        self.vuelo.lineEdit_13.setEnabled(False)
+        self.vuelo.lineEdit_13.setText(codvuelo)
+        self.vuelo.comboBox_2.setEditText(tipovuelo)
+        self.vuelo.show()
 
     def rechazarvuelo(self):
         
