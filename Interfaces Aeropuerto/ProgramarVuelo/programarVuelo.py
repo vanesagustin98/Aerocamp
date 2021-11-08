@@ -4,7 +4,6 @@ from PyQt5.QtCore import QDateTime, QTime
 from PyQt5.QtGui import *
 from conexion_bd import *
 from interaccion_bd import *
-#from PySide2.QtWidgets import *
 
 class iniciar:
     def __init__(self):
@@ -296,7 +295,7 @@ class iniciar:
             
             conexion.commit()
             conexion.close()
-            self.dialogo.label.setText("La solicitud fue enviada con éxito")
+            self.dialogo.label.setText("Vuelo cancelado correctamente")
             self.dialogo.show()
         except:
             self.dialogo.label.setText("No se ha seleccionado ningún vuelo")
@@ -566,13 +565,13 @@ class iniciar:
             email       = buscar_correoaerolinea2(aeronit)
             telefono    = buscar_telaerolinea2(aeronit)
 
-            self.modicarDatosAeropuerto.lineEdit_4.setText(nombre)
-            self.modicarDatosAeropuerto.lineEdit_5.setText(aeronit)
-            self.modicarDatosAeropuerto.comboBox.setText(ciudad)
-            self.modicarDatosAeropuerto.lineEdit_6.setText(email)
-            self.modicarDatosAeropuerto.lineEdit_7.setText(telefono)
-            self.modicarDatosAeropuerto.lineEdit.setText(aeronit)
-            self.modicarDatosAeropuerto.show()
+            self.modificarDatosAeropuerto.lineEdit_4.setText(nombre)
+            self.modificarDatosAeropuerto.lineEdit_5.setText(aeronit)
+            self.modificarDatosAeropuerto.comboBox.setText(ciudad)
+            self.modificarDatosAeropuerto.lineEdit_6.setText(email)
+            self.modificarDatosAeropuerto.lineEdit_7.setText(telefono)
+            self.modificarDatosAeropuerto.lineEdit.setText(aeronit)
+            self.modificarDatosAeropuerto.show()
         except AttributeError:
             self.dialogo.label.setText("No se ha seleccionado una aerolínea")
             self.dialogo.show()
@@ -894,28 +893,32 @@ class iniciar:
             self.agendamientoVuelos.bt_eliminarVuelo.setEnabled(False)
     
     def visualizarvuelos(self):
-        self.visualizarVuelos.tableWidget.setColumnWidth(0,100)
-        self.visualizarVuelos.tableWidget.setColumnWidth(1,100)
-        self.visualizarVuelos.tableWidget.setColumnWidth(2,100)
-        
-        conexion = conexion_aerocampbd()
-        cursor   = conexion.cursor()
-        cdvuelos = "select codvuelo,to_char(fechasalida,'YYYY-MM-DD'),confirmacionvuelo from vuelo where aeronit='{}';".format(usuario)
-        cursor.execute(cdvuelos)
-        listcdvuelos = cursor.fetchall()
-        conexion.commit()
-        self.visualizarVuelos.tableWidget.setRowCount(0)
-        fila = 0
-        for n in listcdvuelos:
-            columna = 0
-            self.visualizarVuelos.tableWidget.insertRow(fila)
-            for k in n:
-                celda = QtWidgets.QTableWidgetItem(k)
-                self.visualizarVuelos.tableWidget.setItem(fila, columna, celda)
-                columna+=1
-            fila+=1
-        conexion.close()
-        self.visualizarVuelos.show()
+            self.visualizarVuelos.tableWidget.setColumnWidth(0,100)
+            self.visualizarVuelos.tableWidget.setColumnWidth(1,100)
+            self.visualizarVuelos.tableWidget.setColumnWidth(2,100)
+            
+            conexion = conexion_aerocampbd()
+            cursor   = conexion.cursor()
+            cdvuelos = "select codvuelo,to_char(fechasalida,'YYYY-MM-DD'),confirmacionvuelo from vuelo where aeronit='{}';".format(usuario)
+            cursor.execute(cdvuelos)
+            listcdvuelos = cursor.fetchall()
+            conexion.commit()
+            if len(listcdvuelos)>0:
+                self.visualizarVuelos.tableWidget.setRowCount(0)
+                fila = 0
+                for n in listcdvuelos:
+                    columna = 0
+                    self.visualizarVuelos.tableWidget.insertRow(fila)
+                    for k in n:
+                        celda = QtWidgets.QTableWidgetItem(k)
+                        self.visualizarVuelos.tableWidget.setItem(fila, columna, celda)
+                        columna+=1
+                    fila+=1
+                conexion.close()
+                self.visualizarVuelos.show()
+            else:
+                self.dialogo.label.setText("No existen vuelos registrados")
+                self.dialogo.show()
 
     def verSolicitudesRegistro(self):
         listsoliaero = listado_aerolineasusuario()

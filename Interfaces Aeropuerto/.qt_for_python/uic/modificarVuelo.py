@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(622, 421)
+        MainWindow.resize(574, 421)
         MainWindow.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
 
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(327, 170, 253, 142))
+        self.formLayoutWidget.setGeometry(QRect(327, 170, 221, 142))
         self.formLayout = QFormLayout(self.formLayoutWidget)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setVerticalSpacing(20)

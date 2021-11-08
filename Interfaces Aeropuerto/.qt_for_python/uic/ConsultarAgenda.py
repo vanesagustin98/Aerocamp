@@ -57,7 +57,7 @@ class Ui_Agenda(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(90, 140, 311, 192))
+        self.tableWidget.setGeometry(QRect(80, 140, 321, 192))
         self.tableWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         Agenda.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(Agenda)
