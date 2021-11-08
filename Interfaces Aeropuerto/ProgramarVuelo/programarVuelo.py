@@ -276,12 +276,6 @@ class iniciar:
             cursor.execute(cdvuelos)
             listcdvuelos= cursor.fetchall()
             
-
-            ls = self.consultarAgenda.tableWidget.selectedItems()
-            for n in ls:
-                cdvuelos= "insert into soltemp values('{}');".format(n.text())
-                cursor.execute(cdvuelos)
-
             self.consultarAgenda.tableWidget.setRowCount(0)
             fila=0
             for n in listcdvuelos:
