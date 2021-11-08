@@ -218,7 +218,7 @@ class iniciar:
         conexion.commit()
         conexion.close()
         self.solicitudesPendientesVuelos.close()
-        self.dialogo.label.setText("Toca cambiar este dialogo")
+        self.dialogo.label.setText("Vuelo programado con éxito")
         self.dialogo.show()
 
     def ConsultarAgendaAeropuerto(self):
@@ -231,7 +231,7 @@ class iniciar:
         if len(listcdvuelos)>0:
             self.consultarAgenda.show()
         else:
-            self.dialogo.label.setText("Toca cambiar este dialogo")
+            self.dialogo.label.setText("No hay vuelos programados")
             self.dialogo.show()
 
         conexion.commit()
@@ -355,8 +355,6 @@ class iniciar:
             fila+=1
         conexion.commit()
         conexion.close()
-        self.dialogo.label.setText("La solicitud fue enviada con éxito")
-        self.dialogo.show()
 
     def enviarpiloto(self):
         nombrepiloto            = self.registrarPiloto.lineEdit_27.text()
@@ -736,7 +734,7 @@ class iniciar:
         
         conexion = conexion_aerocampbd()
         cursor   = conexion.cursor()
-        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C' and aeronit='{}';".format(usuario)
+        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo in ('C','R') and aeronit='{}';".format(usuario)
 
         cursor.execute(cdvuelos)
         listcdvuelos = cursor.fetchall()
