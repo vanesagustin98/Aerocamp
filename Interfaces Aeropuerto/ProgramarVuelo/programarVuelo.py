@@ -59,6 +59,7 @@ class iniciar:
         self.autenticacion.pushButton_3.clicked.connect(self.LlenarFormulario)
         self.autenticacion.pushButton.clicked.connect(self.autenticarusuario)
         self.consultarAgenda.bt_consultarAgenda.clicked.connect(self.consultarAgenda2)
+        self.consultarAgenda.bt_cancelarVuelo.clicked.connect(self.cancelarVueloAeropuerto)
         self.formularioRegistro.pushButton.clicked.connect(self.enviarformulario)
         self.listadoAerolineas.pushButton.clicked.connect(self.modificarDatosAerop)
         self.listadoAerolineas.pushButton_2.clicked.connect(self.eliminarAerolinea)
@@ -239,10 +240,12 @@ class iniciar:
     def consultarAgenda2(self):
         self.consultarAgenda.tableWidget.setColumnWidth(0,100)
         self.consultarAgenda.tableWidget.setColumnWidth(1,100)
+        self.consultarAgenda.tableWidget.setColumnWidth(2,100)
+
         conexion = conexion_aerocampbd()
         cursor = conexion.cursor()
         date= self.consultarAgenda.dateEdit.text()
-        cdvuelos= "select codvuelo from vuelo where confirmacionvuelo= 'A' and fechallegada='{}';".format(date)
+        cdvuelos= "select codvuelo, destino, to_char(fechasalida,'YYYY-MM-DD') from vuelo where confirmacionvuelo= 'A' and fechallegada='{}';".format(date)
         cursor.execute(cdvuelos)
         listcdvuelos= cursor.fetchall()
         conexion.commit()
@@ -257,6 +260,41 @@ class iniciar:
                 columna+=1
             fila+=1
         conexion.close()
+
+    def cancelarVueloAeropuerto(self):
+        row = self.consultarAgenda.tableWidget.currentRow()  
+        codigo = self.consultarAgenda.tableWidget.item(row,0).text()
+        conexion = conexion_aerocampbd()
+        cursor = conexion.cursor()
+        vueloscancelar= "update vuelo set confirmacionvuelo='R'where codvuelo='{}';".format(codigo)
+        cursor.execute(vueloscancelar)
+
+        date= self.consultarAgenda.dateEdit.text()
+        cdvuelos= "select codvuelo, destino, to_char(fechasalida,'YYYY-MM-DD') from vuelo where confirmacionvuelo= 'A' and fechallegada='{}';".format(date)
+        cursor.execute(cdvuelos)
+        listcdvuelos= cursor.fetchall()
+        
+
+        ls = self.consultarAgenda.tableWidget.selectedItems()
+        for n in ls:
+            cdvuelos= "insert into soltemp values('{}');".format(n.text())
+            cursor.execute(cdvuelos)
+
+        self.consultarAgenda.tableWidget.setRowCount(0)
+        fila=0
+        for n in listcdvuelos:
+            columna=0
+            self.consultarAgenda.tableWidget.insertRow(fila)
+            for k in n:
+                celda = QtWidgets.QTableWidgetItem(k)
+                self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
+                columna+=1
+            fila+=1
+        
+        conexion.commit()
+        conexion.close()
+        self.dialogo.label.setText("La solicitud fue enviada con éxito")
+        self.dialogo.show()
 
     def editarDatosAerolinea(self):
         self.modicarDatosAeropuerto.pushButton.setEnabled(True)
