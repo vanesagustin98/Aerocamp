@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5 import QtGui
+from PyQt5.QtCore import QDateTime, QTime
 from PyQt5.QtGui import *
 from conexion_bd import *
 from interaccion_bd import *
@@ -15,8 +16,8 @@ class iniciar:
         self.aerolinea                      = uic.loadUi("interfazAerolinea.ui")
         self.aeropuerto                     = uic.loadUi("interfazAeropuerto.ui")
         self.listadoAerolineas              = uic.loadUi("listadoAerolineas.ui")
-        self.modicarDatosAerolinea          = uic.loadUi("modificarDatosAerolinea.ui")
-        self.modicarDatosAeropuerto         = uic.loadUi("modificarDatosAeropuerto.ui")
+        self.modificarDatosAerolinea        = uic.loadUi("modificarDatosAerolinea.ui")
+        self.modificarDatosAeropuerto       = uic.loadUi("modificarDatosAeropuerto.ui")
         self.registrarAvion                 = uic.loadUi("registrarAvion.ui")
         self.registrarCopiloto              = uic.loadUi("registrarCopiloto.ui")
         self.registrarPiloto                = uic.loadUi("registrarPiloto.ui")
@@ -63,9 +64,10 @@ class iniciar:
         self.formularioRegistro.pushButton.clicked.connect(self.enviarformulario)
         self.listadoAerolineas.pushButton.clicked.connect(self.modificarDatosAerop)
         self.listadoAerolineas.pushButton_2.clicked.connect(self.eliminarAerolinea)
-        self.modicarDatosAerolinea.pushButton.clicked.connect(self.registraraerolinea)
-        self.modicarDatosAeropuerto.pushButton.clicked.connect(self.modificarAerolinea)
-        self.modicarDatosAeropuerto.pushButton_2.clicked.connect(self.editarDatosAerolinea)
+        self.modificarDatosAerolinea.pushButton.clicked.connect(self.registraraerolinea)
+        self.modificarDatosAeropuerto.pushButton.clicked.connect(self.modificarAerolinea)
+        self.modificarDatosAeropuerto.pushButton_2.clicked.connect(self.editarDatosAerolinea)
+        self.modificarVuelo.bt_modificar_vuelo.clicked.connect(self.modificar_Vuelo)
         self.registrarAvion.bt_registrar_piloto_7.clicked.connect(self.enviarAvion)
         self.registrarCopiloto.bt_registrar_piloto_7.clicked.connect(self.EnviarCopiloto)
         self.registrarPiloto.bt_registrar_piloto_7.clicked.connect(self.enviarpiloto)
@@ -149,14 +151,14 @@ class iniciar:
         email       = buscar_correoaerolinea(nombre)
         telefono    = buscar_telaerolinea(nombre)
 
-        self.modicarDatosAerolinea.lineEdit_4.setText(nombre)
-        self.modicarDatosAerolinea.lineEdit_5.setText(aeronit)
-        self.modicarDatosAerolinea.comboBox.setText(ciudad)
-        self.modicarDatosAerolinea.lineEdit_6.setText(email)
-        self.modicarDatosAerolinea.lineEdit_7.setText(telefono)
-        self.modicarDatosAerolinea.lineEdit.setText(aeronit)
+        self.modificarDatosAerolinea.lineEdit_4.setText(nombre)
+        self.modificarDatosAerolinea.lineEdit_5.setText(aeronit)
+        self.modificarDatosAerolinea.comboBox.setText(ciudad)
+        self.modificarDatosAerolinea.lineEdit_6.setText(email)
+        self.modificarDatosAerolinea.lineEdit_7.setText(telefono)
+        self.modificarDatosAerolinea.lineEdit.setText(aeronit)
 
-        self.modicarDatosAerolinea.show()
+        self.modificarDatosAerolinea.show()
 
     def CrearVuelo(self):
         #Vuelo
@@ -262,48 +264,52 @@ class iniciar:
         conexion.close()
 
     def cancelarVueloAeropuerto(self):
-        row = self.consultarAgenda.tableWidget.currentRow()  
-        codigo = self.consultarAgenda.tableWidget.item(row,0).text()
-        conexion = conexion_aerocampbd()
-        cursor = conexion.cursor()
-        vueloscancelar= "update vuelo set confirmacionvuelo='R'where codvuelo='{}';".format(codigo)
-        cursor.execute(vueloscancelar)
+        try:
+            row = self.consultarAgenda.tableWidget.currentRow()  
+            codigo = self.consultarAgenda.tableWidget.item(row,0).text()
+            conexion = conexion_aerocampbd()
+            cursor = conexion.cursor()
+            vueloscancelar= "update vuelo set confirmacionvuelo='R'where codvuelo='{}';".format(codigo)
+            cursor.execute(vueloscancelar)
 
-        date= self.consultarAgenda.dateEdit.text()
-        cdvuelos= "select codvuelo, destino, to_char(fechasalida,'YYYY-MM-DD') from vuelo where confirmacionvuelo= 'A' and fechallegada='{}';".format(date)
-        cursor.execute(cdvuelos)
-        listcdvuelos= cursor.fetchall()
-        
-
-        ls = self.consultarAgenda.tableWidget.selectedItems()
-        for n in ls:
-            cdvuelos= "insert into soltemp values('{}');".format(n.text())
+            date= self.consultarAgenda.dateEdit.text()
+            cdvuelos= "select codvuelo, destino, to_char(fechasalida,'YYYY-MM-DD') from vuelo where confirmacionvuelo= 'A' and fechallegada='{}';".format(date)
             cursor.execute(cdvuelos)
+            listcdvuelos= cursor.fetchall()
+            
 
-        self.consultarAgenda.tableWidget.setRowCount(0)
-        fila=0
-        for n in listcdvuelos:
-            columna=0
-            self.consultarAgenda.tableWidget.insertRow(fila)
-            for k in n:
-                celda = QtWidgets.QTableWidgetItem(k)
-                self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
-                columna+=1
-            fila+=1
-        
-        conexion.commit()
-        conexion.close()
-        self.dialogo.label.setText("La solicitud fue enviada con éxito")
-        self.dialogo.show()
+            ls = self.consultarAgenda.tableWidget.selectedItems()
+            for n in ls:
+                cdvuelos= "insert into soltemp values('{}');".format(n.text())
+                cursor.execute(cdvuelos)
+
+            self.consultarAgenda.tableWidget.setRowCount(0)
+            fila=0
+            for n in listcdvuelos:
+                columna=0
+                self.consultarAgenda.tableWidget.insertRow(fila)
+                for k in n:
+                    celda = QtWidgets.QTableWidgetItem(k)
+                    self.consultarAgenda.tableWidget.setItem(fila, columna, celda)
+                    columna+=1
+                fila+=1
+            
+            conexion.commit()
+            conexion.close()
+            self.dialogo.label.setText("La solicitud fue enviada con éxito")
+            self.dialogo.show()
+        except:
+            self.dialogo.label.setText("No se ha seleccionado ningún vuelo")
+            self.dialogo.show()
 
     def editarDatosAerolinea(self):
-        self.modicarDatosAeropuerto.pushButton.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_2.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_3.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_6.setEnabled(True)
-        self.modicarDatosAeropuerto.lineEdit_7.setEnabled(True)
-        self.modicarDatosAeropuerto.comboBox.setEnabled(True)
+        self.modificarDatosAeropuerto.pushButton.setEnabled(True)
+        self.modificarDatosAeropuerto.lineEdit_2.setEnabled(True)
+        self.modificarDatosAeropuerto.lineEdit_3.setEnabled(True)
+        self.modificarDatosAeropuerto.lineEdit_4.setEnabled(True)
+        self.modificarDatosAeropuerto.lineEdit_6.setEnabled(True)
+        self.modificarDatosAeropuerto.lineEdit_7.setEnabled(True)
+        self.modificarDatosAeropuerto.comboBox.setEnabled(True)
 
     def eliminarAerolinea(self):
         try:
@@ -338,7 +344,7 @@ class iniciar:
         
         conexion = conexion_aerocampbd()
         cursor = conexion.cursor()
-        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C';"
+        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo in ('C','R') and aeronit='{}';".format(usuario)
 
         cursor.execute(cdvuelos)
         listcdvuelos = cursor.fetchall()
@@ -470,30 +476,76 @@ class iniciar:
     def LlenarFormulario(self):
         self.formularioRegistro.show()
 
+    def modificar_Vuelo(self):
+        horasalida          = self.modificarVuelo.timeEdit.text()
+        horaentrada         = self.modificarVuelo.timeEdit_2.text()
+        fechasalida         = self.modificarVuelo.dateEdit_3.text()
+        fechallegada        = self.modificarVuelo.dateEdit_4.text()
+        codvuelo            = self.modificarVuelo.lineEdit_13.text()
+        destino             = self.modificarVuelo.comboBox.currentText()
+        carga               = self.modificarVuelo.comboBox_2.currentText()
+        piloto              = self.modificarVuelo.comboBox_3.currentText()
+        copiloto            = self.modificarVuelo.comboBox_5.currentText()
+        avionid             = self.modificarVuelo.comboBox_6.currentText()
+        aeronit             = usuario
+        pilotoid            = buscar_idpiloto(piloto,aeronit)
+        copilotoid          = buscar_idcopiloto(copiloto,aeronit)
+
+        if (carga == "Carga"):
+            tipovuelo = "1"
+        elif (carga == "Pasajeros"):
+            tipovuelo ="0"
+        else:
+            tipovuelo ="N"
+
+        if(len(codvuelo)>0) and (destino!="Seleccionar Lugar") and (tipovuelo != "N"):
+            formulario_vuelo_modificar(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid)
+            self.dialogo.label.setText("El vuelo se ha modificado exitosamente")
+            self.dialogo.show()
+            self.modificarVuelo.close()
+            conexion = conexion_aerocampbd()
+            cursor = conexion.cursor()
+            cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo in ('C','R') and aeronit='{}';".format(usuario)
+            cursor.execute(cdvuelos)
+            listcdvuelos = cursor.fetchall()
+            conexion.commit()
+            self.agendamientoVuelos.ls_vuelos.setRowCount(0)
+            fila = 0
+            for n in listcdvuelos:
+                columna = 0
+                self.agendamientoVuelos.ls_vuelos.insertRow(fila)
+                for k in n:
+                    celda = QtWidgets.QTableWidgetItem(k)
+                    self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
+                    columna+=1
+                fila+=1
+        else: self.dialogo.label.setText("Todos los campos se deben seleccionar")
+        self.dialogo.show()
+
     def modificarAerolinea(self):
-        nombre_aerolinea    = self.modicarDatosAeropuerto.lineEdit_4.text()
-        nit_aerolinea       = self.modicarDatosAeropuerto.lineEdit_5.text()
-        ciu_aerolinea       = self.modicarDatosAeropuerto.comboBox.text()
-        email_aerolinea     = self.modicarDatosAeropuerto.lineEdit_6.text()
-        tel_aerolinea       = self.modicarDatosAeropuerto.lineEdit_7.text()
-        usuario             = self.modicarDatosAeropuerto.lineEdit.text()
-        contrasena          = self.modicarDatosAeropuerto.lineEdit_2.text()
-        contrasenar         = self.modicarDatosAeropuerto.lineEdit_3.text()
+        nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.text()
+        nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.text()
+        ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.text()
+        email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.text()
+        tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.text()
+        usuario             = self.modificarDatosAeropuerto.lineEdit.text()
+        contrasena          = self.modificarDatosAeropuerto.lineEdit_2.text()
+        contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.text()
         if len(contrasena)>0 and len(contrasenar)>0:
             if(contrasena == contrasenar):
                 formulario_usuario_modificar(usuario, contrasena)
                 formulario_registrosaerolineas_modificar(nit_aerolinea, nombre_aerolinea,ciu_aerolinea,email_aerolinea, tel_aerolinea)
 
-                nombre_aerolinea    = self.modicarDatosAeropuerto.lineEdit_4.clear()
-                nit_aerolinea       = self.modicarDatosAeropuerto.lineEdit_5.clear()
-                ciu_aerolinea       = self.modicarDatosAeropuerto.comboBox.clear()
-                email_aerolinea     = self.modicarDatosAeropuerto.lineEdit_6.clear()
-                tel_aerolinea       = self.modicarDatosAeropuerto.lineEdit_7.clear()
-                usuario             = self.modicarDatosAeropuerto.lineEdit.clear()
-                contrasena          = self.modicarDatosAeropuerto.lineEdit_2.clear()
-                contrasenar         = self.modicarDatosAeropuerto.lineEdit_3.clear()
+                nombre_aerolinea    = self.modificarDatosAeropuerto.lineEdit_4.clear()
+                nit_aerolinea       = self.modificarDatosAeropuerto.lineEdit_5.clear()
+                ciu_aerolinea       = self.modificarDatosAeropuerto.comboBox.clear()
+                email_aerolinea     = self.modificarDatosAeropuerto.lineEdit_6.clear()
+                tel_aerolinea       = self.modificarDatosAeropuerto.lineEdit_7.clear()
+                usuario             = self.modificarDatosAeropuerto.lineEdit.clear()
+                contrasena          = self.modificarDatosAeropuerto.lineEdit_2.clear()
+                contrasenar         = self.modificarDatosAeropuerto.lineEdit_3.clear()
 
-                self.modicarDatosAeropuerto.close()
+                self.modificarDatosAeropuerto.close()
                 self.dialogo.label.setText("Los datos de la aerolinea fueron modificados exitosamente")
                 self.dialogo.show()
                 if buscar_identificador == "P":
@@ -506,64 +558,139 @@ class iniciar:
             self.dialogo.show()
 
     def modificarDatosAerop(self):
-        row = self.listadoAerolineas.listView.currentRow()  
-        aeronit     = self.listadoAerolineas.listView.item(row,1).text()
-        nombre      = buscar_nombreaerolinea2(aeronit)
-        ciudad      = buscar_ciuaerolinea2(aeronit)
-        email       = buscar_correoaerolinea2(aeronit)
-        telefono    = buscar_telaerolinea2(aeronit)
+        try:
+            row = self.listadoAerolineas.listView.currentRow()  
+            aeronit     = self.listadoAerolineas.listView.item(row,1).text()
+            nombre      = buscar_nombreaerolinea2(aeronit)
+            ciudad      = buscar_ciuaerolinea2(aeronit)
+            email       = buscar_correoaerolinea2(aeronit)
+            telefono    = buscar_telaerolinea2(aeronit)
 
-        self.modicarDatosAeropuerto.lineEdit_4.setText(nombre)
-        self.modicarDatosAeropuerto.lineEdit_5.setText(aeronit)
-        self.modicarDatosAeropuerto.comboBox.setText(ciudad)
-        self.modicarDatosAeropuerto.lineEdit_6.setText(email)
-        self.modicarDatosAeropuerto.lineEdit_7.setText(telefono)
-        self.modicarDatosAeropuerto.lineEdit.setText(aeronit)
-
-        self.modicarDatosAeropuerto.show()
+            self.modicarDatosAeropuerto.lineEdit_4.setText(nombre)
+            self.modicarDatosAeropuerto.lineEdit_5.setText(aeronit)
+            self.modicarDatosAeropuerto.comboBox.setText(ciudad)
+            self.modicarDatosAeropuerto.lineEdit_6.setText(email)
+            self.modicarDatosAeropuerto.lineEdit_7.setText(telefono)
+            self.modicarDatosAeropuerto.lineEdit.setText(aeronit)
+            self.modicarDatosAeropuerto.show()
+        except AttributeError:
+            self.dialogo.label.setText("No se ha seleccionado una aerolínea")
+            self.dialogo.show()
     
     def modificarDatosAerolineaPropios(self):
-        self.modicarDatosAeropuerto.pushButton.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_2.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_3.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_4.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_5.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_6.setEnabled(False)
-        self.modicarDatosAeropuerto.lineEdit_7.setEnabled(False)
-        self.modicarDatosAeropuerto.comboBox.setEnabled(False)
+        self.modificarDatosAeropuerto.pushButton.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_2.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_3.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_4.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_5.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_6.setEnabled(False)
+        self.modificarDatosAeropuerto.lineEdit_7.setEnabled(False)
+        self.modificarDatosAeropuerto.comboBox.setEnabled(False)
         aeronit     = usuario
         nombre      = buscar_nombreaerolinea2(aeronit)
         ciudad      = buscar_ciuaerolinea2(aeronit)
         email       = buscar_correoaerolinea2(aeronit)
         telefono    = buscar_telaerolinea2(aeronit)
 
-        self.modicarDatosAeropuerto.lineEdit_4.setText(nombre)
-        self.modicarDatosAeropuerto.lineEdit_5.setText(aeronit)
-        self.modicarDatosAeropuerto.comboBox.setText(ciudad)
-        self.modicarDatosAeropuerto.lineEdit_6.setText(email)
-        self.modicarDatosAeropuerto.lineEdit_7.setText(telefono)
-        self.modicarDatosAeropuerto.lineEdit.setText(aeronit)
+        self.modificarDatosAeropuerto.lineEdit_4.setText(nombre)
+        self.modificarDatosAeropuerto.lineEdit_5.setText(aeronit)
+        self.modificarDatosAeropuerto.comboBox.setText(ciudad)
+        self.modificarDatosAeropuerto.lineEdit_6.setText(email)
+        self.modificarDatosAeropuerto.lineEdit_7.setText(telefono)
+        self.modificarDatosAeropuerto.lineEdit.setText(aeronit)
 
-        self.modicarDatosAeropuerto.show()
+        self.modificarDatosAeropuerto.show()
 
     def modificarVueloAerolinea(self):
-        row = self.agendamientoVuelos.ls_vuelos.currentRow()  
-        codvuelo     = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
-        aeronit = usuario
-        tipovuelo = buscar_tipovuelo(codvuelo,aeronit)
-        fechasalida = buscar_fechasalida (codvuelo,aeronit)
-        fechallegada = buscar_fechallegada (codvuelo,aeronit)
-        horasalida = buscar_horasalida (codvuelo,aeronit)
-        horallegada = buscar_horallegada (codvuelo,aeronit)
-        
-        
-        self.modificarVuelo.lineEdit_13.setEnabled(False)
-        self.modificarVuelo.lineEdit_13.setText(codvuelo)
-        self.modificarVuelo.dateEdit_3.setDate(fechasalida)
-        self.modificarVuelo.dateEdit_4.setDate(fechallegada)
-        self.modificarVuelo.comboBox_2.setEditText(tipovuelo)
-        self.modificarVuelo.show()
+        try:
+            aeronit = usuario
+            self.modificarVuelo.comboBox_3.clear()
+            listpilotos = listado_pilotos(aeronit)
+            for n in listpilotos:
+                for k in n:
+                    self.modificarVuelo.comboBox_3.addItem(k)
+            self.modificarVuelo.comboBox_5.clear()
+            listcopilotos = listado_copilotos(aeronit)
+            for m in listcopilotos:
+                for j in m:
+                    self.modificarVuelo.comboBox_5.addItem(j)
+            self.modificarVuelo.comboBox_6.clear()
+            listaviones = listado_aviones(aeronit)
+            for d in listaviones:
+                for a in d:
+                    self.modificarVuelo.comboBox_6.addItem(a)       
+
+            row             = self.agendamientoVuelos.ls_vuelos.currentRow()  
+            codvuelo        = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
+            tipovuelo       = buscar_tipovuelo(codvuelo,aeronit)
+            fechasalida     = buscar_fechasalida (codvuelo,aeronit)
+            fechallegada    = buscar_fechallegada (codvuelo,aeronit)
+            # horasalida      = buscar_horasalida (codvuelo,aeronit)
+            # horallegada     = buscar_horallegada (codvuelo,aeronit)
+            destinos        = ["Pasto","Bogota","Medellin","Cali"]
+            destino         = buscar_destino(codvuelo,aeronit)
+            pilotos         = listado_pilotos(aeronit)
+            copilotos       = listado_copilotos(aeronit)
+            aviones         = listado_aviones(aeronit)
+            pilotonom       = buscar_nompiloto(codvuelo,aeronit)
+            copilotonom     = buscar_nomcopiloto(codvuelo,aeronit)
+            avioncod        = buscar_codavion(codvuelo,aeronit)
+
+            index = 0
+            if tipovuelo == '0':
+                index = 1
+            elif tipovuelo == '1':
+                index = 2
+            else:
+                index = 0
+
+            indexp = 0
+            cont   = 0
+            for piloto in pilotos:
+                for i in piloto:
+                    if i == pilotonom:
+                        indexp = cont
+                cont = cont + 1 
+
+            indexc = 0
+            cont   = 0
+            for copiloto in copilotos:
+                for i in copiloto:
+                    if i == copilotonom:
+                        indexc = cont
+                cont = cont + 1 
+
+            indexa = 0
+            cont   = 0
+            for avion in aviones:
+                for i in avion:
+                    if i == avioncod:
+                        indexa = cont
+                cont = cont + 1  
+
+            indexd = 0
+            cont   = 0
+            for dest in destinos:
+                if destino == dest:
+                    indexd = cont+1
+                cont = cont + 1
+            
+            self.modificarVuelo.lineEdit_13.setEnabled(False)
+            self.modificarVuelo.lineEdit_13.setText(codvuelo)
+            self.modificarVuelo.dateEdit_3.setDate(fechasalida)
+            self.modificarVuelo.dateEdit_4.setDate(fechallegada)
+            # self.modificarVuelo.timeEdit.setDateTime(QDateTime(0,0,0,0,0))
+            # self.modificarVuelo.timeEdit_2.setDateTime(QDateTime(0,0,0,0,0))
+            self.modificarVuelo.comboBox_2.setCurrentIndex(index)
+            self.modificarVuelo.comboBox_3.setCurrentIndex(indexp)
+            self.modificarVuelo.comboBox_5.setCurrentIndex(indexc)
+            self.modificarVuelo.comboBox_6.setCurrentIndex(indexa)
+            self.modificarVuelo.comboBox.setCurrentIndex(indexd)
+            self.modificarVuelo.show()
+        except AttributeError:
+            self.dialogo.label.setText("No se ha seleccionado ningún vuelo")
+            self.dialogo.show()
 
     def rechazarvuelo(self):
         
@@ -607,14 +734,14 @@ class iniciar:
         self.solicitudesRegistroAerolinea.update()
         
     def registraraerolinea(self):
-        nombre_aerolinea    = self.modicarDatosAerolinea.lineEdit_4.text()
-        nit_aerolinea       = self.modicarDatosAerolinea.lineEdit_5.text()
-        ciu_aerolinea       = self.modicarDatosAerolinea.comboBox.text()
-        email_aerolinea     = self.modicarDatosAerolinea.lineEdit_6.text()
-        tel_aerolinea       = self.modicarDatosAerolinea.lineEdit_7.text()
-        usuario             = self.modicarDatosAerolinea.lineEdit.text()
-        contrasena          = self.modicarDatosAerolinea.lineEdit_2.text()
-        contrasenar         = self.modicarDatosAerolinea.lineEdit_3.text()
+        nombre_aerolinea    = self.modificarDatosAerolinea.lineEdit_4.text()
+        nit_aerolinea       = self.modificarDatosAerolinea.lineEdit_5.text()
+        ciu_aerolinea       = self.modificarDatosAerolinea.comboBox.text()
+        email_aerolinea     = self.modificarDatosAerolinea.lineEdit_6.text()
+        tel_aerolinea       = self.modificarDatosAerolinea.lineEdit_7.text()
+        usuario             = self.modificarDatosAerolinea.lineEdit.text()
+        contrasena          = self.modificarDatosAerolinea.lineEdit_2.text()
+        contrasenar         = self.modificarDatosAerolinea.lineEdit_3.text()
         identificador       = 'A'
         
         if len(contrasena)>0 and len(contrasenar)>0:
@@ -629,16 +756,16 @@ class iniciar:
                     for k in n:
                         self.solicitudesRegistroAerolinea.comboBox.addItem(k)
 
-                nombre_aerolinea    = self.modicarDatosAerolinea.lineEdit_4.clear()
-                nit_aerolinea       = self.modicarDatosAerolinea.lineEdit_5.clear()
-                ciu_aerolinea       = self.modicarDatosAerolinea.comboBox.clear()
-                email_aerolinea     = self.modicarDatosAerolinea.lineEdit_6.clear()
-                tel_aerolinea       = self.modicarDatosAerolinea.lineEdit_7.clear()
-                usuario             = self.modicarDatosAerolinea.lineEdit.clear()
-                contrasena          = self.modicarDatosAerolinea.lineEdit_2.clear()
-                contrasenar         = self.modicarDatosAerolinea.lineEdit_3.clear()
+                nombre_aerolinea    = self.modificarDatosAerolinea.lineEdit_4.clear()
+                nit_aerolinea       = self.modificarDatosAerolinea.lineEdit_5.clear()
+                ciu_aerolinea       = self.modificarDatosAerolinea.comboBox.clear()
+                email_aerolinea     = self.modificarDatosAerolinea.lineEdit_6.clear()
+                tel_aerolinea       = self.modificarDatosAerolinea.lineEdit_7.clear()
+                usuario             = self.modificarDatosAerolinea.lineEdit.clear()
+                contrasena          = self.modificarDatosAerolinea.lineEdit_2.clear()
+                contrasenar         = self.modificarDatosAerolinea.lineEdit_3.clear()
 
-                self.modicarDatosAerolinea.close()
+                self.modificarDatosAerolinea.close()
                 self.solicitudesRegistroAerolinea.update() 
                 self.dialogo.label.setText("La aerolínea fue registrada exitosamente")
                 self.dialogo.show()
@@ -659,35 +786,39 @@ class iniciar:
         self.registrarPiloto.show()
 
     def RealizarSolicitud(self):
-        row = self.agendamientoVuelos.ls_vuelos.currentRow()  
-        codigo = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
-        conexion = conexion_aerocampbd()
-        cursor = conexion.cursor()
-        cfvuelos= "update vuelo set confirmacionvuelo='E'where codvuelo='{}';".format(codigo)
-        cursor.execute(cfvuelos)
-        cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo= 'C';"
+        try:
+            row = self.agendamientoVuelos.ls_vuelos.currentRow()  
+            codigo = self.agendamientoVuelos.ls_vuelos.item(row,0).text()
+            conexion = conexion_aerocampbd()
+            cursor = conexion.cursor()
+            cfvuelos= "update vuelo set confirmacionvuelo='E'where codvuelo='{}';".format(codigo)
+            cursor.execute(cfvuelos)
+            cdvuelos = "select codvuelo, to_char(fechasalida,'YYYY-MM-DD'), confirmacionvuelo from vuelo where confirmacionvuelo in ('C','R') and aeronit='{}';".format(usuario)
 
-        cursor.execute(cdvuelos)
-        listcdvuelos = cursor.fetchall()
-        conexion.commit()
-        ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
-        for n in ls:
-            cdvuelos= "insert into soltemp values('{}');".format(n.text())
             cursor.execute(cdvuelos)
-        self.agendamientoVuelos.ls_vuelos.setRowCount(0)
-        fila = 0
-        for n in listcdvuelos:
-            columna = 0
-            self.agendamientoVuelos.ls_vuelos.insertRow(fila)
-            for k in n:
-                celda = QtWidgets.QTableWidgetItem(k)
-                self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
-                columna+=1
-            fila+=1
-        conexion.commit()
-        conexion.close()
-        self.dialogo.label.setText("La solicitud fue enviada con éxito")
-        self.dialogo.show()
+            listcdvuelos = cursor.fetchall()
+            conexion.commit()
+            ls = self.agendamientoVuelos.ls_vuelos.selectedItems()
+            for n in ls:
+                cdvuelos= "insert into soltemp values('{}');".format(n.text())
+                cursor.execute(cdvuelos)
+            self.agendamientoVuelos.ls_vuelos.setRowCount(0)
+            fila = 0
+            for n in listcdvuelos:
+                columna = 0
+                self.agendamientoVuelos.ls_vuelos.insertRow(fila)
+                for k in n:
+                    celda = QtWidgets.QTableWidgetItem(k)
+                    self.agendamientoVuelos.ls_vuelos.setItem(fila, columna, celda)
+                    columna+=1
+                fila+=1
+            conexion.commit()
+            conexion.close()
+            self.dialogo.label.setText("La solicitud fue enviada con éxito")
+            self.dialogo.show()
+        except AttributeError:
+            self.dialogo.label.setText("No se ha seleccionado ningún vuelo")
+            self.dialogo.show()
 
     def ProgramarVuelo(self):
         aeronit = usuario
@@ -799,9 +930,9 @@ class iniciar:
             self.dialogo.show()
 
     def VerDatosAerolinea(self):
-        self.modicarDatosAerolinea.show()
+        self.modificarDatosAerolinea.show()
 
-    def VisualizarAerolineas(self):        
+    def VisualizarAerolineas(self):
         conexion = conexion_aerocampbd()
         cursor       = conexion.cursor()
         cdvuelos     = "select nombreaerolinea, aeronit from aerolinea;"
@@ -832,8 +963,8 @@ class iniciar:
         self.consultarAgenda.close()
         self.formularioRegistro.close()
         self.listadoAerolineas.close()
-        self.modicarDatosAerolinea.close()
-        self.modicarDatosAeropuerto.close()
+        self.modificarDatosAerolinea.close()
+        self.modificarDatosAeropuerto.close()
         self.registrarAvion.close()
         self.registrarCopiloto.close()
         self.registrarPiloto.close()

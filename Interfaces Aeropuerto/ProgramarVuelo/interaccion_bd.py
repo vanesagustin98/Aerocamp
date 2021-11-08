@@ -110,8 +110,8 @@ def formulario_usuario_modificar(usuario, contrasena):
     conexion.close()
     return "Formulario agregado"
 
-def formulario_vuelo_modificar(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo):
-    formulario_vuelo ="update vuelo set tipovuelo ='{}', destino ='{}', fechasalida ='{}', fechallegada ='{}', horasalida ='{}', horaentrada ='{}', pilotoid ='{}', copilotoid ='{}', avionid ='{}', confimacionvuelo ='{}'  where codvuelo = '{}' and aeronit ='{}'".format(tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, confirmacionvuelo, codvuelo, aeronit)
+def formulario_vuelo_modificar(codvuelo, aeronit, tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid):
+    formulario_vuelo ="update vuelo set tipovuelo ='{}', destino ='{}', fechasalida ='{}', fechallegada ='{}', horasalida ='{}', horaentrada ='{}', pilotoid ='{}', copilotoid ='{}', avionid ='{}'  where codvuelo = '{}' and aeronit ='{}'".format(tipovuelo, destino, fechasalida, fechallegada, horasalida, horaentrada, pilotoid, copilotoid, avionid, codvuelo, aeronit)
     conexion = conexion_aerocampbd()
     cursor = conexion.cursor()
     cursor.execute(formulario_vuelo)
@@ -457,3 +457,47 @@ def eliminar_vueloAerolinea(codvuelo):
     conexion.commit()
     conexion.close()
     return "Borrado c:"
+
+def buscar_nompiloto(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    nombre_piloto = "select nombre from piloto t1 join vuelo t2 on t1.pilotoid = t2.pilotoid where t2.codvuelo = '{}' and  t2.aeronit = '{}';".format(codvuelo, aeronit)
+    cursor.execute(nombre_piloto)
+    piloto_nombre = cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    piloto_nombre = piloto_nombre [0][0]
+    return piloto_nombre
+
+def buscar_nomcopiloto(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    nombre_copiloto = "select nombre from copiloto t1 join vuelo t2 on t1.copilotoid = t2.copilotoid where t2.codvuelo = '{}' and  t2.aeronit = '{}';".format(codvuelo, aeronit)
+    cursor.execute(nombre_copiloto)
+    copiloto_nombre = cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    copiloto_nombre = copiloto_nombre [0][0]
+    return copiloto_nombre
+
+def buscar_codavion(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    codigo_avion = "select t1.avionid from avion t1 join vuelo t2 on t1.avionid = t2.avionid where t2.codvuelo = '{}' and  t2.aeronit = '{}';".format(codvuelo, aeronit)
+    cursor.execute(codigo_avion)
+    cod_avion = cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    cod_avion = cod_avion [0][0]
+    return cod_avion
+
+def buscar_destino(codvuelo, aeronit):
+    conexion = conexion_aerocampbd()
+    cursor = conexion.cursor()
+    buscar= "select destino from  vuelo where codvuelo = '{}' and  aeronit = '{}';".format(codvuelo, aeronit)
+    cursor.execute(buscar)
+    buscardato= cursor.fetchall()
+    conexion.commit()
+    conexion.close()
+    buscardato=buscardato[0][0]
+    return buscardato

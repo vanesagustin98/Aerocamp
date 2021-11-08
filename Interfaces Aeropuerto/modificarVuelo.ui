@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>574</width>
+    <width>622</width>
     <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Modificar Datos Vuelo</string>
+   <string>Modificar Datos del Vuelo</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(232, 228, 255);</string>
@@ -33,7 +33,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="crearVuelo">
+   <widget class="QPushButton" name="bt_modificar_vuelo">
     <property name="geometry">
      <rect>
       <x>220</x>

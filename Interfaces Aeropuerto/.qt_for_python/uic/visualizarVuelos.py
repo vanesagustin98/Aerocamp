@@ -17,7 +17,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(476, 277)
+        Form.resize(617, 277)
         Form.setStyleSheet(u"background-color: rgb(232, 228, 255);")
         self.tableWidget = QTableWidget(Form)
         if (self.tableWidget.columnCount() < 3):
@@ -40,6 +40,9 @@ class Ui_Form(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setStyleSheet(u"color: rgb(85, 0, 127);")
+        self.label_3 = QLabel(Form)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(440, 70, 151, 131))
 
         self.retranslateUi(Form)
 
@@ -55,5 +58,6 @@ class Ui_Form(object):
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"Estado", None));
         self.label.setText(QCoreApplication.translate("Form", u"Listado de Vuelos", None))
+        self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">      Estado:</span></p><p align=\"justify\"><span style=\" font-size:10pt; font-weight:600;\">C: Vuelo Creado</span></p><p align=\"justify\"><span style=\" font-size:10pt; font-weight:600;\">E: Solicitud Enviada</span></p><p align=\"justify\"><span style=\" font-size:10pt; font-weight:600;\">A: Vuelo Agendado</span></p><p align=\"justify\"><span style=\" font-size:10pt; font-weight:600;\">R: Vuelo Rechazado</span></p></body></html>", None))
     # retranslateUi
 
